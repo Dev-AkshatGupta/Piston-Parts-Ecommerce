@@ -1,13 +1,8 @@
-import { v4 as uuid } from "uuid";
-
-/**
- * Product Database can be added here.
- * You can add products of your wish with different attributes
- * */
-
-export const products = [
-   {
-    _id: uuid(),
+import {v4 as uuid} from "uuid";
+import React from "react";
+export const productCardData = [
+  {
+    id: uuid(),
     name: "V-Ribbed Belt",
     category: "AIR_CONDITIONING",
     image: {
@@ -26,7 +21,7 @@ export const products = [
     }
   },
   {
-    _id: uuid(),
+    id: uuid(),
     name: "Air Filter",
     category: "AIR_CONDITIONING",
     image: {
@@ -45,7 +40,7 @@ export const products = [
     }
   },
   {
-    _id: uuid(),
+    id: uuid(),
     name: "Rubber Hose Heater",
     category: "AIR_CONDITIONING",
     image: {
@@ -64,7 +59,7 @@ export const products = [
     }
   },
   {
-    _id: uuid(),
+    id: uuid(),
     name: "Side Marker Light Set",
     category: "Light",
     image: {
@@ -83,7 +78,7 @@ export const products = [
     }
   },
   {
-    _id: uuid(),
+    id: uuid(),
     name: "Side Rear View Mirror Right",
     category: "Light",
     image: {
@@ -102,7 +97,7 @@ export const products = [
     }
   },
   {
-    _id: uuid(),
+    id: uuid(),
     name: "BUSH, STEERING CENTER",
     category: "Light",
     image: {
@@ -121,7 +116,7 @@ export const products = [
     }
   },
   {
-    _id: uuid(),
+    id: uuid(),
     name: "PISTON",
     category: "Light",
     image: {
@@ -140,7 +135,7 @@ export const products = [
     }
   },
   {
-    _id: uuid(),
+    id: uuid(),
     name: "Headlamp Assembly Right",
     category: "Electric",
     image: {
@@ -159,7 +154,7 @@ export const products = [
     }
   },
   {
-    _id: uuid(),
+    id: uuid(),
     name: "Glow Plug",
     category: "Electric",
     image: {
@@ -178,7 +173,7 @@ export const products = [
     }
   },
   {
-    _id: uuid(),
+    id: uuid(),
     name: "Oil Filter",
     category: "Electric",
     image: {
@@ -196,4 +191,26 @@ export const products = [
       previousPrice: 541
     }
   }
+];
+
+export const brandNameData = [
+  { brand: "MAHINDRA" },
+  { brand: "TATA" },
+  { brand: "MASERATI" },
+  { brand: "LAMBORGHINI" },
+  { brand: "MERCEDES" },
+  { brand: "KIA" },
+  { brand: "HYUNDAI" },
+  { brand: "HONDA" },
+  { brand: "SUZUKI" },
+  { brand: "TOYOTA" },
+  { brand: "AUDI" },
+  { brand: "FORCE MOTORS" },
+  { brand: "FORD" },
+  { brand: "FIAT" },
+  { brand: "COBRA" },
+  { brand: "PORSCHE" },
+  { brand: "VW" },
+  { brand: "SHELBY" },
+  { brand: "HINDUSTAN" }
 ];

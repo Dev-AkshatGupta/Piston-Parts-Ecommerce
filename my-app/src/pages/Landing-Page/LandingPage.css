@@ -1,0 +1,102 @@
+.banner-upper-empty {
+    height: 12rem;
+    width: 10%;
+}
+.banner-div_upper {
+    width: 100%;
+    height: 60vh;
+}
+.banner-div {
+    width: 80%;
+    border-radius: 10px;
+    background-color: var(--ICONS-ORANGE);
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+/* Animation  */
+
+@keyframes engineAnimation {
+    0% {
+        background-image: url(https://boodmo.com/assets/images/board/min/engine-3-v2.png);
+        opacity: 0;
+    }
+
+    11.11% {
+        background-image: url(https://boodmo.com/assets/images/board/min/engine-3-v2.png);
+        opacity: 1;
+    }
+
+    22.22% {
+        background-image: url(https://boodmo.com/assets/images/board/min/engine-3-v2.png);
+        opacity: 0;
+    }
+
+    33.33% {
+        background-image: url(https://boodmo.com/assets/images/board/min/engine-2-v2.png);
+        opacity: 0;
+    }
+
+    44.44% {
+        background-image: url(https://boodmo.com/assets/images/board/min/engine-2-v2.png);
+        opacity: 1;
+    }
+
+    55.55% {
+        background-image: url(https://boodmo.com/assets/images/board/min/engine-2-v2.png);
+        opacity: 0;
+    }
+
+    66.66% {
+        background-image: url(https://boodmo.com/assets/images/board/min/engine-1-v2.png);
+        opacity: 0;
+    }
+
+    77.77% {
+        background-image: url(https://boodmo.com/assets/images/board/min/engine-1-v2.png);
+        opacity: 1;
+    }
+
+    88.88% {
+        background-image: url(https://boodmo.com/assets/images/board/min/engine-1-v2.png);
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.for-animation {
+    width: 40rem;
+    height: 40rem;
+    background-size: 100% 100%;
+    animation: engineAnimation 12s linear infinite;
+}
+
+.for-search {
+    width: 50%;
+}
+.hero-wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 5rem;
+    background: var(--STONE-100);
+}
+.sub-hero-wrapper{
+     width: 80%;
+     margin: auto;
+     display: flex;
+     flex-wrap: wrap;
+     gap: 15px;
+     margin-bottom: 5rem;
+}
+.margin-top-0 {
+    margin-top: 0;
+}
+.background-orange {
+    background-color: var(--ACCENT-COLOR-LIGHT);
+}

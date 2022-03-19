@@ -1,0 +1,26 @@
+.categories-card-wrapper {
+    padding: 40px 20px;
+    margin: 0 15px 25px 15px;
+    width: 23rem;
+    height: 27.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    box-shadow: 0 3px 10px #ebebeb;
+    flex-direction: column;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.categories-card-wrapper:hover {
+    box-shadow: 0 4px 15px #b6b6b6;
+}
+
+.categories-card-img {
+    width: 17..8rem;
+    height: 18.5rem;
+}
+
+.categories-card-wrapper>h3 {
+    margin-top: 4rem;
+}
