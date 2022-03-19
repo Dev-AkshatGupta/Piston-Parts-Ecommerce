@@ -29,7 +29,6 @@ function CartManagementProvider({ children }) {
           ...state,
           wishlist: stateWishlist.filter(({ id }) => id !== action.payLoad),
         };
-      
 
       default:
         break;
