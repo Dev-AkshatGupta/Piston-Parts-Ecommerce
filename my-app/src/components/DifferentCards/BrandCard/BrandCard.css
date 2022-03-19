@@ -1,0 +1,18 @@
+.brand-card {
+    padding: 15px 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 10px #ebebeb;
+    font-size: 16px;
+    color: #462902;
+    min-height: 65px;
+    border-radius: 5px;
+    transition: all 0.3s;
+    width: 20rem;
+    background-color: var(--PURE-WHITE);
+}
+
+.brand-card:hover {
+    box-shadow: 0 4px 15px #b6b6b6;
+}
