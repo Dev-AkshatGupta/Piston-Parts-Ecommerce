@@ -1,8 +1,16 @@
-import React, { createContext, useContext, useReducer } from "react";
-import { productCardData } from "../../DATA/BrandsData";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
 
+import axios from "axios";
 const CartManagementContext = createContext();
+
 const useCartManager = () => useContext(CartManagementContext);
+
 function CartManagementProvider({ children }) {
   function reducer(state, action) {
     const { wishlist: stateWishlist, sorted } = state;
@@ -35,7 +43,7 @@ function CartManagementProvider({ children }) {
     }
   }
   const [state, dispatch] = useReducer(reducer, {
-    sorted: productCardData,
+    sorted: [],
     wishlist: [],
     cartManagement: [],
   });

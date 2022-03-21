@@ -104,7 +104,7 @@ export const products = [
   {
     _id: uuid(),
     name: "BUSH, STEERING CENTER",
-    category: "Light",
+    category: "Mechanical",
     image: {
       src:
         "https://boodmo.com/media/cache/part_zoom_horizontal/images/parts/88b6088b62d2256b3fbf5728781e20c7.webp",
@@ -123,7 +123,7 @@ export const products = [
   {
     _id: uuid(),
     name: "PISTON",
-    category: "Light",
+    category: "Mechanical",
     image: {
       src:
         "https://boodmo.com/media/cache/part_zoom_horizontal/images/parts/88b6088b62d2256b3fbf5728781e20c7.webp",
@@ -180,7 +180,7 @@ export const products = [
   {
     _id: uuid(),
     name: "Oil Filter",
-    category: "Electric",
+    category: "Oil",
     image: {
       src:
         "https://boodmo.com/media/cache/part_zoom_horizontal/images/parts/c2e3ca7e15fc9d62dcfef209d963e791.webp",

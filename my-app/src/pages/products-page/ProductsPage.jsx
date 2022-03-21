@@ -1,141 +1,26 @@
 import React from "react";
 import "./ProductsPage.css";
 import {
-    NavBar,
+  NavBar,
   Footer,
   BothCard,
-  brandNameData,
-  productCardData,
+  AsideFilter,
   useCartManager,
+  useFilterManger,
 } from "./importsAndExports";
 
 const ProductsPage = () => {
   const { dispatch, state } = useCartManager();
+  const { filtered, filterManager } = useFilterManger();
   return (
     <div>
-      <NavBar/>
+      <NavBar />
       <div className="empty"></div>
       <section className="hero-sec-grid">
-        <aside className="aside-nav box-shadow-right hero-aside">
-          <div className="aside-container-pri">
-            <h2>
-              Filters <span className="margin-l-16 link-btn">Clear all</span>
-            </h2>
-
-            <h3 className="text-dark-grey">Sort</h3>
-            <ul className="aside-ul">
-              <li>
-                <input type="checkbox" name="" id="" />
-                <label htmlFor="input" className="sub-text">
-                  Price low to High
-                </label>
-              </li>
-              <li>
-                <input type="checkbox" name="" id="" />
-                <label htmlFor="input" className="sub-text">
-                  Price High to low
-                </label>
-              </li>
-            </ul>
-
-            <div className="divider-2"></div>
-            <h3 className="text-dark-grey">Categories</h3>
-            <ul className="aside-ul">
-              <li>
-                <input type="checkbox" name="" id="" />
-                <label htmlFor="input" className="sub-text">
-                  Brakes
-                </label>
-              </li>
-              <li>
-                <input type="checkbox" name="" id="" />
-                <label htmlFor="input" className="sub-text">
-                  Oils
-                </label>
-              </li>
-              <li>
-                <input type="checkbox" name="" id="" />
-                <label htmlFor="input" className="sub-text">
-                  Lubricants
-                </label>
-              </li>
-              <li>
-                <input type="checkbox" name="" id="" />
-                <label htmlFor="input" className="sub-text">
-                  Covers
-                </label>
-              </li>
-              <li>
-                <input type="checkbox" name="" id="" />
-                <label htmlFor="input" className="sub-text">
-                  Sensors
-                </label>
-              </li>
-            </ul>
-            <div className="divider-2"></div>
-            <h3 className="text-dark-grey">Price Range</h3>
-            <ul className="aside-ul">
-              <li>
-                {" "}
-                <input type="range" min="0" max="1000" className="range" />
-              </li>
-            </ul>
-            <div className="divider-2"></div>
-            <h3 className="text-dark-grey">Brands</h3>
-            <ul className="aside-ul">
-              <li>
-                <input type="checkbox" name="" id="" />
-                <label htmlFor="input" className="sub-text">
-                  {" "}
-                  Suzuki
-                </label>
-              </li>
-              <li>
-                <input type="checkbox" name="" id="" />
-                <label htmlFor="input" className="sub-text">
-                  Mahindra
-                </label>
-              </li>
-              <li>
-                <input type="checkbox" name="" id="" />
-                <label htmlFor="input" className="sub-text">
-                  Tata
-                </label>
-              </li>
-              <li>
-                <input type="checkbox" name="" id="" />
-                <label htmlFor="input" className="sub-text">
-                  Hyundai
-                </label>
-              </li>
-            </ul>
-            <div className="divider-2"></div>
-            <h3 className="text-dark-grey">Enhanced</h3>
-            <ul className="aside-ul">
-              <li>
-                <input type="checkbox" name="" id="" />
-                <label htmlFor="input" className="sub-text">
-                  Turbochargers
-                </label>
-              </li>
-              <li>
-                <input type="checkbox" name="" id="" />
-                <label htmlFor="input" className="sub-text">
-                  Low level alloys
-                </label>
-              </li>
-              <li>
-                <input type="checkbox" name="" id="" />
-                <label htmlFor="input" className="sub-text">
-                  Air-Suspensions
-                </label>
-              </li>
-            </ul>
-          </div>
-        </aside>
+        <AsideFilter />
 
         <main className="products-main">
-          {productCardData.map(
+          {filtered.sorted.map(
             (
               {
                 image,

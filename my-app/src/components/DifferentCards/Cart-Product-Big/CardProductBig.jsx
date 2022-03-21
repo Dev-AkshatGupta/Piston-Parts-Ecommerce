@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./Cart-Product-Big.css";
 import { BsSuitHeart, BsSuitHeartFill } from "react-icons/bs";
 import { TiTickOutline } from "react-icons/ti";
-// import { Routes, Route } from "react-router-dom";
+
 const Card = ({
   image,
   manufacturerName,
@@ -15,8 +15,6 @@ const Card = ({
   wishlistManager,
   type,
   setType,
-  btnToggle,
-  setButtonToggle,
 }) => {
   return (
     <div className=" card-vertical border-r-3  padding-2 margin-bottom-1 ">
@@ -87,8 +85,6 @@ function CardProductBig({
   wishlistManager,
   type,
   setType,
-  btnToggle,
-  setButtonToggle,
 }) {
   return (
     <>
@@ -217,7 +213,6 @@ function BothCard({
   id,
 }) {
   const [view, setView] = useState(true);
-  const [btnToggle, setButtonToggle] = useState(true);
   const [wishlist, setWishlist] = useState("ADD_TO_WISHLIST");
   return (
     <>
@@ -234,8 +229,6 @@ function BothCard({
           wishlistManager={wishlistManager}
           type={wishlist}
           setType={setWishlist}
-          btnToggle={btnToggle}
-          setBtnToggle={setBtnToggle}
         />
       )}
       {!view && (
@@ -251,8 +244,6 @@ function BothCard({
           id={id}
           type={wishlist}
           setType={setWishlist}
-          btnToggle={btnToggle}
-          setBtnToggle={setBtnToggle}
         />
       )}
     </>
