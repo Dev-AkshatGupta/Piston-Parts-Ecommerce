@@ -3,6 +3,7 @@ import "./navBar.css";
 import { CgProfile } from "react-icons/cg";
 import { FaSun, FaMoon } from "react-icons/fa";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useCartManager } from "../../pages/contextsAndReducer/CartManagementProvider";
 export const HiddenDivRow = ({ name, price, image, alt }) => {
   return (
@@ -46,16 +47,16 @@ function NavBar() {
     <>
       <nav className="navigation text-black">
         <div className="icon flex-center-center">
-          <a href="./index.html" className="icons-p text-black ">
+          <Link to="/" className="icons-p text-black ">
             PISTON <span className="text-accent">parTs</span>
-          </a>
+          </Link>
         </div>
         <div className="nav-top">
           <ul className="nav-top__list">
             <li className="nav-top__list-item">
-              <a href="./pages/sign-up.html" className="link-btn">
+              <Link to="/logIn-page" className="link-btn">
                 Log-in/Sign-up
-              </a>
+              </Link>
             </li>
             <li className="nav-top__list-item">
               <a href="./" className="link-btn">
@@ -67,30 +68,44 @@ function NavBar() {
         <div className="nav-bottom ">
           <ul className="nav-bottom__list">
             <li className="nav-bottom__list-item">
-              <button className="btn nav-bottom-btn">Turbo-chargers</button>
+              <Link to="/products-page" className="btn nav-bottom-btn text">
+                Turbo-chargers
+              </Link>
             </li>
             <li className="nav-bottom__list-item">
-              <button className="btn btn-sec nav-bottom-btn">
+              <Link
+                to="/products-page"
+                className="btn btn-sec nav-bottom-btn text"
+              >
                 Oils Lubricants
-              </button>
+              </Link>
             </li>
             <li className="nav-bottom__list-item">
-              <button className="btn btn-sec nav-bottom-btn">
+              <Link
+                to="/products-page"
+                className="btn btn-sec nav-bottom-btn text"
+              >
                 Three-wheelers
-              </button>
+              </Link>
             </li>
             <li className="nav-bottom__list-item">
-              <button className="btn btn-sec nav-bottom-btn">
+              <Link
+                to="/products-page"
+                className="btn btn-sec nav-bottom-btn text"
+              >
                 Spare-Parts
-              </button>
+              </Link>
             </li>
             <li className="nav-bottom__list-item">
-              <button className="btn btn-sec nav-bottom-btn">
+              <Link
+                to="/products-page"
+                className="btn btn-sec nav-bottom-btn text"
+              >
                 Power Stations
-              </button>
+              </Link>
             </li>
             <li className="nav-bottom__list-item relative">
-              <a className="btn-icon-sml nav-bottom-icons">
+              <Link to="" className="btn-icon-sml nav-bottom-icons ">
                 <i
                   className="fas fa-shopping-bag"
                   onClick={() => {
@@ -106,19 +121,24 @@ function NavBar() {
                         });
                   }}
                 ></i>
-              </a>
+              </Link>
               {toggle.toggleCartView && <HiddenDiv />}
               <span className="absolute badge flex-center badge-custom-text">
                 15
               </span>
             </li>
+            {/* /signUp-Page" element={<SignUpPage/>}/> */}
+            {/* <Route path="/logIn-Page"  */}
             <li className="nav-bottom__list-item ">
-              <a className="btn-icon-med nav-bottom-icons">
+              <Link to="/logIn-Page" className="btn-icon-med nav-bottom-icons">
                 <CgProfile />
-              </a>
+              </Link>
             </li>
             <li className="nav-bottom__list-item relative">
-              <a className="btn-icon-sml nav-bottom-icons">
+              <Link
+                to="/wishlist-page"
+                className="btn-icon-sml nav-bottom-icons"
+              >
                 <i
                   className="fas fa-heart "
                   onClick={() => {
@@ -134,7 +154,7 @@ function NavBar() {
                         });
                   }}
                 ></i>
-              </a>
+              </Link>
               {toggle.toggleWishListView && (
                 <HiddenDiv position="wishList-div-position" />
               )}
