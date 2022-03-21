@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./authentication.css";
 import { Link } from "react-router-dom";
+
 import { useAuthorization } from "../../pages/contextsAndReducer/AuthProvider";
 function LogInForm() {
   const { authState, authDispatch } = useAuthorization();
@@ -8,6 +9,7 @@ function LogInForm() {
     email: "",
     password: "",
   });
+
   function clickHandler(e) {
     //  to prevent initial refreshing of the page
     e.preventDefault();

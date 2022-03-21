@@ -30,6 +30,7 @@ const logInHandler = async (email, password) => {
     console.log(error);
   }
 };
+
 // Function for fetching the cart items
 const useFetchCart = () => {
   const encodedToken = localStorage.getItem("token");

@@ -16,14 +16,13 @@ const AuthProvider = ({ children }) => {
   //   reducer function for handling signUp and login
 
   const reducer = (state, action) => {
+    const { firstName, lastName, email, password } = action.payload;
     switch (action.type) {
       case "SIGN_IN":
-        console.log(action.payload);
-        signUpHandler(action.payload);
+        signUpHandler(firstName, lastName, email, password);
         break;
       case "LOG_IN":
-        console.log(action.payload);
-        logInHandler(action.payload);
+        logInHandler(email, password);
         break;
       default:
         break;

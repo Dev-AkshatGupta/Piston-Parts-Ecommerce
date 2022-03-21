@@ -63,7 +63,7 @@ function SignUpForm() {
         Sign-Up
       </button>
       <Link to="/logIn-Page" className="link-btn">
-        Already have account?{" "}
+        Already have account?
         <i className="fas fa-chevron-right text-accent"></i>
       </Link>
     </form>
