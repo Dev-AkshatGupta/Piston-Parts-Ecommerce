@@ -105,7 +105,7 @@ function NavBar() {
               </Link>
             </li>
             <li className="nav-bottom__list-item relative">
-              <Link to="" className="btn-icon-sml nav-bottom-icons ">
+              <Link to="/cart-page" className="btn-icon-sml nav-bottom-icons ">
                 <i
                   className="fas fa-shopping-bag"
                   onClick={() => {
@@ -127,8 +127,7 @@ function NavBar() {
                 15
               </span>
             </li>
-            {/* /signUp-Page" element={<SignUpPage/>}/> */}
-            {/* <Route path="/logIn-Page"  */}
+
             <li className="nav-bottom__list-item ">
               <Link to="/logIn-Page" className="btn-icon-med nav-bottom-icons">
                 <CgProfile />

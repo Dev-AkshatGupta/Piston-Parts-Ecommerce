@@ -12,18 +12,18 @@ import axios from "axios";
 makeServer();
 
 // eefie function for me being always logged-in for various functionalities
-    // (async () => {
-    //   try {
-    //     const response = await axios.post("/api/auth/login", {
-    //           email: "adarshbalika@gmail.com",
-    // password: "adarshbalika",
-    //     });
-    //     console.log(response);
-    //     localStorage.setItem("token", response.data.encodedToken);
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // })();
+    (async () => {
+      try {
+        const response = await axios.post("/api/auth/login", {
+              email: "adarshbalika@gmail.com",
+    password: "adarshbalika",
+        });
+        console.log(response);
+        localStorage.setItem("token", response.data.encodedToken);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
 
 ReactDOM.render(
   <React.StrictMode>

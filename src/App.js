@@ -7,8 +7,9 @@ import Mockman from "mockman-js";
 
 import {LogInPage} from "./pages/authenticationPages/LogInPage";
 import {SignUpPage} from "./pages/authenticationPages/SignUpPage";
+import { CartPage } from "./pages/cart-page.jsx/CartPage";
 function App() {
-
+// CartPage
   return (
     <div className="App">
       <Routes>
@@ -17,6 +18,7 @@ function App() {
         <Route path="/wishlist-page" element={<WishlistPage/>}/>
         <Route path="/signUp-Page" element={<SignUpPage/>}/>
         <Route path="/logIn-Page" element={<LogInPage/>}/>
+        <Route path="/cart-page" element={<CartPage/>}/>
         <Route path="/mock" element={<Mockman/>}/>
       </Routes>
     </div>
