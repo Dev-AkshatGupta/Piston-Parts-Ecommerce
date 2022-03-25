@@ -1,36 +1,26 @@
 import "./WishlistCard.css";
-import { BsSuitHeart, BsSuitHeartFill } from "react-icons/bs";
+import { BsSuitHeartFill } from "react-icons/bs";
 import { TiTickOutline } from "react-icons/ti";
+import {
+  useWishlistData,
+  useCartData,
+} from "../../../pages/authenticationPages/dataFetchingAndAuthentication";
 const WishlistCard = ({
   image,
   manufacturerName,
   name,
   price,
   oldPrice,
-  stateChanger,
-  state,
   id,
-  wishlistManager,
-  type,
-  setType,
 }) => {
+  const { deleteWishlistData } = useWishlistData();
+  const { postCartData } = useCartData();
   return (
     <div className=" card-vertical border-r-3  padding-2 margin-bottom-1 ">
       <div className="card-product-image position-relative">
         <img src={image} className="border-r-3 " />
-        <div
-          className={`go-like ${
-            type === "ADD_TO_WISHLIST" ? null : "active-liked"
-          }`}
-        >
-          <BsSuitHeartFill
-            onClick={() => {
-              type === "ADD_TO_WISHLIST"
-                ? setType("REMOVE_FROM_WISHLIST")
-                : setType("ADD_TO_WISHLIST");
-              wishlistManager({ type: type, payLoad: id });
-            }}
-          />
+        <div className="go-like active-liked">
+          <BsSuitHeartFill onClick={() => deleteWishlistData(id)} />
         </div>
       </div>
       <div className="card-vertical-text">
@@ -51,14 +41,11 @@ const WishlistCard = ({
         </p>
       </div>
       <div className="card-element__bottom no-border">
-        <button className="btn btn-outline-pri margin-1">Add to Cart</button>
         <button
-          className="btn btn-outline margin-1"
-          onClick={() => {
-            stateChanger(!state);
-          }}
+          className="btn btn-outline-pri margin-1"
+          onClick={() => postCartData(id)}
         >
-          More Details
+          Add to Cart
         </button>
       </div>
       <div className="flex-center-space-betw ">

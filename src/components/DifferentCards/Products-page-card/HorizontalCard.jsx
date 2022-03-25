@@ -35,8 +35,8 @@ export const HorizontalCard = ({ image, alt, productName, price }) => {
 // };
 // export const HiddenDiv = () => {
 //   return (
-//     <div class="card-vertical smooth-square-radius card-shadow  modal padding-l-r">
-//       <div class="card-vertical-upper-text">
+//     <div className="card-vertical smooth-square-radius card-shadow  modal padding-l-r">
+//       <div className="card-vertical-upper-text">
 //         <HiddenDivRow
 //           name="Akshat"
 //           image="https://cdn1.staticans.com/image/data/Vastrado/4-Mar-2022/LT1860A_2.jpg?width=415&height=550&mode=fill&fill=solid&fill-color=FFFFFF"
@@ -56,9 +56,9 @@ export const HorizontalCard = ({ image, alt, productName, price }) => {
 //           <span>Total Price :</span>
 //           <span>500</span>
 //         </p>
-//         <div class="card-element__bottom">
-//           <button class="modal-button btn btn-pri ">Go to Cart </button>
-//           <button class="modal-button btn btn-pri">Check Out</button>
+//         <div className="card-element__bottom">
+//           <button className="modal-button btn btn-pri ">Go to Cart </button>
+//           <button className="modal-button btn btn-pri">Check Out</button>
 //         </div>
 //       </div>
 //     </div>

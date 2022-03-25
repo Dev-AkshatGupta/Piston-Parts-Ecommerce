@@ -20,34 +20,21 @@ const ProductsPage = () => {
         <AsideFilter />
 
         <main className="products-main">
-          {filtered.sorted.map(
-            (
-              {
-                image,
-                manufacturerName,
-                quantity,
-                outOfStock,
-                price,
-                name,
-                id,
-              },
-              i
-            ) => {
-              return (
-                <BothCard
-                  image={image.src}
-                  key={id}
-                  manufacturerName={manufacturerName}
-                  availability={!outOfStock}
-                  price={price.actualPrice}
-                  name={name}
-                  oldPrice={price.previousPrice}
-                  id={id}
-                  wishlistManager={dispatch}
-                />
-              );
-            }
-          )}
+          {filtered.sorted.map((item, i) => {
+            return (
+              <BothCard
+                image={item.image.src}
+                key={item._id}
+                manufacturerName={item.manufacturerName}
+                availability={!item.outOfStock}
+                price={item.price.actualPrice}
+                name={item.name}
+                oldPrice={item.price.previousPrice}
+                id={item._id}
+                wholeItem={item}
+              />
+            );
+          })}
         </main>
       </section>
       <Footer />

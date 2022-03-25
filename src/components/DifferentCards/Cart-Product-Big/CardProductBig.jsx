@@ -3,7 +3,12 @@ import "./Cart-Product-Big.css";
 import { BsSuitHeart, BsSuitHeartFill } from "react-icons/bs";
 import { TiTickOutline } from "react-icons/ti";
 import { useCartManager } from "../../../pages/contextsAndReducer/CartManagementProvider";
-const { state, dispatch } = useCartManager();
+import { Link } from "react-router-dom";
+import {
+  useCartData,
+  useWishlistData,
+} from "../../../pages/authenticationPages/dataFetchingAndAuthentication";
+// Small product CArd
 const Card = ({
   image,
   manufacturerName,
@@ -14,29 +19,36 @@ const Card = ({
   state,
   id,
   wholeItem,
-  // wishlistManager,
-  // type,
-  // setType,
 }) => {
+  const { postCartData } = useCartData();
+  const { postWishListData, deleteWishlistData } = useWishlistData();
+  const { state: cartsState } = useCartManager();
+  const addToWishlist = cartsState.wishlist.findIndex(
+    (item) => item.name === wholeItem.name
+  );
+  const cartItemsInState = cartsState.cart.findIndex(
+    (item) => item.name === wholeItem.name
+  );
+
   return (
     <div className=" card-vertical border-r-3  padding-2 margin-bottom-1 ">
       <div className="card-product-image position-relative">
         <img src={image} className="border-r-3 " />
 
-        {state.wishlist.includes(wholeItem) && (
+        {addToWishlist > -1 && (
           <div className="go-like active-liked ">
             <BsSuitHeartFill
               onClick={() => {
-                dispatch({ type: "REMOVE_FROM_WISHLIST", payload: wholeItem });
+                deleteWishlistData(id);
               }}
             />
           </div>
         )}
-        {!state.wishlist.includes(wholeItem) && (
+        {addToWishlist === -1 && (
           <div className="go-like ">
             <BsSuitHeartFill
-              onClick={() => {
-                dispatch({ type: "ADD_TO_WISHLIST", payload: wholeItem });
+              onClick={(e) => {
+                postWishListData(wholeItem);
               }}
             />
           </div>
@@ -60,12 +72,18 @@ const Card = ({
         </p>
       </div>
       <div className="card-element__bottom no-border">
-        {!state.cart.includes(wholeItem) && (
-          <button className="btn btn-outline-pri margin-1"
-          onclick={()=>dispatch({type:"ADD_TO_CART",payload:wholeItem})}>Add to Cart</button>
+        {cartItemsInState === -1 && (
+          <button
+            className="btn btn-outline-pri margin-1"
+            onClick={(e) => {
+              postCartData(wholeItem);
+            }}
+          >
+            Add to Cart
+          </button>
         )}
-        {state.cart.includes(wholeItem) && (
-          <Link to="/cart-page" className="btn btn-outline-pri margin-1">
+        {cartItemsInState > -1 && (
+          <Link to="/cart-page" className="btn btn-outline-pri margin-1 text">
             Go to Cart
           </Link>
         )}
@@ -87,7 +105,7 @@ const Card = ({
     </div>
   );
 };
-
+// Descriptive Big product card
 function CardProductBig({
   image,
   manufacturerName,
@@ -98,10 +116,16 @@ function CardProductBig({
   state,
   id,
   wholeItem,
-  // wishlistManager,
-  // type,
-  // setType,
 }) {
+  const { postCartData } = useCartData();
+  const { postWishListData, deleteWishlistData } = useWishlistData();
+  const { state: cartsState } = useCartManager();
+  const addToWishlist = cartsState.wishlist.findIndex(
+    (item) => item.name === wholeItem.name
+  );
+  const cartItemsInState = cartsState.cart.findIndex(
+    (item) => item.name === wholeItem.name
+  );
   return (
     <>
       <div className="lightbox-blanket">
@@ -116,20 +140,25 @@ function CardProductBig({
                   }}
                 ></i>
               </div>
-              <div
-                className={`go-like ${
-                  type === "ADD_TO_WISHLIST" ? null : "active-liked"
-                }`}
-              >
-                <BsSuitHeartFill
-                  onClick={() => {
-                    type === "ADD_TO_WISHLIST"
-                      ? setType("REMOVE_FROM_WISHLIST")
-                      : setType("ADD_TO_WISHLIST");
-                    wishlistManager({ type: type, payLoad: id });
-                  }}
-                />
-              </div>
+
+              {addToWishlist > -1 && (
+                <div className="go-like active-liked ">
+                  <BsSuitHeartFill
+                    onClick={() => {
+                      deleteWishlistData(id);
+                    }}
+                  />
+                </div>
+              )}
+              {addToWishlist === -1 && (
+                <div className="go-like ">
+                  <BsSuitHeartFill
+                    onClick={(e) => {
+                      postWishListData(wholeItem);
+                    }}
+                  />
+                </div>
+              )}
               <div className="product-details">
                 <div className="product-left">
                   <div className="product-info">
@@ -200,13 +229,24 @@ function CardProductBig({
                     </div>
                   </div>
                   <div className="product-checkout-actions">
-                    <a
-                      className="add-to-cart btn btn-outline text"
-                      href="#"
-                      onclick="AddToCart(event);"
-                    >
-                      Add to Cart
-                    </a>
+                    {cartItemsInState === -1 && (
+                      <button
+                        className="add-to-cart btn btn-outline text"
+                        onClick={(e) => {
+                          postCartData(wholeItem);
+                        }}
+                      >
+                        Add to cart
+                      </button>
+                    )}
+                    {cartItemsInState > -1 && (
+                      <Link
+                        to="/cart-page"
+                        className="add-to-cart btn btn-outline text"
+                      >
+                        Go to Cart
+                      </Link>
+                    )}
                   </div>
                 </div>
               </div>
@@ -225,12 +265,11 @@ function BothCard({
   price,
   oldPrice,
   availability,
-  // wishlistManager,
+
   id,
   wholeItem,
 }) {
   const [view, setView] = useState(true);
-  // const [wishlist, setWishlist] = useState("ADD_TO_WISHLIST");
   return (
     <>
       {view && (
@@ -244,9 +283,6 @@ function BothCard({
           stateChanger={setView}
           state={view}
           wholeItem={wholeItem}
-          // wishlistManager={wishlistManager}
-          // type={wishlist}
-          // setType={setWishlist}
         />
       )}
       {!view && (
@@ -258,11 +294,8 @@ function BothCard({
           availability={availability}
           stateChanger={setView}
           state={view}
-          // wishlistManager={wishlistManager}
           id={id}
           wholeItem={wholeItem}
-          // type={wishlist}
-          // setType={setWishlist}
         />
       )}
     </>

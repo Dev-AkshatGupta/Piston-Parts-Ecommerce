@@ -18,7 +18,7 @@ makeServer();
               email: "adarshbalika@gmail.com",
     password: "adarshbalika",
         });
-        console.log(response);
+        // console.log(response);
         localStorage.setItem("token", response.data.encodedToken);
       } catch (error) {
         console.log(error);
@@ -37,6 +37,6 @@ ReactDOM.render(
 </AuthProvider>
     </Router>
 
-  </React.StrictMode>,
+ </React.StrictMode>,
   document.getElementById("root")
 );

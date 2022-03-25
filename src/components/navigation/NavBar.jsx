@@ -123,9 +123,11 @@ function NavBar() {
                 ></i>
               </Link>
               {toggle.toggleCartView && <HiddenDiv />}
-              <span className="absolute badge flex-center badge-custom-text">
-                15
-              </span>
+              {state.cart.length > 0 && (
+                <span className="absolute badge flex-center badge-custom-text">
+                  {state.cart.length}
+                </span>
+              )}
             </li>
 
             <li className="nav-bottom__list-item ">
