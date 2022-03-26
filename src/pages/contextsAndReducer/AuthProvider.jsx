@@ -21,7 +21,7 @@ const AuthProvider = ({ children }) => {
           name: action.payload.firstName,
           id: action.payload._id,
         };
-        break;
+
       case "LOG_IN":
         console.log(action.payload);
         return {
@@ -29,20 +29,20 @@ const AuthProvider = ({ children }) => {
           name: action.payload.firstName,
           id: action.payload._id,
         };
-        break;
+
       case "TOAST":
         return { ...state, toast: action.payload };
       default:
         break;
     }
   };
- 
+
   const [authState, authDispatch] = useReducer(reducer, {
     name: "",
     id: "",
     toast: { display: "none", message: "", type: "" },
   });
- console.log(authState);
+  console.log(authState);
   return (
     <AuthContext.Provider value={{ authState, authDispatch }}>
       {children}
