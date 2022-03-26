@@ -91,6 +91,7 @@ function FilterDataProvider({ children }) {
         return {
           ...state,
           sorted: state.defaultData,
+          categories:[]
         };
 
       default:

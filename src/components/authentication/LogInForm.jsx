@@ -15,9 +15,9 @@ function LogInForm() {
   function clickHandler(e) {
     //  to prevent initial refreshing of the page
     e.preventDefault();
-    // console.log(details.email, details.password);
+
     logInHandler(details.email, details.password);
-    // authDispatch({ type: "LOG_IN", payload: details });
+
     console.log("triggered");
   }
 
@@ -65,6 +65,12 @@ function LogInForm() {
         onClick={(e) => clickHandler(e)}
       >
         Log-In
+      </button>
+      <button
+        className="btn btn-outline-pri form-btn smooth-square-radius "
+        onClick={(e) => logInHandler("adarshbalika@gmail.com", "adarshbalika")}
+      >
+        Guest Log-In
       </button>
       <Link to="/signUp-Page" className="link-btn">
         Create new account <i className="fas fa-chevron-right text-accent"></i>

@@ -13,7 +13,7 @@ import { useAuthorization } from "./pages/contextsAndReducer/AuthProvider";
 function App() {
 const {authState,authDispatch }=useAuthorization();
 useEffect(()=>{
-  console.log("useEffect");
+ 
 const timeoutID= setTimeout(()=> {authDispatch({
         type: "TOAST",
         payload: { display:"none", message: "", type: "" },
