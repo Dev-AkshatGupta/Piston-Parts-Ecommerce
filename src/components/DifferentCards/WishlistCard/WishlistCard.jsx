@@ -16,7 +16,7 @@ const WishlistCard = ({
   const { deleteWishlistData } = useWishlistData();
   const { postCartData } = useCartData();
   return (
-    <div className=" card-vertical border-r-3  padding-2 margin-bottom-1 ">
+    <div className=" card-vertical border-r-3  padding-2 margin-top-1 ">
       <div className="card-product-image position-relative">
         <img src={image} className="border-r-3 " />
         <div className="go-like active-liked">

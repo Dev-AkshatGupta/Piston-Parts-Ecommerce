@@ -107,9 +107,9 @@ a {
   margin-bottom: 2rem;
 }
 
-.margin-top-1 {
+/* .margin-top-1 {
   margin-top: 2rem;
-}
+} */
 
 .margin-top-0 {
   margin-top: 0;
@@ -119,7 +119,7 @@ a {
   margin-top: 5px;
 }
 
-.margin-bottom-1 {
+.margin-top-1 {
   margin-top: 1rem;
 }
 
@@ -161,7 +161,9 @@ a {
 .text-dark-grey {
   color: var(--GREY-DARK);
 }
-
+.text-red{
+  color: var(--ERROR-RED);
+}
 .text-3 {
   font-size: 3rem;
 }
@@ -196,6 +198,9 @@ a {
 
 .background-white {
   background-color: var(--PURE-WHITE);
+}
+.background-red{
+  background-color: var(--ERROR-RED);
 }
 
 .flex-center-space-betw {

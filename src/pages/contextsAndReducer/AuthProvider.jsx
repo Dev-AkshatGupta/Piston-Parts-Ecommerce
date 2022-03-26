@@ -5,10 +5,7 @@ import React, {
   useReducer,
   useState,
 } from "react";
-import {
-  signUpHandler,
-  logInHandler,
-} from "../authenticationPages/dataFetchingAndAuthentication";
+
 const AuthContext = createContext();
 const useAuthorization = () => useContext(AuthContext);
 
@@ -16,20 +13,36 @@ const AuthProvider = ({ children }) => {
   //   reducer function for handling signUp and login
 
   const reducer = (state, action) => {
-    const { firstName, lastName, email, password } = action.payload;
     switch (action.type) {
       case "SIGN_IN":
-        signUpHandler(firstName, lastName, email, password);
+        console.log(action.payload);
+        return {
+          ...state,
+          name: action.payload.firstName,
+          id: action.payload._id,
+        };
         break;
       case "LOG_IN":
-        logInHandler(email, password);
+        console.log(action.payload);
+        return {
+          ...state,
+          name: action.payload.firstName,
+          id: action.payload._id,
+        };
         break;
+      case "TOAST":
+        return { ...state, toast: action.payload };
       default:
         break;
     }
   };
-  const [authState, authDispatch] = useReducer(reducer, {});
-
+ 
+  const [authState, authDispatch] = useReducer(reducer, {
+    name: "",
+    id: "",
+    toast: { display: "none", message: "", type: "" },
+  });
+ console.log(authState);
   return (
     <AuthContext.Provider value={{ authState, authDispatch }}>
       {children}

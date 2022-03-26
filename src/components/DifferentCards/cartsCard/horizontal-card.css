@@ -1,6 +1,6 @@
 .horizontal-card {
     width: 100%;
-    height: 100px;
+    height: 12rem;
     background: var(--WHITE-SMOKE);
     border-radius: 12px;
     transition:all 0.3s;
@@ -15,22 +15,30 @@
     border-radius: 12px;
 }
 
-.card .description {
+.horizontal-card .description {
     margin-left: 10px;
     color: var(--DARK-GREY);
     transition: color 0.3s;
 }
 
-.card .description__name {
+.horizontal-card .description__name {
     font-weight: 300;
 }
 
-.card .horizontal-cardBtn {
+.horizontal-card .horizontal-cardBtn {
     font-weight: 200;
     opacity: 0.6;
     font-size: 14px;
 }
-
+.horizontal-cardBtn >.btn{
+    padding: .5rem .75rem;
+    font-size: 16px;
+    margin-left: 1rem;
+}
+.horizontal-cardBtn >.btn+.btn{
+    margin-left: 1rem;
+    padding: .5rem 1rem;
+}
 .card__price {
     margin-left: auto;
 }

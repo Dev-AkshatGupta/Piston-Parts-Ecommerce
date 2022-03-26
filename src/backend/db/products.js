@@ -18,7 +18,7 @@ export const products = [
     manufacturerName: "FENNER",
     quantity: 4,
     outOfStock: false,
-    orderQuantity: 0,
+    
     wishList:false,
     price: {
       actualPrice: 399,
@@ -37,7 +37,7 @@ export const products = [
     manufacturerName: "Elofic",
     quantity: 8,
     outOfStock: false,
-    orderQuantity: 0,
+    
     wishList:false,
     price: {
       actualPrice: 419,
@@ -56,7 +56,7 @@ export const products = [
     manufacturerName: "BRAVO",
     quantity: 8,
     outOfStock: false,
-    orderQuantity: 0,
+    
     wishList:false,
     price: {
       actualPrice: 419,
@@ -75,7 +75,7 @@ export const products = [
     manufacturerName: "Auto Gold",
     quantity: 4,
     outOfStock: false,
-    orderQuantity: 0,
+    
     wishList:false,
     price: {
       actualPrice: 221,
@@ -94,7 +94,7 @@ export const products = [
     manufacturerName: "AFRO",
     quantity: 4,
     outOfStock: false,
-    orderQuantity: 0,
+    
     wishList:false,
     price: {
       actualPrice: 392,
@@ -113,7 +113,7 @@ export const products = [
     manufacturerName: "MARUTI SUZUKI",
     quantity: 10,
     outOfStock: false,
-    orderQuantity: 0,
+    
     wishList:false,
     price: {
       actualPrice: 392,
@@ -132,7 +132,7 @@ export const products = [
     manufacturerName: "Febest",
     quantity: 7,
     outOfStock: false,
-    orderQuantity: 0,
+    
     wishList:false,
     price: {
       actualPrice: 1239,
@@ -151,7 +151,7 @@ export const products = [
     manufacturerName: "MACLITE",
     quantity: 7,
     outOfStock: false,
-    orderQuantity: 0,
+    
     wishList:false,
     price: {
       actualPrice: 1445,
@@ -170,7 +170,7 @@ export const products = [
     manufacturerName: "CHAMPION",
     quantity: 7,
     outOfStock: false,
-    orderQuantity: 0,
+    
     wishList:false,
     price: {
       actualPrice: 1445,
@@ -189,7 +189,7 @@ export const products = [
     manufacturerName: "Elofic",
     quantity: 13,
     outOfStock: false,
-    orderQuantity: 0,
+    
     wishList:false,
     price: {
       actualPrice: 459,

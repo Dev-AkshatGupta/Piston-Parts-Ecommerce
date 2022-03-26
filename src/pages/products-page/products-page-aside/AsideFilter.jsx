@@ -136,7 +136,7 @@ function AsideFilter() {
           <li>
             <input type="checkbox" name="" id="" />
             <label htmlFor="input" className="sub-text">
-              {" "}
+              
               Suzuki
             </label>
           </li>

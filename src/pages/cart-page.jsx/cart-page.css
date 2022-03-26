@@ -1,0 +1,22 @@
+
+
+/* ----------------------------------------------------     main page Styling styles ------------------------------------------------------- */
+.carts-page{
+    padding: 1rem;
+    display: grid;
+    grid-template-rows:8fr 2fr;
+    grid-template-areas: "... item-display item-display item-display ... payment-card ";
+}
+/* ----------------------------------------------------     Items Display styles ------------------------------------------------------- */
+.selected-items-display{
+    grid-area: item-display;
+}
+
+
+/* ----------------------------------------------------     payments card styles --------------------------------------------------------- */
+.card-payment {
+    grid-area: payment-card;
+    width: 35rem;
+    height: 45rem;
+    background-color: var(--PURE-WHITE);
+}

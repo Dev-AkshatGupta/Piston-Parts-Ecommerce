@@ -49,7 +49,7 @@ function CartManagementProvider({ children }) {
     userDetails: [],
     displayToast: false,
   });
-  console.log(state.wishlist);
+
   return (
     <CartManagementContext.Provider value={{ state, dispatch }}>
       {children}
