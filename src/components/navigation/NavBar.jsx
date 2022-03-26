@@ -106,21 +106,7 @@ function NavBar() {
             </li>
             <li className="nav-bottom__list-item relative">
               <Link to="/cart-page" className="btn-icon-sml nav-bottom-icons ">
-                <i
-                  className="fas fa-shopping-bag"
-                  onClick={() => {
-                    toggle.toggleWishListView === true
-                      ? setToggle({
-                          ...toggle,
-                          toggleCartView: !toggle.toggleCartView,
-                          toggleWishListView: false,
-                        })
-                      : setToggle({
-                          ...toggle,
-                          toggleCartView: !toggle.toggleCartView,
-                        });
-                  }}
-                ></i>
+                <i className="fas fa-shopping-bag"></i>
               </Link>
               {toggle.toggleCartView && <HiddenDiv />}
               {state.cart.length > 0 && (
@@ -140,21 +126,7 @@ function NavBar() {
                 to="/wishlist-page"
                 className="btn-icon-sml nav-bottom-icons"
               >
-                <i
-                  className="fas fa-heart "
-                  onClick={() => {
-                    toggleCartView === true
-                      ? setToggle({
-                          ...toggle,
-                          toggleWishListView: !toggle.toggleWishListView,
-                          toggleCartView: false,
-                        })
-                      : setToggle({
-                          ...toggle,
-                          toggleWishListView: !toggle.toggleWishListView,
-                        });
-                  }}
-                ></i>
+                <i className="fas fa-heart "></i>
               </Link>
               {toggle.toggleWishListView && (
                 <HiddenDiv position="wishList-div-position" />
