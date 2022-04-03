@@ -4,7 +4,7 @@ padding:1rem;
 }
 .toast-position{
 z-index: 101;
-position:absolute;
+position:fixed;
 right: 10rem;
 top:15rem;
 transition: all 1s;
