@@ -23,7 +23,6 @@ const HorizontalCard = ({
     (item) => item.name === wholeItem.name
   );
 
-
   return (
     <>
       <div className="horizontal-card text margin-1 ">
@@ -75,50 +74,5 @@ const HorizontalCard = ({
     </>
   );
 };
-
-// export const HiddenDivRow = ({ name, price, image, alt }) => {
-//   return (
-//     <div className="hidden-div-row margin-1">
-//       <span style={{ width: "5rem", height: "5rem" }}>
-//         <img src={image} alt={alt} />
-//       </span>
-//       <p className="toast-text">{name}</p>
-//       <p className="text relative">
-//         Price :<span className="margin-l-1">{price}</span>
-//       </p>
-//     </div>
-//   );
-// };
-// export const HiddenDiv = () => {
-//   return (
-//     <div className="card-vertical smooth-square-radius card-shadow  modal padding-l-r">
-//       <div className="card-vertical-upper-text">
-//         <HiddenDivRow
-//           name="Akshat"
-//           image="https://cdn1.staticans.com/image/data/Vastrado/4-Mar-2022/LT1860A_2.jpg?width=415&height=550&mode=fill&fill=solid&fill-color=FFFFFF"
-//           price="400"
-//         />
-//         <HiddenDivRow
-//           name="Akshat"
-//           image="https://cdn1.staticans.com/image/data/Vastrado/4-Mar-2022/LT1860A_2.jpg?width=415&height=550&mode=fill&fill=solid&fill-color=FFFFFF"
-//           price="400"
-//         />
-//         <HiddenDivRow
-//           name="Akshat"
-//           image="https://cdn1.staticans.com/image/data/Vastrado/4-Mar-2022/LT1860A_2.jpg?width=415&height=550&mode=fill&fill=solid&fill-color=FFFFFF"
-//           price="400"
-//         />
-//         <p className=" padding-l-r  margin-l-1  flex-center-space-betw padding-r-3 ">
-//           <span>Total Price :</span>
-//           <span>500</span>
-//         </p>
-//         <div className="card-element__bottom">
-//           <button className="modal-button btn btn-pri ">Go to Cart </button>
-//           <button className="modal-button btn btn-pri">Check Out</button>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
 
 export { HorizontalCard };

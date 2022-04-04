@@ -29,7 +29,7 @@ function CartPage() {
         </div>
       </div>
 
-      {!state.cart === [] && (
+      {state.cart !== [] && (
         <div className="carts-page">
           <div className="selected-items-display">
             {state.cart.map((item) => (

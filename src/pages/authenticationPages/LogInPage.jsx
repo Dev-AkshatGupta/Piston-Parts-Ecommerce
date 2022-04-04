@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Navigate, useLocation } from "react-router-dom";
 import {
   NavBar,
   LogInForm,
@@ -7,6 +7,11 @@ import {
   AuthProvider,
 } from "./importsAndExports";
 function LogInPage() {
+  let location = useLocation();
+  let lastLocation = location.state?.from?.pathname || "/";
+  const {
+    authState: { token },
+  } = useAuthorization();
   return (
     <>
       <NavBar />

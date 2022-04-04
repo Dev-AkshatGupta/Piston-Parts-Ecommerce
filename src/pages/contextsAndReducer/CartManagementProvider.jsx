@@ -24,19 +24,7 @@ function CartManagementProvider({ children }) {
         };
       }
 
-      case "ADD_TO_CART": {
-        return { ...state, cart: action.payload };
-      }
-
-      case "REMOVE_FROM_CART": {
-        return { ...state, cart: action.payload };
-      }
-
-      case "INCREASE_QUANTITY": {
-        return { ...state, cart: action.payload };
-      }
-
-      case "DECREASE_QUANTITY": {
+      case "SET_CART": {
         return { ...state, cart: action.payload };
       }
 
