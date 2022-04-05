@@ -35,7 +35,7 @@ const WishlistCard = ({
         >
           ₹{price}
         </p>
-        <p className="text-dark-grey margin-0" style={{ margin: "0" }}>
+        <p className="text-dark-grey margin-0" >
           MRP:₹
           <span className="text-line-through ">{oldPrice}</span>
         </p>

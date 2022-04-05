@@ -19,10 +19,8 @@ const AuthProvider = ({ children }) => {
           ...state,
           firstName: action.payload.createdUser.firstName,
           id: action.payload.createdUser.id,
-          watchlater: action.payload.createdUser.watchlater,
-          playlists: action.payload.createdUser.playlists,
-          history: action.payload.createdUser.history,
-          likes: action.payload.createdUser.likes,
+          cart: action.payload.createdUser.cart,
+          wishlist: action.payload.createdUser.wishlist,
           token: action.payload.encodedToken,
         };
 
@@ -30,11 +28,9 @@ const AuthProvider = ({ children }) => {
         return {
           ...state,
           firstName: action.payload.foundUser.firstName,
-          id: action.payload.foundUser.id,
-          watchlater: action.payload.foundUser.watchlater,
-          playlists: action.payload.foundUser.playlists,
-          history: action.payload.foundUser.history,
-          likes: action.payload.foundUser.likes,
+          id: action.payload.foundUser._id,
+          cart: action.payload.foundUser.cart,
+          wishlist: action.payload.foundUser.wishlist,
           token: action.payload.encodedToken,
         };
 
@@ -49,10 +45,8 @@ const AuthProvider = ({ children }) => {
     firstName: "",
     id: "",
     token: "",
-    likes: [],
-    history: [],
-    playlists: [],
-    watchlater: [],
+    wishlist: [],
+    cart: [],
     toast: { display: "none", message: "", type: "" },
   });
 
