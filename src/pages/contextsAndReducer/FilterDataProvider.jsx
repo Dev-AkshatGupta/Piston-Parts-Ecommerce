@@ -61,10 +61,11 @@ function FilterDataProvider({ children }) {
       }
       case "SLIDER":
         const priceSorted = state.defaultData.filter(
-          ({ price }) => price.actualPrice >= action.payload
+          ({ price }) => price.actualPrice <= action.payload
         );
         return {
           ...state,
+          sliderAmount: action.payload,
           sorted: priceSorted,
         };
 
@@ -100,6 +101,7 @@ function FilterDataProvider({ children }) {
           sorted: state.defaultData,
           categories: [],
           priceSort: "-",
+          sliderAmount: 1500,
         };
 
       default:
@@ -112,6 +114,7 @@ function FilterDataProvider({ children }) {
     categories: [],
     categoriesData: [],
     priceSort: [],
+    sliderAmount: "",
   });
   return (
     <FilterDataContext.Provider value={{ filtered, filterManager }}>

@@ -110,6 +110,54 @@ function AsideFilter() {
               Mechanical
             </label>
           </li>
+          <li>
+            <input
+              type="checkbox"
+              name="Mechanical"
+              checked={filtered.categories.includes("Body")}
+              onChange={() => {
+                filterManager({
+                  type: "CATEGORIES",
+                  payload: "Body",
+                });
+              }}
+            />
+            <label htmlFor="input" className="sub-text">
+              Body
+            </label>
+          </li>
+          <li>
+            <input
+              type="checkbox"
+              name="Mechanical"
+              checked={filtered.categories.includes("Engine")}
+              onChange={() => {
+                filterManager({
+                  type: "CATEGORIES",
+                  payload: "Engine",
+                });
+              }}
+            />
+            <label htmlFor="input" className="sub-text">
+              Engine
+            </label>
+          </li>
+          <li>
+            <input
+              type="checkbox"
+              name="Mechanical"
+              checked={filtered.categories.includes("Brakes")}
+              onChange={() => {
+                filterManager({
+                  type: "CATEGORIES",
+                  payload: "Brakes",
+                });
+              }}
+            />
+            <label htmlFor="input" className="sub-text">
+              Brakes
+            </label>
+          </li>
         </ul>
         <div className="divider-2"></div>
         <h3 className="text-dark-grey">Price Range</h3>
@@ -120,9 +168,8 @@ function AsideFilter() {
               name="Price"
               min="0"
               max="1500"
+              value={filtered.sliderAmount}
               onChange={(e) => {
-                console.log(e.target.value);
-
                 filterManager({
                   type: "SLIDER",
                   payload: parseInt(e.target.value),
@@ -132,6 +179,10 @@ function AsideFilter() {
             />
           </li>
         </ul>
+        <li className="flex-center-space-betw padding-l-r text ">
+          <span>0</span>
+          <span>{filtered.sliderAmount}</span>
+        </li>
         <div className="divider-2"></div>
         {/* <h3 className="text-dark-grey">Brands</h3> */}
         {/* <ul className="aside-ul">
