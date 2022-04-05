@@ -23,6 +23,7 @@ function AsideFilter() {
               type="radio"
               name="Price"
               onChange={() => filterManager({ type: "PRICE_HIGH_TO_LOW" })}
+              checked={filtered.priceSort === "PRICE_HIGH_TO_LOW"}
             />
             <label htmlFor="input" className="sub-text">
               Price High to low
@@ -33,6 +34,7 @@ function AsideFilter() {
               type="radio"
               name="Price"
               onChange={() => filterManager({ type: "PRICE_LOW_TO_HIGH" })}
+              checked={filtered.priceSort === "PRICE_LOW_TO_HIGH"}
             />
             <label htmlFor="input" className="sub-text">
               Price Low to High

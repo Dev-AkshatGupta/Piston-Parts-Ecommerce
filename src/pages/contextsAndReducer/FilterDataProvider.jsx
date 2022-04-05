@@ -38,6 +38,7 @@ function FilterDataProvider({ children }) {
       case "PRICE_LOW_TO_HIGH": {
         const returnData = {
           ...state,
+          priceSort: "PRICE_LOW_TO_HIGH",
           sorted: state.defaultData.sort(
             ({ price: first }, { price: second }) =>
               first.actualPrice - second.actualPrice
@@ -49,6 +50,7 @@ function FilterDataProvider({ children }) {
       case "PRICE_HIGH_TO_LOW": {
         const returnData = {
           ...state,
+          priceSort: "PRICE_HIGH_TO_LOW",
           sorted: state.defaultData.sort(
             ({ price: first }, { price: second }) =>
               second.actualPrice - first.actualPrice
@@ -97,6 +99,7 @@ function FilterDataProvider({ children }) {
           ...state,
           sorted: state.defaultData,
           categories: [],
+          priceSort: "-",
         };
 
       default:
@@ -108,6 +111,7 @@ function FilterDataProvider({ children }) {
     defaultData: [],
     categories: [],
     categoriesData: [],
+    priceSort: [],
   });
   return (
     <FilterDataContext.Provider value={{ filtered, filterManager }}>
