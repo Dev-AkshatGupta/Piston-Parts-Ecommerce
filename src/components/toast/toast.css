@@ -1,0 +1,11 @@
+.alert.width-toast{
+width: fit-content;
+padding:1rem;
+}
+.toast-position{
+z-index: 101;
+position:fixed;
+right: 10rem;
+top:15rem;
+transition: all 1s;
+}
