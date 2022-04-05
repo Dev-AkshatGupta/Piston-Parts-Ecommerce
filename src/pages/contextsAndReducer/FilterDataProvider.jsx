@@ -30,6 +30,11 @@ function FilterDataProvider({ children }) {
           sorted: action.payload,
           defaultData: action.payload,
         };
+      case "CATEGORIES_DATA":
+        return {
+          ...state,
+          categoriesData: action.payload,
+        };
       case "PRICE_LOW_TO_HIGH": {
         const returnData = {
           ...state,
@@ -91,7 +96,7 @@ function FilterDataProvider({ children }) {
         return {
           ...state,
           sorted: state.defaultData,
-          categories:[]
+          categories: [],
         };
 
       default:
@@ -102,6 +107,7 @@ function FilterDataProvider({ children }) {
     sorted: [],
     defaultData: [],
     categories: [],
+    categoriesData: [],
   });
   return (
     <FilterDataContext.Provider value={{ filtered, filterManager }}>

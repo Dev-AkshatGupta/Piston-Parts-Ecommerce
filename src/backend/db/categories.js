@@ -7,21 +7,34 @@ import { v4 as uuid } from "uuid";
 
 export const categories = [
   {
-    _id: uuid(),
-    categoryName: "fiction",
-    description:
-      "literature in the form of prose, especially novels, that describes imaginary events and people",
+    _id:uuid(),
+     image:
+      "https://drive.google.com/uc?export=view&id=1_MGIYn5BvWieMX7x7PzIY8upZUj_nZ8g",
+    text: "Mechanical",
+    category:"Mechanical",
   },
-  {
-    _id: uuid(),
-    categoryName: "non-fiction",
-    description:
-      "Non-fiction is writing that gives information or describes real events, rather than telling a story.",
+  {_id:uuid(),
+    image:
+      "https://drive.google.com/uc?export=view&id=18LxxSb-sMJ2C7tDBEzAJpWYCBQjN7n3c",
+    text: "Body",
+     category:"",
   },
-  {
-    _id: uuid(),
-    categoryName: "horror",
-    description:
-      "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
+  {_id:uuid(),
+    image:
+      "https://drive.google.com/uc?export=view&id=1RFu68a2kyWYFHFuaIDuMEVJgKkbkadwR",
+    text: "Air conditioning",
+    category:"AIR_CONDITIONING",
+  },
+  {_id:uuid(),
+    image:
+      "https://drive.google.com/uc?export=view&id=1GhlNpr0xQxoM8kQueSSrEJ384StQ_EtD",
+    text: "Engine",
+     category: "Oil",
+  },
+  {_id:uuid(),
+    image:
+      "https://drive.google.com/uc?export=view&id=1cnz0NNxtf8QDfQvqt7UsVSLFbDChsMR7",
+    text: "Brakes",
+     category:"",
   },
 ];

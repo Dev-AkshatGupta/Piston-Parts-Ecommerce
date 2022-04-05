@@ -78,7 +78,7 @@ function AsideFilter() {
           <li>
             <input
               type="checkbox"
-              name="  Light"
+              name="Light"
               checked={filtered.categories.includes("Light")}
               onChange={() => {
                 filterManager({
