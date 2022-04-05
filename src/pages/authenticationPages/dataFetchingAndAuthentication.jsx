@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useCartManager } from "../../pages/contextsAndReducer/CartManagementProvider";
 import { useAuthorization } from "../../pages/contextsAndReducer/AuthProvider";
+import { toast } from "react-toastify";
 // custom hook for handling the sign-up of the user
 
 // function for authenticating the user for signUp
