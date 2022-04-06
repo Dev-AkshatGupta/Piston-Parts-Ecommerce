@@ -5,6 +5,7 @@ import { TiTickOutline } from "react-icons/ti";
 import { useCartManager } from "../../../pages/contextsAndReducer/CartManagementProvider";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthorization } from "../../../pages/contextsAndReducer/AuthProvider";
+import { Rating } from "../../../components/Rating/Rating";
 import {
   useCartData,
   useWishlistData,
@@ -20,6 +21,7 @@ function CardProductBig({
   state,
   id,
   wholeItem,
+  rating,
 }) {
   const { postCartData } = useCartData();
   const { postWishListData, deleteWishlistData } = useWishlistData();
@@ -104,13 +106,16 @@ function CardProductBig({
                     </span>
                   </div>
                   <div className="product-rating text">
-                    <i className="fa fa-star rating" star-data="1"></i>
+                    {/* <i className="fa fa-star rating" star-data="1"></i>
                     <i className="fa fa-star rating" star-data="2"></i>
                     <i className="fa fa-star rating" star-data="3"></i>
                     <i className="fa fa-star" star-data="4"></i>
-                    <i className="fa fa-star" star-data="5"></i>
+                    <i className="fa fa-star" star-data="5"></i> */}
+                    <Rating rating={wholeItem.rating} />
+
                     <div className="product-rating-details">
-                      (3.1 - <span className="rating-count">12</span> reviews)
+                      ({wholeItem.rating} -
+                      <span className="rating-count">12</span> reviews)
                     </div>
                   </div>
                 </div>

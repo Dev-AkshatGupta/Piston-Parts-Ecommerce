@@ -2,7 +2,7 @@ import "./navBar.css";
 import React from "react";
 import { useAuthorization } from "../../pages/contextsAndReducer/AuthProvider";
 import { NavLink } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 function DropDownBox() {
   const { authState } = useAuthorization();
@@ -40,15 +40,18 @@ function DropDownBox() {
           </div>
         </>
       ) : (
-        <a
-          className="btn btn-outline-error"
-          onClick={() => {
-            LogOut();
-            navigate("/");
-          }}
-        >
-          Log Out
-        </a>
+        <>
+          <Link to="/profile-page">Profile</Link>
+          <a
+            className="btn btn-outline-error"
+            onClick={() => {
+              LogOut();
+              navigate("/");
+            }}
+          >
+            Log Out
+          </a>
+        </>
       )}
     </div>
   );

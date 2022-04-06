@@ -18,7 +18,7 @@ function BothCard({
   price,
   oldPrice,
   availability,
-
+rating,
   id,
   wholeItem,
 }) {
@@ -49,6 +49,7 @@ function BothCard({
           state={view}
           id={id}
           wholeItem={wholeItem}
+          rating={rating}
         />
       )}
     </>

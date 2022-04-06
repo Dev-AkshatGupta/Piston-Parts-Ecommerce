@@ -95,6 +95,14 @@ function FilterDataProvider({ children }) {
             }),
           };
         }
+      case "RATINGS":
+        return {
+          ...state,
+          ratings: action.payload,
+          sorted: state.defaultData.filter((item) => {
+            return item.rating <= action.payload;
+          }),
+        };
       case "CLEAR_ALL":
         return {
           ...state,
@@ -102,6 +110,7 @@ function FilterDataProvider({ children }) {
           categories: [],
           priceSort: "-",
           sliderAmount: 1500,
+          ratings: 5,
         };
 
       default:
@@ -115,6 +124,7 @@ function FilterDataProvider({ children }) {
     categoriesData: [],
     priceSort: [],
     sliderAmount: "",
+    ratings: 5,
   });
   return (
     <FilterDataContext.Provider value={{ filtered, filterManager }}>

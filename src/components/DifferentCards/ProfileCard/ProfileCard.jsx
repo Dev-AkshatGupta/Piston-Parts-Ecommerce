@@ -6,7 +6,11 @@ function ProfileCard({ name }) {
       <h1>User Profile</h1>
       {/* <span>akshat</span> */}
       <span>{name}</span>
-      <Link className="btn btn-error" to="/">
+      <Link
+        className="btn btn-error"
+        to="/"
+        onClick={() => localStorage.clear()}
+      >
         Log Out
       </Link>
     </div>

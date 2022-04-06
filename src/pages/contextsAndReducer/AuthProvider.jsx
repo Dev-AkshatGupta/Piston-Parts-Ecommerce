@@ -25,6 +25,7 @@ const AuthProvider = ({ children }) => {
         };
 
       case "LOG_IN":
+        console.log(action.payload.foundUser);
         return {
           ...state,
           firstName: action.payload.foundUser.firstName,

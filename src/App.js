@@ -13,30 +13,34 @@ import {Toast} from "./components/toast/Toast"
 import { useAuthorization } from "./pages/contextsAndReducer/AuthProvider";
 import {PrivateRoute} from "./components/PrivateRoute/PrivateRoute";
 import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
+import {Navigate} from "react-router-dom";
 function App() {
-const {authState,authDispatch }=useAuthorization();
-useEffect(()=>{
+const {authState:{token,toast},authDispatch }=useAuthorization();
+// useEffect(()=>{
  
-const timeoutID= setTimeout(()=> {authDispatch({
-        type: "TOAST",
-        payload: { display:"none", message: "", type: "" },
+// const timeoutID= setTimeout(()=> {authDispatch({
+//         type: "TOAST",
+//         payload: { display:"none", message: "", type: "" },
    
-      });clearTimeout(timeoutID)},2000)
-},[authState.toast.display])
+//       });clearTimeout(timeoutID)},2000)
+// },[toast.display])
 
   return (
     <div className="App">
-      <Toast type={authState.toast.type} message={authState.toast.message} display={authState.toast.display} />
+      {/* <Toast type={toast.type} message={toast.message} display={toast.display} /> */}
 
       <Routes>
         <Route path="/" element={<LandingPage/>}/>
         <Route path="/products-page" element={<ProductsPage/>}/>
         <Route path="/wishlist-page" element={<PrivateRoute><WishlistPage/></PrivateRoute>}/>
-        <Route path="/signUp-Page" element={<SignUpPage/>}/>
-        <Route path="/logIn-Page" element={<LogInPage/>}/>
+   {!token &&  <Route path="/signUp-Page" element={<SignUpPage/>}/>}
+   {   !token &&  <Route path="/logIn-Page" element={<LogInPage/>}/>}
         <Route path="/cart-page" element={<PrivateRoute><CartPage/></PrivateRoute>}/>
-      <Route path="*" element={<Page404/>}/>
-      <Route path="/profile-page" element={<ProfilePage/>}/>
+      <Route path="/404-page" element={<Page404/>}/>
+     {token && <Route path="/profile-page" element={<ProfilePage/>}/>}
+      <Route path="*" element={<Navigate to={token ? "/profile-page":"/404-page"}/>}/>
+      
+
         <Route path="/mock" element={<Mockman/>}/>
       
         
