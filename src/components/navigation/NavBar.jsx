@@ -4,11 +4,13 @@ import { CgProfile } from "react-icons/cg";
 import { FaSun, FaMoon } from "react-icons/fa";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { DropDownBox } from "./DropDown.jsx";
 import { useCartManager } from "../../pages/contextsAndReducer/CartManagementProvider";
+
 export const HiddenDivRow = ({ name, price, image, alt }) => {
   return (
     <div className="hidden-div-row margin-1">
-      <span style={{ width: "5rem", height: "5rem" }}>
+      <span className="hidden-span">
         <img src={image} alt={alt} />
       </span>
       <p className="toast-text">{name}</p>
@@ -43,6 +45,7 @@ function NavBar() {
   });
   const { toggleCartView } = toggle;
   const { state } = useCartManager();
+  const [dropBox, setDropBox] = useState(false);
   return (
     <>
       <nav className="navigation text-black">
@@ -53,11 +56,11 @@ function NavBar() {
         </div>
         <div className="nav-top">
           <ul className="nav-top__list">
-            <li className="nav-top__list-item">
+            {/* <li className="nav-top__list-item">
               <Link to="/logIn-page" className="link-btn">
                 Log-in/Sign-up
               </Link>
-            </li>
+            </li> */}
             <li className="nav-top__list-item">
               <a href="./" className="link-btn">
                 Customer-Care
@@ -116,11 +119,19 @@ function NavBar() {
               )}
             </li>
 
-            <li className="nav-bottom__list-item ">
-              <Link to="/logIn-Page" className="btn-icon-med nav-bottom-icons">
+            <li className="nav-bottom__list-item position-relative">
+              {/* <Link */}
+              <div
+                to="/logIn-Page"
+                className="btn-icon-med nav-bottom-icons"
+                onClick={() => setDropBox(!dropBox)}
+              >
                 <CgProfile />
-              </Link>
+              </div>
+              {/* </Link> */}
+              {dropBox && <DropDownBox />}
             </li>
+
             <li className="nav-bottom__list-item relative">
               <Link
                 to="/wishlist-page"
@@ -128,9 +139,9 @@ function NavBar() {
               >
                 <i className="fas fa-heart "></i>
               </Link>
-              {toggle.toggleWishListView && (
+              {/* {toggle.toggleWishListView && (
                 <HiddenDiv position="wishList-div-position" />
-              )}
+              )} */}
               {state.wishlist.length > 0 && (
                 <span className="absolute badge flex-center badge-custom-text">
                   {state.wishlist.length}

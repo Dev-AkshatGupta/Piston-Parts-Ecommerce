@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { ProductsPage } from "./pages/products-page/ProductsPage";
 import { Routes, Route } from "react-router-dom";
+import {Page404} from "./pages/Page-404/Page404";
 import {LandingPage} from "./pages/Landing-Page/LandingPage";
 import {WishlistPage} from "./pages/Wishlist-page/WishlistPage";
 import Mockman from "mockman-js";
@@ -10,6 +11,8 @@ import {SignUpPage} from "./pages/authenticationPages/SignUpPage";
 import { CartPage } from "./pages/cart-page.jsx/CartPage";
 import {Toast} from "./components/toast/Toast"
 import { useAuthorization } from "./pages/contextsAndReducer/AuthProvider";
+import {PrivateRoute} from "./components/PrivateRoute/PrivateRoute";
+import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
 function App() {
 const {authState,authDispatch }=useAuthorization();
 useEffect(()=>{
@@ -28,15 +31,28 @@ const timeoutID= setTimeout(()=> {authDispatch({
       <Routes>
         <Route path="/" element={<LandingPage/>}/>
         <Route path="/products-page" element={<ProductsPage/>}/>
-        <Route path="/wishlist-page" element={<WishlistPage/>}/>
+        <Route path="/wishlist-page" element={<PrivateRoute><WishlistPage/></PrivateRoute>}/>
         <Route path="/signUp-Page" element={<SignUpPage/>}/>
         <Route path="/logIn-Page" element={<LogInPage/>}/>
-        <Route path="/cart-page" element={<CartPage/>}/>
+        <Route path="/cart-page" element={<PrivateRoute><CartPage/></PrivateRoute>}/>
+      <Route path="*" element={<Page404/>}/>
+      <Route path="/profile-page" element={<ProfilePage/>}/>
         <Route path="/mock" element={<Mockman/>}/>
-         <button onClick={()=>toast("Wow so easy!")}></button>
-         <ToastContainer/>
-      </Routes>
       
+        
+      </Routes>
+         
+ <ToastContainer
+position="top-center"
+autoClose={2700}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+/>
     </div>
   );
 }

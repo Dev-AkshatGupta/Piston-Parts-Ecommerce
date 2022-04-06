@@ -3,7 +3,8 @@ import "./Cart-Product-Big.css";
 import { BsSuitHeart, BsSuitHeartFill } from "react-icons/bs";
 import { TiTickOutline } from "react-icons/ti";
 import { useCartManager } from "../../../pages/contextsAndReducer/CartManagementProvider";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuthorization } from "../../../pages/contextsAndReducer/AuthProvider";
 import {
   useCartData,
   useWishlistData,
@@ -29,6 +30,10 @@ function CardProductBig({
   const cartItemsInState = cartsState.cart.findIndex(
     (item) => item.name === wholeItem.name
   );
+  const {
+    authState: { token },
+  } = useAuthorization();
+  const navigate = useNavigate();
   return (
     <>
       <div className="lightbox-blanket">
@@ -53,11 +58,19 @@ function CardProductBig({
                   />
                 </div>
               )}
-              {addToWishlist === -1 && (
+              {addToWishlist === -1 && token ? (
                 <div className="go-like ">
                   <BsSuitHeartFill
                     onClick={(e) => {
                       postWishListData(wholeItem);
+                    }}
+                  />
+                </div>
+              ) : (
+                <div className="go-like ">
+                  <BsSuitHeartFill
+                    onClick={(e) => {
+                      navigate("/logIn-page");
                     }}
                   />
                 </div>
@@ -100,39 +113,19 @@ function CardProductBig({
                       (3.1 - <span className="rating-count">12</span> reviews)
                     </div>
                   </div>
-                  <div className="product-quantity">
-                    <label
-                      for="product-quantity-input"
-                      className="product-quantity-label"
-                    >
-                      Quantity
-                    </label>
-                    <div className="product-quantity-subtract">
-                      <i className="fa fa-chevron-left"></i>
-                    </div>
-                    <div>
-                      <input
-                        type="text"
-                        id="product-quantity-input"
-                        placeholder="0"
-                        value="0"
-                      />
-                    </div>
-                    <div className="product-quantity-add">
-                      <i className="fa fa-chevron-right"></i>
-                    </div>
-                  </div>
                 </div>
                 <div className="product-bottom">
                   <div className="product-checkout">
                     Total Price
                     <div className="product-checkout-total">
                       <i className="fa fa-usd"></i>
-                      <div className="product-checkout-total-amount">0.00</div>
+                      <div className="product-checkout-total-amount">
+                        ₹{price}
+                      </div>
                     </div>
                   </div>
                   <div className="product-checkout-actions">
-                    {cartItemsInState === -1 && (
+                    {cartItemsInState === -1 && token ? (
                       <button
                         className="add-to-cart btn btn-outline text"
                         onClick={(e) => {
@@ -141,6 +134,13 @@ function CardProductBig({
                       >
                         Add to cart
                       </button>
+                    ) : (
+                      <Link
+                        to="/logIn-page"
+                        className="add-to-cart btn btn-outline text"
+                      >
+                        Add to cart
+                      </Link>
                     )}
                     {cartItemsInState > -1 && (
                       <Link

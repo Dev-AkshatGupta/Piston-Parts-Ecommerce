@@ -184,6 +184,7 @@ function AsideFilter() {
           <span>{filtered.sliderAmount}</span>
         </li>
         <div className="divider-2"></div>
+        
         {/* <h3 className="text-dark-grey">Brands</h3> */}
         {/* <ul className="aside-ul">
           <li>

@@ -3,7 +3,8 @@ import "./Cart-Product-Big.css";
 import { BsSuitHeart, BsSuitHeartFill } from "react-icons/bs";
 import { TiTickOutline } from "react-icons/ti";
 import { useCartManager } from "../../../pages/contextsAndReducer/CartManagementProvider";
-import { Link } from "react-router-dom";
+import { useAuthorization } from "../../../pages/contextsAndReducer/AuthProvider";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import {
   useCartData,
   useWishlistData,
@@ -30,7 +31,10 @@ const Card = ({
   const cartItemsInState = cartsState.cart.findIndex(
     (item) => item.name === wholeItem.name
   );
-
+  const {
+    authState: { token },
+  } = useAuthorization();
+  const navigate = useNavigate();
   return (
     <div className=" card-vertical border-r-3  padding-2 margin-top-1 ">
       <div className="card-product-image position-relative">
@@ -45,11 +49,19 @@ const Card = ({
             />
           </div>
         )}
-        {addToWishlist === -1 && (
+        {addToWishlist === -1 && token ? (
           <div className="go-like ">
             <BsSuitHeartFill
               onClick={(e) => {
                 postWishListData(wholeItem);
+              }}
+            />
+          </div>
+        ) : (
+          <div className="go-like ">
+            <BsSuitHeartFill
+              onClick={(e) => {
+                navigate("/logIn-page");
               }}
             />
           </div>
@@ -61,19 +73,14 @@ const Card = ({
           {manufacturerName}
         </p>
 
-        <p
-          className="margin-0"
-          style={{ margin: "0", alignSelf: "flex-start" }}
-        >
-          ₹{price}
-        </p>
-        <p className="text-dark-grey margin-0" style={{ margin: "0" }}>
+        <p className="margin-0 flex-align-start">₹{price}</p>
+        <p className="text-dark-grey margin-0">
           MRP:₹
           <span className="text-line-through ">{oldPrice}</span>
         </p>
       </div>
       <div className="card-element__bottom no-border">
-        {cartItemsInState === -1 && (
+        {cartItemsInState === -1 && token ? (
           <button
             className="btn btn-outline-pri margin-1"
             onClick={(e) => {
@@ -82,6 +89,10 @@ const Card = ({
           >
             Add to Cart
           </button>
+        ) : (
+          <Link to="/logIn-page" className="btn btn-outline-pri margin-1 text">
+            Add to Cart
+          </Link>
         )}
         {cartItemsInState > -1 && (
           <Link to="/cart-page" className="btn btn-outline-pri margin-1 text">

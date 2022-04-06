@@ -44,7 +44,9 @@ function LandingPage() {
         </div>
         <div className="flex-center sub-hero-wrapper">
           {brandNameData.map(({ brand }) => (
-            <BrandCard name={brand} key={brand} />
+            <Link to="/products-page" key={brand}>
+              <BrandCard name={brand} />
+            </Link>
           ))}
         </div>
       </div>
