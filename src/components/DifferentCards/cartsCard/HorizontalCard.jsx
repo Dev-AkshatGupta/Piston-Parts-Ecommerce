@@ -1,8 +1,6 @@
 import "./horizontal-card.css";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import { BsSuitHeartFill } from "react-icons/bs";
-import { TiTickOutline } from "react-icons/ti";
-import { AiFillHeart } from "react-icons/ai";
+
 import {
   useCartData,
   useWishlistData,

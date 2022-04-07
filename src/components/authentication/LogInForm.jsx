@@ -3,16 +3,8 @@ import "./authentication.css";
 import { Link } from "react-router-dom";
 import { useUserDetails } from "../../pages/authenticationPages/dataFetchingAndAuthentication";
 
-import { useAuthorization } from "../../pages/contextsAndReducer/AuthProvider";
 function LogInForm() {
-  const {
-    authState,
-    authDispatch,
-    notifyError,
-    notifySuccess,
-    notifyInfo,
-    notifyWarn,
-  } = useAuthorization();
+  
   const [viewPassword, setViewPassword] = useState(false);
   const [details, setDetails] = useState({
     email: "",

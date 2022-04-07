@@ -1,9 +1,7 @@
 import React, {
   createContext,
   useContext,
-  useEffect,
   useReducer,
-  useState,
 } from "react";
 
 const CartManagementContext = createContext();

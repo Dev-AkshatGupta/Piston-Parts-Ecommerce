@@ -1,5 +1,5 @@
 import React from "react";
-import { NavBar, SignUpForm, useAuthorization } from "./importsAndExports";
+import { NavBar, SignUpForm } from "./importsAndExports";
 function SignUpPage() {
 
   return (
