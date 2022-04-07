@@ -2,7 +2,6 @@ import React from "react";
 import { NavBar } from "../../components/navigation/NavBar";
 import { Footer } from "../../components/footer/Footer";
 import { ProfileCard } from "../../components/DifferentCards/ProfileCard/ProfileCard";
-import { Link } from "react-router-dom";
 import { useAuthorization } from "../contextsAndReducer/AuthProvider";
 
 function ProfilePage() {

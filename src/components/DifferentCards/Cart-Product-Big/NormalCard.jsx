@@ -1,10 +1,9 @@
-import { useState } from "react";
 import "./Cart-Product-Big.css";
-import { BsSuitHeart, BsSuitHeartFill } from "react-icons/bs";
+import {  BsSuitHeartFill } from "react-icons/bs";
 import { TiTickOutline } from "react-icons/ti";
 import { useCartManager } from "../../../pages/contextsAndReducer/CartManagementProvider";
 import { useAuthorization } from "../../../pages/contextsAndReducer/AuthProvider";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   useCartData,
   useWishlistData,

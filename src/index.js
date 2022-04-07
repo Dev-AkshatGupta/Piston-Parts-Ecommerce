@@ -7,7 +7,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import {CartManagementProvider} from "./pages/contextsAndReducer/CartManagementProvider";
 import {FilterDataProvider} from "./pages/contextsAndReducer/FilterDataProvider";
 import {AuthProvider} from "./pages/contextsAndReducer/AuthProvider";
-import axios from "axios";
+
 // Call make Server
 makeServer();
 

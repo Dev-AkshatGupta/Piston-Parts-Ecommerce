@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import "./authentication.css";
 import { Link } from "react-router-dom";
-import { useAuthorization } from "../../pages/contextsAndReducer/AuthProvider";
+
 import { useUserDetails } from "../../pages/authenticationPages/dataFetchingAndAuthentication";
 function SignUpForm() {
-  const { authState, authDispatch } = useAuthorization();
+ 
   const { signUpHandler } = useUserDetails();
   const [details, setDetails] = useState({
     firstName: "",
@@ -21,8 +21,8 @@ function SignUpForm() {
       details.email,
       details.password
     );
-    // authDispatch({ type: "SIGN_IN", payload: details });
-    console.log("triggered");
+ 
+ 
   }
   const [viewPassword, setViewPassword] = useState(false);
   return (

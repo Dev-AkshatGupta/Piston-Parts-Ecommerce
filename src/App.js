@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { ProductsPage } from "./pages/products-page/ProductsPage";
 import { Routes, Route } from "react-router-dom";
 import {Page404} from "./pages/Page-404/Page404";
