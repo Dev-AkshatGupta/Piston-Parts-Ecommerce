@@ -13,6 +13,7 @@
     grid-template-areas:
         "icon .... nav-top"
         "icon nav-bottom nav-bottom ";
+        
 }
 .hidden-span{
     width: 5rem;
@@ -140,4 +141,28 @@
 }
 .nav-drawer-items-padding {
     padding:.75rem 2.5rem;
+}
+.menu-display{display: none;}
+@media screen and (max-width: 1070px) {
+
+.change-nav-display{
+    display: none;
+}
+}
+@media screen and (max-width: 700px) {
+.menu-display{
+    display:block;
+}
+}
+@media screen and (max-width: 600px) {
+
+.icons-p{
+    font-size: 3rem;
+}
+.navigation {
+     display: flex;
+     align-items: center;
+     justify-content: space-evenly;
+}
+
 }

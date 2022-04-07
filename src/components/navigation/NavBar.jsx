@@ -1,6 +1,7 @@
 import React from "react";
 import "./navBar.css";
 import { CgProfile } from "react-icons/cg";
+import { ImMenu } from "react-icons/im";
 import { FaSun, FaMoon } from "react-icons/fa";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -37,26 +38,28 @@ export const HiddenDiv = ({ position }) => {
     </div>
   );
 };
-function NavBar() {
+function NavBar({ menuBtn =false}) {
   const [toggle, setToggle] = useState({
     toggleTheme: false,
     toggleCartView: false,
     toggleWishListView: false,
   });
-  const { toggleCartView } = toggle;
+
   const { state } = useCartManager();
   const [dropBox, setDropBox] = useState(false);
   return (
     <>
       <nav className="navigation text-black">
+        {menuBtn && <div className={`icon  icons-p align-self-center ${menuBtn && `menu-display`}` }>
+          <ImMenu />
+        </div>}
         <div className="icon flex-center-center">
           <Link to="/" className="icons-p text-black ">
             PISTON <span className="text-accent">parTs</span>
           </Link>
         </div>
         <div className="nav-top">
-          <ul className="nav-top__list">
-     
+          <ul className="nav-top__list change-nav-display">
             <li className="nav-top__list-item">
               <a href="./" className="link-btn">
                 Customer-Care
@@ -66,12 +69,12 @@ function NavBar() {
         </div>
         <div className="nav-bottom ">
           <ul className="nav-bottom__list">
-            <li className="nav-bottom__list-item">
+            <li className="nav-bottom__list-item change-nav-display">
               <Link to="/products-page" className="btn nav-bottom-btn text">
                 Turbo-chargers
               </Link>
             </li>
-            <li className="nav-bottom__list-item">
+            <li className="nav-bottom__list-item change-nav-display">
               <Link
                 to="/products-page"
                 className="btn btn-sec nav-bottom-btn text"
@@ -79,7 +82,7 @@ function NavBar() {
                 Oils Lubricants
               </Link>
             </li>
-            <li className="nav-bottom__list-item">
+            <li className="nav-bottom__list-item change-nav-display">
               <Link
                 to="/products-page"
                 className="btn btn-sec nav-bottom-btn text"
@@ -87,7 +90,7 @@ function NavBar() {
                 Three-wheelers
               </Link>
             </li>
-            <li className="nav-bottom__list-item">
+            <li className="nav-bottom__list-item change-nav-display">
               <Link
                 to="/products-page"
                 className="btn btn-sec nav-bottom-btn text"
@@ -95,7 +98,7 @@ function NavBar() {
                 Spare-Parts
               </Link>
             </li>
-            <li className="nav-bottom__list-item">
+            <li className="nav-bottom__list-item change-nav-display">
               <Link
                 to="/products-page"
                 className="btn btn-sec nav-bottom-btn text"
@@ -103,7 +106,7 @@ function NavBar() {
                 Power Stations
               </Link>
             </li>
-            <li className="nav-bottom__list-item relative">
+            <li className="nav-bottom__list-item relative ">
               <Link to="/cart-page" className="btn-icon-sml nav-bottom-icons ">
                 <i className="fas fa-shopping-bag"></i>
               </Link>
@@ -135,14 +138,14 @@ function NavBar() {
               >
                 <i className="fas fa-heart "></i>
               </Link>
-           
+
               {state.wishlist.length > 0 && (
                 <span className="absolute badge flex-center badge-custom-text">
                   {state.wishlist.length}
                 </span>
               )}
             </li>
-            <li className="nav-bottom__list-item">
+            <li className="nav-bottom__list-item change-nav-display">
               <a className="btn-icon-sml nav-bottom-icons">
                 {!toggle.toggleTheme && (
                   <FaSun

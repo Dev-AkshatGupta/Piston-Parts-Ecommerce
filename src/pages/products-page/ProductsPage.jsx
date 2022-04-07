@@ -14,7 +14,7 @@ const ProductsPage = () => {
   const { filtered, filterManager } = useFilterManger();
   return (
     <div>
-      <NavBar />
+      <NavBar menuBtn={true} />
       <div className="empty"></div>
       <section className="hero-sec-grid">
         <AsideFilter />
