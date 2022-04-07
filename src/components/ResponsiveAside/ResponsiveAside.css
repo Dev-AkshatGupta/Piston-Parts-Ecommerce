@@ -38,7 +38,7 @@
 
 
 .products-main {
-    /* border:solid red; */
+   
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
