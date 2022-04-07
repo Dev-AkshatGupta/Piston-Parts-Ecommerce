@@ -7,8 +7,7 @@ import { useAuthorization } from "../../pages/contextsAndReducer/AuthProvider";
 
 // function for authenticating the user for signUp
 const useUserDetails = () => {
-  const { authDispatch, notifyError, notifySuccess, notifyInfo, notifyWarn } =
-    useAuthorization();
+  const { authDispatch, notifySuccess, notifyWarn } = useAuthorization();
 
   const signUpHandler = async (firstName, lastName, email, password) => {
     try {
@@ -54,11 +53,8 @@ const useUserDetails = () => {
 const useCartData = () => {
   const { dispatch } = useCartManager();
   const {
-    authState,
-    authDispatch,
-    notifyError,
     notifySuccess,
-    notifyInfo,
+
     notifyWarn,
   } = useAuthorization();
   async function getCartData() {
@@ -171,8 +167,7 @@ const useCartData = () => {
 
 const useWishlistData = () => {
   const { dispatch } = useCartManager();
-  const { authDispatch, notifyError, notifySuccess, notifyInfo, notifyWarn } =
-    useAuthorization();
+  const { notifyInfo, notifyWarn } = useAuthorization();
   // function for getting the data from the wishlist
   async function getWishListData() {
     const encodedToken = localStorage.getItem("token");
