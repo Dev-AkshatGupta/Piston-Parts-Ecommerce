@@ -1,0 +1,12 @@
+.page-404{
+   height: 100vh;
+    width: 100vw;
+    background-image: url(../../IconsAndAssets//Assets/404.png);
+    display: flex;
+    font-size: 16px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}

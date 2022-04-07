@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./LandingPage.css";
-
+import axios from "axios";
+import { Link } from "react-router-dom";
 import {
   NavBar,
   Search,
@@ -8,9 +9,21 @@ import {
   brandNameData,
   BrandCard,
   CategoriesCard,
-  categoriesImages,
+  useFilterManger,
 } from "./importsAndExports";
 function LandingPage() {
+  const { filtered, filterManager } = useFilterManger();
+  const fetchCategories = async () => {
+    try {
+      const { data } = await axios.get("api/categories");
+
+      filterManager({ type: "CATEGORIES_DATA", payload: data.categories });
+    } catch (error) {
+      console.log(error + "in the getting categories");
+    }
+  };
+  useEffect(() => fetchCategories(), []);
+
   return (
     <div>
       <NavBar />
@@ -31,7 +44,9 @@ function LandingPage() {
         </div>
         <div className="flex-center sub-hero-wrapper">
           {brandNameData.map(({ brand }) => (
-            <BrandCard name={brand} />
+            <Link to="/products-page" key={brand}>
+              <BrandCard name={brand} />
+            </Link>
           ))}
         </div>
       </div>
@@ -42,8 +57,15 @@ function LandingPage() {
           </h2>
         </div>
         <div className="flex-center sub-hero-wrapper">
-          {categoriesImages.map(({ text, image }) => (
-            <CategoriesCard category={text} imageUrl={image} alt={text} />
+          {filtered.categoriesData.map(({ text, image, _id, category }) => (
+            <Link to="/products-page" key={_id}>
+              <CategoriesCard
+                text={text}
+                imageUrl={image}
+                alt={text}
+                category={category}
+              />
+            </Link>
           ))}
         </div>
       </div>

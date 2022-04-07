@@ -39,7 +39,29 @@ a {
   color: white;
 }
 
+::selection {
+  background-color: var(--ICONS-ORANGE);
+  color: white;
+}
 
+/* styles for the scrolls */
+
+html::-webkit-scrollbar {
+  width: .75vw;
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: var(--ACCENT-COLOR-LIGHT);
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background-color: var(--ACCENT-COLOR);
+}
+
+html::-webkit-scrollbar-track {
+  background-color: #fff;
+  ;
+}
 
 
 
@@ -234,4 +256,11 @@ a {
 
 .border-radius {
   border-radius: 1rem;
+}
+.active-aside-link {
+  background: var(--ACCENT-COLOR-LIGHT);
+  color: black;
+}
+.Toastify{
+  font-size: 16px;
 }

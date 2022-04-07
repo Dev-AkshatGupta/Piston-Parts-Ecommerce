@@ -12,6 +12,7 @@ const WishlistCard = ({
   price,
   oldPrice,
   id,
+  obj,
 }) => {
   const { deleteWishlistData } = useWishlistData();
   const { postCartData } = useCartData();
@@ -35,7 +36,7 @@ const WishlistCard = ({
         >
           ₹{price}
         </p>
-        <p className="text-dark-grey margin-0" style={{ margin: "0" }}>
+        <p className="text-dark-grey margin-0">
           MRP:₹
           <span className="text-line-through ">{oldPrice}</span>
         </p>
@@ -43,7 +44,10 @@ const WishlistCard = ({
       <div className="card-element__bottom no-border">
         <button
           className="btn btn-outline-pri margin-1"
-          onClick={() => postCartData(id)}
+          onClick={() => {
+            postCartData(obj);
+            deleteWishlistData(id);
+          }}
         >
           Add to Cart
         </button>

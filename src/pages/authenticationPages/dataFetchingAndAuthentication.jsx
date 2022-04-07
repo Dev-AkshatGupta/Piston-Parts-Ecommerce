@@ -1,12 +1,15 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+
 import { useCartManager } from "../../pages/contextsAndReducer/CartManagementProvider";
 import { useAuthorization } from "../../pages/contextsAndReducer/AuthProvider";
+
 // custom hook for handling the sign-up of the user
 
 // function for authenticating the user for signUp
 const useUserDetails = () => {
-  const { authState, authDispatch } = useAuthorization();
+  const { authDispatch, notifyError, notifySuccess, notifyInfo, notifyWarn } =
+    useAuthorization();
+
   const signUpHandler = async (firstName, lastName, email, password) => {
     try {
       const response = await axios.post(`/api/auth/signup`, {
@@ -17,20 +20,13 @@ const useUserDetails = () => {
       });
       // saving the encodedToken in the localStorage
       localStorage.setItem("token", response.data.encodedToken);
-
       authDispatch({
         type: "SIGN_IN",
         payload: response.data,
       });
-      authDispatch({
-        type: "TOAST",
-        payload: {
-          display: "flex",
-          message: "User Signed Up",
-          type: "success",
-        },
-      });
+      notifySuccess("Signed in succesfully");
     } catch (error) {
+      notifyWarn(error);
       console.log(error);
     }
   };
@@ -42,16 +38,11 @@ const useUserDetails = () => {
         password,
       });
       localStorage.setItem("token", response.data.encodedToken);
+
       authDispatch({ type: "LOG_IN", payload: response.data });
-      authDispatch({
-        type: "TOAST",
-        payload: {
-          display: "flex",
-          message: "User logged in",
-          type: "success",
-        },
-      });
+      notifySuccess("Logged-in succesfully");
     } catch (error) {
+      notifyWarn("Error in Log in ");
       console.log(error);
     }
   };
@@ -62,7 +53,14 @@ const useUserDetails = () => {
 
 const useCartData = () => {
   const { dispatch } = useCartManager();
-  const { authState, authDispatch } = useAuthorization();
+  const {
+    authState,
+    authDispatch,
+    notifyError,
+    notifySuccess,
+    notifyInfo,
+    notifyWarn,
+  } = useAuthorization();
   async function getCartData() {
     const encodedToken = localStorage.getItem("token");
     try {
@@ -80,8 +78,6 @@ const useCartData = () => {
   // function for post request
 
   async function postCartData(product) {
-    // const { dispatch } = useCartManager();
-
     const encodedToken = localStorage.getItem("token");
     try {
       const response = await axios.post(
@@ -95,12 +91,9 @@ const useCartData = () => {
           },
         }
       );
-      // console.log(response);
+
       dispatch({ type: "SET_CART", payload: response.data.cart });
-      authDispatch({
-        type: "TOAST",
-        payload: { display: "flex", message: "added to cart", type: "success" },
-      });
+      notifySuccess("Item added to cart");
       console.log(response.data.cart);
     } catch (error) {
       console.log(error);
@@ -117,14 +110,7 @@ const useCartData = () => {
         },
       });
       dispatch({ type: "SET_CART", payload: response.data.cart });
-      authDispatch({
-        type: "TOAST",
-        payload: {
-          display: "flex",
-          message: "removed from  cart",
-          type: "error",
-        },
-      });
+      notifyWarn("Item Removed from the cart");
     } catch (error) {
       console.log(error);
     }
@@ -145,7 +131,7 @@ const useCartData = () => {
           },
         }
       );
-      console.log(response.data.cart);
+      notifySuccess("Item added to cart");
       dispatch({ type: "SET_CART", payload: response.data.cart });
     } catch (error) {
       console.log(error);
@@ -167,6 +153,7 @@ const useCartData = () => {
         }
       );
       dispatch({ type: "SET_CART", payload: response.data.cart });
+      notifyWarn("Item removed from cart");
     } catch (error) {
       console.log(error);
     }
@@ -182,10 +169,11 @@ const useCartData = () => {
 
 // functions for the wishList functionality
 
-// function for getting the data from the wishlist
 const useWishlistData = () => {
   const { dispatch } = useCartManager();
-  const { authDispatch } = useAuthorization();
+  const { authDispatch, notifyError, notifySuccess, notifyInfo, notifyWarn } =
+    useAuthorization();
+  // function for getting the data from the wishlist
   async function getWishListData() {
     const encodedToken = localStorage.getItem("token");
     try {
@@ -208,7 +196,6 @@ const useWishlistData = () => {
         `/api/user/wishlist`,
         {
           product: item,
-          // action:{}
         },
         {
           headers: {
@@ -217,10 +204,7 @@ const useWishlistData = () => {
         }
       );
       dispatch({ type: "ADD_TO_WISHLIST", payload: response.data.wishlist });
-      authDispatch({
-        type: "TOAST",
-        payload: { display: "flex", message: "added to cart", type: "success" },
-      });
+      notifyInfo("Item Added to wishlist ");
     } catch (error) {
       console.log(error);
     }
@@ -239,10 +223,7 @@ const useWishlistData = () => {
         type: "REMOVE_FROM_WISHLIST",
         payload: response.data.wishlist,
       });
-      authDispatch({
-        type: "TOAST",
-        payload: { display: "flex", message: "added to cart", type: "success" },
-      });
+      notifyWarn("Item deleted to wishlist data");
     } catch (error) {
       console.log(error);
     }

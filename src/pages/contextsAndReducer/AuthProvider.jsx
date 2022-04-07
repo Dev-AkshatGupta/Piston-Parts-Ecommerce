@@ -5,13 +5,19 @@ import React, {
   useReducer,
   useState,
 } from "react";
-
+import {
+  notifyError,
+  notifySuccess,
+  notifyInfo,
+  notifyWarn,
+} from "../../Utilities";
+import { useCartManager } from "./CartManagementProvider";
 const AuthContext = createContext();
 const useAuthorization = () => useContext(AuthContext);
 
 const AuthProvider = ({ children }) => {
   //   reducer function for handling signUp and login
-
+  const { dispatch } = useCartManager();
   const reducer = (state, action) => {
     switch (action.type) {
       case "SIGN_IN":
@@ -19,27 +25,22 @@ const AuthProvider = ({ children }) => {
           ...state,
           firstName: action.payload.createdUser.firstName,
           id: action.payload.createdUser.id,
-          watchlater: action.payload.createdUser.watchlater,
-          playlists: action.payload.createdUser.playlists,
-          history: action.payload.createdUser.history,
-          likes: action.payload.createdUser.likes,
+          cart: action.payload.createdUser.cart,
+          wishlist: action.payload.createdUser.wishlist,
           token: action.payload.encodedToken,
         };
 
       case "LOG_IN":
+        dispatch({ type: "LOGGED_IN", payload: action.payload });
         return {
           ...state,
           firstName: action.payload.foundUser.firstName,
-          id: action.payload.foundUser.id,
-          watchlater: action.payload.foundUser.watchlater,
-          playlists: action.payload.foundUser.playlists,
-          history: action.payload.foundUser.history,
-          likes: action.payload.foundUser.likes,
+          id: action.payload.foundUser._id,
+          cart: action.payload.foundUser.cart,
+          wishlist: action.payload.foundUser.wishlist,
           token: action.payload.encodedToken,
         };
 
-      case "TOAST":
-        return { ...state, toast: action.payload };
       default:
         break;
     }
@@ -49,15 +50,21 @@ const AuthProvider = ({ children }) => {
     firstName: "",
     id: "",
     token: "",
-    likes: [],
-    history: [],
-    playlists: [],
-    watchlater: [],
-    toast: { display: "none", message: "", type: "" },
+    wishlist: [],
+    cart: [],
   });
 
   return (
-    <AuthContext.Provider value={{ authState, authDispatch }}>
+    <AuthContext.Provider
+      value={{
+        authState,
+        authDispatch,
+        notifyError,
+        notifySuccess,
+        notifyInfo,
+        notifyWarn,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

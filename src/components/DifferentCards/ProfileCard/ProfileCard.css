@@ -1,0 +1,9 @@
+.profile-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width:15rem;
+  height:80vh;
+  font-size: 16px;
+  align-items: center;
+}

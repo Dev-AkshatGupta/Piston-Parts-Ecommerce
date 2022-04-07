@@ -23,6 +23,7 @@ function AsideFilter() {
               type="radio"
               name="Price"
               onChange={() => filterManager({ type: "PRICE_HIGH_TO_LOW" })}
+              checked={filtered.priceSort === "PRICE_HIGH_TO_LOW"}
             />
             <label htmlFor="input" className="sub-text">
               Price High to low
@@ -33,6 +34,7 @@ function AsideFilter() {
               type="radio"
               name="Price"
               onChange={() => filterManager({ type: "PRICE_LOW_TO_HIGH" })}
+              checked={filtered.priceSort === "PRICE_LOW_TO_HIGH"}
             />
             <label htmlFor="input" className="sub-text">
               Price Low to High
@@ -78,7 +80,7 @@ function AsideFilter() {
           <li>
             <input
               type="checkbox"
-              name="  Light"
+              name="Light"
               checked={filtered.categories.includes("Light")}
               onChange={() => {
                 filterManager({
@@ -108,6 +110,54 @@ function AsideFilter() {
               Mechanical
             </label>
           </li>
+          <li>
+            <input
+              type="checkbox"
+              name="Mechanical"
+              checked={filtered.categories.includes("Body")}
+              onChange={() => {
+                filterManager({
+                  type: "CATEGORIES",
+                  payload: "Body",
+                });
+              }}
+            />
+            <label htmlFor="input" className="sub-text">
+              Body
+            </label>
+          </li>
+          <li>
+            <input
+              type="checkbox"
+              name="Mechanical"
+              checked={filtered.categories.includes("Engine")}
+              onChange={() => {
+                filterManager({
+                  type: "CATEGORIES",
+                  payload: "Engine",
+                });
+              }}
+            />
+            <label htmlFor="input" className="sub-text">
+              Engine
+            </label>
+          </li>
+          <li>
+            <input
+              type="checkbox"
+              name="Mechanical"
+              checked={filtered.categories.includes("Brakes")}
+              onChange={() => {
+                filterManager({
+                  type: "CATEGORIES",
+                  payload: "Brakes",
+                });
+              }}
+            />
+            <label htmlFor="input" className="sub-text">
+              Brakes
+            </label>
+          </li>
         </ul>
         <div className="divider-2"></div>
         <h3 className="text-dark-grey">Price Range</h3>
@@ -118,9 +168,8 @@ function AsideFilter() {
               name="Price"
               min="0"
               max="1500"
+              value={filtered.sliderAmount}
               onChange={(e) => {
-                console.log(e.target.value);
-
                 filterManager({
                   type: "SLIDER",
                   payload: parseInt(e.target.value),
@@ -130,57 +179,95 @@ function AsideFilter() {
             />
           </li>
         </ul>
+        <li className="flex-center-space-betw padding-l-r text ">
+          <span>0</span>
+          <span>{filtered.sliderAmount}</span>
+        </li>
         <div className="divider-2"></div>
-        {/* <h3 className="text-dark-grey">Brands</h3> */}
-        {/* <ul className="aside-ul">
+
+        <h3 className="text-dark-grey">Ratings</h3>
+        <ul className="aside-ul">
           <li>
-            <input type="checkbox" name="" id="" />
+            <input
+              type="checkbox"
+              name="category"
+              checked={filtered.ratings === 5}
+              onChange={() => {
+                filterManager({
+                  type: "RATINGS",
+                  payload: 5,
+                });
+              }}
+            />
             <label htmlFor="input" className="sub-text">
-              
-              Suzuki
+              5 and below
             </label>
           </li>
           <li>
-            <input type="checkbox" name="" id="" />
+            <input
+              type="checkbox"
+              name="category"
+              checked={filtered.ratings === 4}
+              onChange={() => {
+                filterManager({
+                  type: "RATINGS",
+                  payload: 4,
+                });
+              }}
+            />
             <label htmlFor="input" className="sub-text">
-              Mahindra
+              4 and below
             </label>
           </li>
           <li>
-            <input type="checkbox" name="" id="" />
+            <input
+              type="checkbox"
+              name="category"
+              checked={filtered.ratings === 3}
+              onChange={() => {
+                filterManager({
+                  type: "RATINGS",
+                  payload: 3,
+                });
+              }}
+            />
             <label htmlFor="input" className="sub-text">
-              Tata
+              3 and below
             </label>
           </li>
           <li>
-            <input type="checkbox" name="" id="" />
+            <input
+              type="checkbox"
+              name="category"
+              checked={filtered.ratings === 2}
+              onChange={() => {
+                filterManager({
+                  type: "RATINGS",
+                  payload: 2,
+                });
+              }}
+            />
             <label htmlFor="input" className="sub-text">
-              Hyundai
-            </label>
-          </li>
-        </ul> */}
-        {/* <div className="divider-2"></div>
-        <h3 className="text-dark-grey">Enhanced</h3> */}
-        {/* <ul className="aside-ul">
-          <li>
-            <input type="checkbox" name="" id="" />
-            <label htmlFor="input" className="sub-text">
-              Turbochargers
-            </label>
-          </li>
-          <li>
-            <input type="checkbox" name="" id="" />
-            <label htmlFor="input" className="sub-text">
-              Low level alloys
+              2 and below
             </label>
           </li>
           <li>
-            <input type="checkbox" name="" id="" />
+            <input
+              type="checkbox"
+              name="category"
+              checked={filtered.ratings === 1}
+              onChange={() => {
+                filterManager({
+                  type: "RATINGS",
+                  payload: 1,
+                });
+              }}
+            />
             <label htmlFor="input" className="sub-text">
-              Air-Suspensions
+              1 and below
             </label>
           </li>
-        </ul> */}
+        </ul>
       </div>
     </aside>
   );

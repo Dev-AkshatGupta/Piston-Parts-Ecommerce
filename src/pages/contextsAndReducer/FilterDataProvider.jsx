@@ -30,9 +30,15 @@ function FilterDataProvider({ children }) {
           sorted: action.payload,
           defaultData: action.payload,
         };
+      case "CATEGORIES_DATA":
+        return {
+          ...state,
+          categoriesData: action.payload,
+        };
       case "PRICE_LOW_TO_HIGH": {
         const returnData = {
           ...state,
+          priceSort: "PRICE_LOW_TO_HIGH",
           sorted: state.defaultData.sort(
             ({ price: first }, { price: second }) =>
               first.actualPrice - second.actualPrice
@@ -44,6 +50,7 @@ function FilterDataProvider({ children }) {
       case "PRICE_HIGH_TO_LOW": {
         const returnData = {
           ...state,
+          priceSort: "PRICE_HIGH_TO_LOW",
           sorted: state.defaultData.sort(
             ({ price: first }, { price: second }) =>
               second.actualPrice - first.actualPrice
@@ -54,10 +61,11 @@ function FilterDataProvider({ children }) {
       }
       case "SLIDER":
         const priceSorted = state.defaultData.filter(
-          ({ price }) => price.actualPrice >= action.payload
+          ({ price }) => price.actualPrice <= action.payload
         );
         return {
           ...state,
+          sliderAmount: action.payload,
           sorted: priceSorted,
         };
 
@@ -87,11 +95,22 @@ function FilterDataProvider({ children }) {
             }),
           };
         }
+      case "RATINGS":
+        return {
+          ...state,
+          ratings: action.payload,
+          sorted: state.defaultData.filter((item) => {
+            return item.rating <= action.payload;
+          }),
+        };
       case "CLEAR_ALL":
         return {
           ...state,
           sorted: state.defaultData,
-          categories:[]
+          categories: [],
+          priceSort: "-",
+          sliderAmount: 1500,
+          ratings: 5,
         };
 
       default:
@@ -102,6 +121,10 @@ function FilterDataProvider({ children }) {
     sorted: [],
     defaultData: [],
     categories: [],
+    categoriesData: [],
+    priceSort: [],
+    sliderAmount: "",
+    ratings: 5,
   });
   return (
     <FilterDataContext.Provider value={{ filtered, filterManager }}>

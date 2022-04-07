@@ -14,7 +14,10 @@
         "icon .... nav-top"
         "icon nav-bottom nav-bottom ";
 }
-
+.hidden-span{
+    width: 5rem;
+    height: 5rem; 
+}
 .icon {
     grid-area: icon;
     font-weight: 700;
@@ -116,4 +119,25 @@
     align-items: center;
     flex-direction: row;
     height: 6rem;
+}
+.DropDown{
+    padding:1rem 1rem;
+    display: flex;
+    align-items:center ;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 12rem;
+    font-size: 16px;
+    position: absolute;
+    bottom:-120px;
+    background-color: var( --color-smooth);
+    z-index: 11;
+    width: 15rem;
+}
+.DropDown  a{
+    color: var(--PURE-BLACK);
+
+}
+.nav-drawer-items-padding {
+    padding:.75rem 2.5rem;
 }
