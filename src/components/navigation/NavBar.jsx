@@ -41,7 +41,6 @@ export const HiddenDiv = ({ position }) => {
 };
 function NavBar({ menuBtn = false }) {
   const [toggle, setToggle] = useState({
-    toggleTheme: false,
     toggleCartView: false,
     toggleWishListView: false,
   });
@@ -154,22 +153,7 @@ function NavBar({ menuBtn = false }) {
               )}
             </li>
             <li className="nav-bottom__list-item change-nav-display">
-              <a className="btn-icon-sml nav-bottom-icons">
-                {!toggle.toggleTheme && (
-                  <FaSun
-                    onClick={() =>
-                      setToggle({ toggleTheme: !toggle.toggleTheme })
-                    }
-                  />
-                )}
-                {toggle.toggleTheme && (
-                  <FaMoon
-                    onClick={() =>
-                      setToggle({ toggleTheme: !toggle.toggleTheme })
-                    }
-                  />
-                )}
-              </a>
+              
             </li>
           </ul>
         </div>
