@@ -13,6 +13,12 @@ const useCartManager = () => useContext(CartManagementContext);
 function CartManagementProvider({ children }) {
   function reducer(state, action) {
     switch (action.type) {
+      case "LOGGED_IN":
+        return {
+          ...state,
+          wishlist: action.payload.foundUser.wishlist,
+          cart: action.payload.foundUser.cart,
+        };
       case "ADD_TO_WISHLIST": {
         return { ...state, wishlist: action.payload };
       }
@@ -27,7 +33,9 @@ function CartManagementProvider({ children }) {
       case "SET_CART": {
         return { ...state, cart: action.payload };
       }
-
+      case "LOGOUT": {
+        return { ...state, cart: [], wishlist: [] };
+      }
       default:
     }
   }
@@ -35,7 +43,6 @@ function CartManagementProvider({ children }) {
     wishlist: [],
     cart: [],
     userDetails: [],
-    displayToast: false,
   });
 
   return (

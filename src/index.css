@@ -261,3 +261,6 @@ html::-webkit-scrollbar-track {
   background: var(--ACCENT-COLOR-LIGHT);
   color: black;
 }
+.Toastify{
+  font-size: 16px;
+}

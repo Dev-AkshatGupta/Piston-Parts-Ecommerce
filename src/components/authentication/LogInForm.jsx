@@ -5,7 +5,14 @@ import { useUserDetails } from "../../pages/authenticationPages/dataFetchingAndA
 
 import { useAuthorization } from "../../pages/contextsAndReducer/AuthProvider";
 function LogInForm() {
-  const { authState, authDispatch } = useAuthorization();
+  const {
+    authState,
+    authDispatch,
+    notifyError,
+    notifySuccess,
+    notifyInfo,
+    notifyWarn,
+  } = useAuthorization();
   const [viewPassword, setViewPassword] = useState(false);
   const [details, setDetails] = useState({
     email: "",
@@ -66,7 +73,10 @@ function LogInForm() {
       </button>
       <button
         className="btn btn-outline-pri form-btn smooth-square-radius "
-        onClick={(e) => logInHandler("adarshbalika@gmail.com", "adarshbalika")}
+        onClick={(e) => {
+          e.preventDefault();
+          logInHandler("adarshbalika@gmail.com", "adarshbalika");
+        }}
       >
         Guest Log-In
       </button>

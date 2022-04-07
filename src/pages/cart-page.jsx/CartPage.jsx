@@ -10,26 +10,30 @@ import {
 
 function CartPage() {
   const { state } = useCartManager();
-
+  {
+    console.log(state.cart);
+  }
   return (
     <div>
       <NavBar />
       <div className="banner-upper-empty"></div>
-      {console.log(state.cart)}
 
-      <div className="height-100vh flex-center">
-        <div className="flex-center ">
-          <span className="text-3">There is nothing in the Cart </span>
-          <Link
-            to="/products-page"
-            className="btn btn-outline-pri text margin-l-1"
-          >
-            Go to products page
-          </Link>
+      {state.cart.length <0 &&
+      (
+        <div className="height-100vh flex-center">
+          <div className="flex-center ">
+            <span className="text-3">There is nothing in the Cart </span>
+            <Link
+              to="/products-page"
+              className="btn btn-outline-pri text margin-l-1"
+            >
+              Go to products page
+            </Link>
+          </div>
         </div>
-      </div>
+      )}
 
-      {state.cart !== [] && (
+      {state.cart.length > -1 && (
         <div className="carts-page">
           <div className="selected-items-display">
             {state.cart.map((item) => (

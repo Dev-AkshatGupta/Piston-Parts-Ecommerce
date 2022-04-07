@@ -11,31 +11,21 @@ import axios from "axios";
 // Call make Server
 makeServer();
 
-// eefie function for me being always logged-in for various functionalities
-    // (async () => {
-    //   try {
-    //     const response = await axios.post("/api/auth/login", {
-    //           email: "adarshbalika@gmail.com",
-    // password: "adarshbalika",
-    //     });
-    //     console.log(response.data.foundUser);
-    //     localStorage.setItem("token", response.data.encodedToken);
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // })();
+
 
 ReactDOM.render(
 
   <React.StrictMode>
     <Router>
-      <AuthProvider>
-      <FilterDataProvider> 
+       <FilterDataProvider> 
         <CartManagementProvider>
+      <AuthProvider>
+     
     <App />
+
+</AuthProvider>
     </CartManagementProvider>
     </FilterDataProvider>
-</AuthProvider>
     </Router>
 
  </React.StrictMode>,

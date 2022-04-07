@@ -5,13 +5,19 @@ import React, {
   useReducer,
   useState,
 } from "react";
-
+import {
+  notifyError,
+  notifySuccess,
+  notifyInfo,
+  notifyWarn,
+} from "../../Utilities";
+import { useCartManager } from "./CartManagementProvider";
 const AuthContext = createContext();
 const useAuthorization = () => useContext(AuthContext);
 
 const AuthProvider = ({ children }) => {
   //   reducer function for handling signUp and login
-
+  const { dispatch } = useCartManager();
   const reducer = (state, action) => {
     switch (action.type) {
       case "SIGN_IN":
@@ -25,7 +31,7 @@ const AuthProvider = ({ children }) => {
         };
 
       case "LOG_IN":
-        console.log(action.payload.foundUser);
+        dispatch({ type: "LOGGED_IN", payload: action.payload });
         return {
           ...state,
           firstName: action.payload.foundUser.firstName,
@@ -35,8 +41,6 @@ const AuthProvider = ({ children }) => {
           token: action.payload.encodedToken,
         };
 
-      case "TOAST":
-        return { ...state, toast: action.payload };
       default:
         break;
     }
@@ -48,11 +52,19 @@ const AuthProvider = ({ children }) => {
     token: "",
     wishlist: [],
     cart: [],
-    toast: { display: "none", message: "", type: "" },
   });
 
   return (
-    <AuthContext.Provider value={{ authState, authDispatch }}>
+    <AuthContext.Provider
+      value={{
+        authState,
+        authDispatch,
+        notifyError,
+        notifySuccess,
+        notifyInfo,
+        notifyWarn,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

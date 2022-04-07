@@ -69,13 +69,15 @@ function CardProductBig({
                   />
                 </div>
               ) : (
-                <div className="go-like ">
-                  <BsSuitHeartFill
-                    onClick={(e) => {
-                      navigate("/logIn-page");
-                    }}
-                  />
-                </div>
+                addToWishlist === -1 && (
+                  <div className="go-like ">
+                    <BsSuitHeartFill
+                      onClick={(e) => {
+                        navigate("/logIn-page");
+                      }}
+                    />
+                  </div>
+                )
               )}
               <div className="product-details">
                 <div className="product-left">
@@ -106,12 +108,8 @@ function CardProductBig({
                     </span>
                   </div>
                   <div className="product-rating text">
-                    {/* <i className="fa fa-star rating" star-data="1"></i>
-                    <i className="fa fa-star rating" star-data="2"></i>
-                    <i className="fa fa-star rating" star-data="3"></i>
-                    <i className="fa fa-star" star-data="4"></i>
-                    <i className="fa fa-star" star-data="5"></i> */}
-                    <Rating rating={wholeItem.rating} />
+                   
+                    <Rating rating={parseInt(wholeItem.rating)} />
 
                     <div className="product-rating-details">
                       ({wholeItem.rating} -

@@ -58,13 +58,15 @@ const Card = ({
             />
           </div>
         ) : (
-          <div className="go-like ">
-            <BsSuitHeartFill
-              onClick={(e) => {
-                navigate("/logIn-page");
-              }}
-            />
-          </div>
+          addToWishlist === -1 && (
+            <div className="go-like ">
+              <BsSuitHeartFill
+                onClick={(e) => {
+                  navigate("/logIn-page");
+                }}
+              />
+            </div>
+          )
         )}
       </div>
       <div className="card-vertical-text">
@@ -90,9 +92,14 @@ const Card = ({
             Add to Cart
           </button>
         ) : (
-          <Link to="/logIn-page" className="btn btn-outline-pri margin-1 text">
-            Add to Cart
-          </Link>
+          cartItemsInState === -1 && (
+            <Link
+              to="/logIn-page"
+              className="btn btn-outline-pri margin-1 text"
+            >
+              Add to Cart
+            </Link>
+          )
         )}
         {cartItemsInState > -1 && (
           <Link to="/cart-page" className="btn btn-outline-pri margin-1 text">

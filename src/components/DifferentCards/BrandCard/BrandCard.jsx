@@ -3,7 +3,7 @@ import "./BrandCard.css";
 function BrandCard({ name }) {
   return (
     <div>
-      <a className="brand-card ">{name}</a>
+      <span className="brand-card ">{name}</span>
     </div>
   );
 }

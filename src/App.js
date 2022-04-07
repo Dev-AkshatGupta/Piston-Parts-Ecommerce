@@ -9,25 +9,18 @@ import { ToastContainer, toast } from 'react-toastify';
 import {LogInPage} from "./pages/authenticationPages/LogInPage";
 import {SignUpPage} from "./pages/authenticationPages/SignUpPage";
 import { CartPage } from "./pages/cart-page.jsx/CartPage";
-import {Toast} from "./components/toast/Toast"
 import { useAuthorization } from "./pages/contextsAndReducer/AuthProvider";
 import {PrivateRoute} from "./components/PrivateRoute/PrivateRoute";
 import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
 import {Navigate} from "react-router-dom";
 function App() {
-const {authState:{token,toast},authDispatch }=useAuthorization();
-// useEffect(()=>{
- 
-// const timeoutID= setTimeout(()=> {authDispatch({
-//         type: "TOAST",
-//         payload: { display:"none", message: "", type: "" },
-   
-//       });clearTimeout(timeoutID)},2000)
-// },[toast.display])
+const {authState:{token},authDispatch }=useAuthorization();
 
   return (
     <div className="App">
-      {/* <Toast type={toast.type} message={toast.message} display={toast.display} /> */}
+    <ToastContainer
+
+/>
 
       <Routes>
         <Route path="/" element={<LandingPage/>}/>
@@ -39,24 +32,12 @@ const {authState:{token,toast},authDispatch }=useAuthorization();
       <Route path="/404-page" element={<Page404/>}/>
      {token && <Route path="/profile-page" element={<ProfilePage/>}/>}
       <Route path="*" element={<Navigate to={token ? "/profile-page":"/404-page"}/>}/>
-      
-
-        <Route path="/mock" element={<Mockman/>}/>
+      <Route path="/mock" element={<Mockman/>}/>
       
         
       </Routes>
          
- <ToastContainer
-position="top-center"
-autoClose={2700}
-hideProgressBar={false}
-newestOnTop={false}
-closeOnClick
-rtl={false}
-pauseOnFocusLoss
-draggable
-pauseOnHover
-/>
+
     </div>
   );
 }

@@ -56,11 +56,7 @@ function NavBar() {
         </div>
         <div className="nav-top">
           <ul className="nav-top__list">
-            {/* <li className="nav-top__list-item">
-              <Link to="/logIn-page" className="link-btn">
-                Log-in/Sign-up
-              </Link>
-            </li> */}
+     
             <li className="nav-top__list-item">
               <a href="./" className="link-btn">
                 Customer-Care
@@ -139,9 +135,7 @@ function NavBar() {
               >
                 <i className="fas fa-heart "></i>
               </Link>
-              {/* {toggle.toggleWishListView && (
-                <HiddenDiv position="wishList-div-position" />
-              )} */}
+           
               {state.wishlist.length > 0 && (
                 <span className="absolute badge flex-center badge-custom-text">
                   {state.wishlist.length}
@@ -163,7 +157,7 @@ function NavBar() {
                       setToggle({ toggleTheme: !toggle.toggleTheme })
                     }
                   />
-                )}{" "}
+                )}
               </a>
             </li>
           </ul>

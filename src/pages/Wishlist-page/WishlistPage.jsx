@@ -39,6 +39,7 @@ function WishlistPage() {
               name={item.name}
               oldPrice={item.price.previousPrice}
               id={item._id}
+              obj={item}
             ></WishlistCard>
           ))}
       </div>
