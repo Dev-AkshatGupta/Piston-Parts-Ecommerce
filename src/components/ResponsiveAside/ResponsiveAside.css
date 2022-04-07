@@ -1,0 +1,62 @@
+ .bg-style.hide {
+  transform: translate3d(-100%, 0, 0) !important;
+}
+#nav-drawer {
+    border-top: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 240px;
+    position: fixed;
+    left: 0;
+    transform: translate3d(0, 0, 0);
+    transition: transform 0.15s;
+    z-index: 101;
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+}
+.bg-style {
+    background: #fff;
+    border: 1px solid #e2e2e2;
+}
+.hero-aside {
+    background-color: var(--SLATE-50);
+}
+
+
+/*------------------ ASide Imported styles */
+
+.aside-container-pri {
+    margin-left: 2rem;
+}
+
+.aside-container-pri h2 {
+    border-bottom: 2px solid var(--GREY-DARK);
+}
+
+
+
+
+.products-main {
+    /* border:solid red; */
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    background-color: var(--STONE-100);
+}
+
+.products-main>.card-vertical:hover {
+    box-shadow: 0 4px 8px 0 var(--495057), 0 6px 20px 0 var(--6C757D);
+}
+
+.range {
+    width: 90%;
+}
+.margin-l-4 {
+    margin-left: 4rem;
+}
+@media screen and (min-width: 700px){
+    #nav-drawer{
+        display: none;
+    }
+}

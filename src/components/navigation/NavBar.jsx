@@ -7,6 +7,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { DropDownBox } from "./DropDown.jsx";
 import { useCartManager } from "../../pages/contextsAndReducer/CartManagementProvider";
+import { useFilterManger } from "../../pages/contextsAndReducer/FilterDataProvider";
 
 export const HiddenDivRow = ({ name, price, image, alt }) => {
   return (
@@ -38,7 +39,7 @@ export const HiddenDiv = ({ position }) => {
     </div>
   );
 };
-function NavBar({ menuBtn =false}) {
+function NavBar({ menuBtn = false }) {
   const [toggle, setToggle] = useState({
     toggleTheme: false,
     toggleCartView: false,
@@ -47,12 +48,19 @@ function NavBar({ menuBtn =false}) {
 
   const { state } = useCartManager();
   const [dropBox, setDropBox] = useState(false);
+  const { aside, setAside } = useFilterManger();
   return (
     <>
       <nav className="navigation text-black">
-        {menuBtn && <div className={`icon  icons-p align-self-center ${menuBtn && `menu-display`}` }>
-          <ImMenu />
-        </div>}
+        {menuBtn && (
+          <div
+            className={`icon  icons-p align-self-center ${
+              menuBtn && `menu-display`
+            }`}
+          >
+            <ImMenu onClick={() => setAside(!aside)} />
+          </div>
+        )}
         <div className="icon flex-center-center">
           <Link to="/" className="icons-p text-black ">
             PISTON <span className="text-accent">parTs</span>
