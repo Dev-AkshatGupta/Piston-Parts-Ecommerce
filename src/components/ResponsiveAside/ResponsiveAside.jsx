@@ -1,15 +1,16 @@
 import React from "react";
-import "./aside.css";
-import { useFilterManger } from "../../contextsAndReducer/FilterDataProvider";
-function AsideFilter() {
-  const { filtered, filterManager } = useFilterManger();
+import "./ResponsiveAside.css";
+
+import { useFilterManger } from "../../pages/contextsAndReducer/FilterDataProvider";
+function ResponsiveAside() {
+  const { filtered, filterManager, aside } = useFilterManger();
   return (
-    <aside className="aside-nav box-shadow-right hero-aside aside-display">
-      <div className="aside-container-pri ">
+    <div id="nav-drawer" className={`bg-style ${aside ? `hide` : null}`}>
+      <div className="aside-container-pri">
         <h2>
           Filters
           <span
-            className="margin-l-12 link-btn"
+            className="margin-l-4 link-btn"
             onClick={() => filterManager({ type: "CLEAR_ALL" })}
           >
             Clear all
@@ -269,8 +270,8 @@ function AsideFilter() {
           </li>
         </ul>
       </div>
-    </aside>
+    </div>
   );
 }
 
-export { AsideFilter };
+export { ResponsiveAside };

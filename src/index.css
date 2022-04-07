@@ -160,7 +160,9 @@ html::-webkit-scrollbar-track {
 .margin-l-16 {
   margin-left: 16rem;
 }
-
+.margin-l-12{
+  margin-left: 12rem;
+}
 .padding-4 {
   padding: 4px;
 }
@@ -263,4 +265,22 @@ html::-webkit-scrollbar-track {
 }
 .Toastify{
   font-size: 16px;
+}
+.none{
+  display: none;
+}
+.block{
+  display: block;
+}
+.align-self-center{align-self:center}
+.aside-display{display: block;}
+
+.menu-display{display: none;}
+@media screen and (max-width: 700px) {
+.menu-display{
+    display:block;
+}
+.aside-display{
+  display: none;
+}
 }

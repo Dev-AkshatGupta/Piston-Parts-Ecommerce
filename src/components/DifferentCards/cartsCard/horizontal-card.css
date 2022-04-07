@@ -55,3 +55,8 @@
     flex-direction: row;
     height: 6rem;
 }
+@media screen and (max-width: 450px) {
+    .horizontal-card{width: 390px;}
+    
+.horizontal-card .description{margin-left: 1rem;}
+}

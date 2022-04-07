@@ -108,7 +108,6 @@ function CardProductBig({
                     </span>
                   </div>
                   <div className="product-rating text">
-                   
                     <Rating rating={parseInt(wholeItem.rating)} />
 
                     <div className="product-rating-details">
@@ -138,12 +137,14 @@ function CardProductBig({
                         Add to cart
                       </button>
                     ) : (
-                      <Link
-                        to="/logIn-page"
-                        className="add-to-cart btn btn-outline text"
-                      >
-                        Add to cart
-                      </Link>
+                      cartItemsInState === -1 && (
+                        <Link
+                          to="/logIn-page"
+                          className="add-to-cart btn btn-outline text"
+                        >
+                          Add to cart
+                        </Link>
+                      )
                     )}
                     {cartItemsInState > -1 && (
                       <Link

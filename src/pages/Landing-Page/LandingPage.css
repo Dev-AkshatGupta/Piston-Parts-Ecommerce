@@ -100,3 +100,22 @@
 .background-orange {
     background-color: var(--ACCENT-COLOR-LIGHT);
 }
+@media screen and (max-width: 1100px) {
+    .banner-div{width: 100%;}
+
+}
+@media screen and (max-width: 1000px) {
+ .banner-div_upper{
+   height: 50vh;
+}
+.banner-div{
+   width: 100%;
+}
+.for-animation{
+   display: none;
+}
+ 
+.for-search {
+   width: 100%;
+}
+}

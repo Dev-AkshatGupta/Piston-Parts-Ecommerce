@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useEffect, useReducer } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
 import axios from "axios";
 
 const FilterDataContext = createContext();
@@ -20,7 +26,7 @@ function FilterDataProvider({ children }) {
   useEffect(() => {
     fetchData();
   }, []);
-
+  const [aside, setAside] = useState(true);
   // reducer function for the useReducer
   function reducer(state, action) {
     switch (action.type) {
@@ -127,7 +133,9 @@ function FilterDataProvider({ children }) {
     ratings: 5,
   });
   return (
-    <FilterDataContext.Provider value={{ filtered, filterManager }}>
+    <FilterDataContext.Provider
+      value={{ filtered, filterManager, aside, setAside }}
+    >
       {children}
     </FilterDataContext.Provider>
   );
