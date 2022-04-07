@@ -18,9 +18,7 @@ const {authState:{token},authDispatch }=useAuthorization();
 
   return (
     <div className="App">
-    <ToastContainer
-
-/>
+    <ToastContainer/>
 
       <Routes>
         <Route path="/" element={<LandingPage/>}/>
