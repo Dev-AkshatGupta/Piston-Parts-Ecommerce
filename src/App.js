@@ -18,7 +18,6 @@ const {authState:{token},authDispatch }=useAuthorization();
   return (
     <div className="App">
     <ToastContainer/>
-
       <Routes>
         <Route path="/" element={<LandingPage/>}/>
         <Route path="/products-page" element={<ProductsPage/>}/>
@@ -29,9 +28,7 @@ const {authState:{token},authDispatch }=useAuthorization();
       <Route path="/404-page" element={<Page404/>}/>
      {token && <Route path="/profile-page" element={<ProfilePage/>}/>}
       <Route path="*" element={<Navigate to={token ? "/profile-page":"/404-page"}/>}/>
-      <Route path="/mock" element={<Mockman/>}/>
-      
-        
+      <Route path="/mock" element={<Mockman/>}/>        
       </Routes>
          
 
