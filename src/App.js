@@ -12,12 +12,18 @@ import { useAuthorization } from "./pages/contextsAndReducer/AuthProvider";
 import { PrivateRoute } from "./components/PrivateRoute/PrivateRoute";
 import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
 import { Navigate } from "react-router-dom";
+import { checkToken } from "Redux/Reducers-Redux/authSlice";
+import {useEffect} from "react";
+import {useDispatch} from "react-redux";
 function App() {
   const {
     authState: { token },
     authDispatch,
   } = useAuthorization();
-
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(checkToken());
+  }, []);
   return (
     <div className="App">
       <ToastContainer />
