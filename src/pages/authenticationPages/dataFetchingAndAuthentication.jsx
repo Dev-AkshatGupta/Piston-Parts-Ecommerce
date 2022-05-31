@@ -8,7 +8,7 @@ import { useAuthorization } from "../../pages/contextsAndReducer/AuthProvider";
 // function for authenticating the user for signUp
 const useUserDetails = () => {
   const { authDispatch, notifySuccess, notifyWarn } = useAuthorization();
-
+  const { dispatch } = useCartManager();
   const signUpHandler = async (firstName, lastName, email, password) => {
     try {
       const response = await axios.post(`/api/auth/signup`, {
@@ -37,7 +37,7 @@ const useUserDetails = () => {
         password,
       });
       localStorage.setItem("token", response.data.encodedToken);
-
+      dispatch({ type: "LOGGED_IN", payload: response.data });
       authDispatch({ type: "LOG_IN", payload: response.data });
       notifySuccess("Logged-in succesfully");
     } catch (error) {
@@ -225,4 +225,5 @@ const useWishlistData = () => {
   }
   return { getWishListData, postWishListData, deleteWishlistData };
 };
+
 export { useUserDetails, useCartData, useWishlistData };

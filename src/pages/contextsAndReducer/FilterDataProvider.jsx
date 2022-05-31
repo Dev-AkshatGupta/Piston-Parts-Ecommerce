@@ -50,19 +50,19 @@ function FilterDataProvider({ children }) {
               first.actualPrice - second.actualPrice
           ),
         };
-
+        console.log(returnData);
         return returnData;
       }
       case "PRICE_HIGH_TO_LOW": {
         const returnData = {
           ...state,
-          priceSort: "PRICE_HIGH_TO_LOW",
+          priceSort:action.payload,
           sorted: state.defaultData.sort(
             ({ price: first }, { price: second }) =>
               second.actualPrice - first.actualPrice
           ),
         };
-
+        console.log(returnData);
         return returnData;
       }
       case "SLIDER":

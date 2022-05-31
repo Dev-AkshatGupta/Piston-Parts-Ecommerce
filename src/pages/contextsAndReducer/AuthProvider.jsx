@@ -1,9 +1,7 @@
 import React, {
   createContext,
   useContext,
-  useEffect,
-  useReducer,
-  useState,
+  useReducer
 } from "react";
 import {
   notifyError,
@@ -31,7 +29,7 @@ const AuthProvider = ({ children }) => {
         };
 
       case "LOG_IN":
-        dispatch({ type: "LOGGED_IN", payload: action.payload });
+        // dispatch({ type: "LOGGED_IN", payload: action.payload });
         return {
           ...state,
           firstName: action.payload.foundUser.firstName,
@@ -40,6 +38,10 @@ const AuthProvider = ({ children }) => {
           wishlist: action.payload.foundUser.wishlist,
           token: action.payload.encodedToken,
         };
+        case "USER_VERIFY":
+          return {
+            
+          }
       default:
         break;
     }
