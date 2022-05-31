@@ -3,8 +3,7 @@ function Star() {
   return <i className="fa fa-star rating"></i>;
 }
 function Rating({ rating }) {
-  console.log(rating);
-  console.log(typeof rating);
+
   if (rating === 1) return <Star />;
   if (rating === 2)
     return (

@@ -40,7 +40,6 @@ const AuthProvider = ({ children }) => {
           wishlist: action.payload.foundUser.wishlist,
           token: action.payload.encodedToken,
         };
-
       default:
         break;
     }

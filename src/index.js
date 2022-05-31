@@ -4,30 +4,24 @@ import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter as Router } from "react-router-dom";
-import {CartManagementProvider} from "./pages/contextsAndReducer/CartManagementProvider";
-import {FilterDataProvider} from "./pages/contextsAndReducer/FilterDataProvider";
-import {AuthProvider} from "./pages/contextsAndReducer/AuthProvider";
+import { CartManagementProvider } from "./pages/contextsAndReducer/CartManagementProvider";
+import { FilterDataProvider } from "./pages/contextsAndReducer/FilterDataProvider";
+import { AuthProvider } from "./pages/contextsAndReducer/AuthProvider";
 
 // Call make Server
 makeServer();
 
-
-
 ReactDOM.render(
-
   <React.StrictMode>
     <Router>
-       <FilterDataProvider> 
+      <FilterDataProvider>
         <CartManagementProvider>
-      <AuthProvider>
-     
-    <App />
-
-</AuthProvider>
-    </CartManagementProvider>
-    </FilterDataProvider>
+          <AuthProvider>
+            <App />
+          </AuthProvider>
+        </CartManagementProvider>
+      </FilterDataProvider>
     </Router>
-
- </React.StrictMode>,
+  </React.StrictMode>,
   document.getElementById("root")
 );

@@ -10,9 +10,7 @@ import {
 
 function CartPage() {
   const { state } = useCartManager();
-  {
-    console.log(state.cart);
-  }
+ 
   return (
     <div>
       <NavBar />
