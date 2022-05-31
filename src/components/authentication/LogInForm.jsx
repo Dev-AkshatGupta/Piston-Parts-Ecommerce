@@ -2,21 +2,36 @@ import React, { useState } from "react";
 import "./authentication.css";
 import { Link } from "react-router-dom";
 import { useUserDetails } from "../../pages/authenticationPages/dataFetchingAndAuthentication";
-import {useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
+import { notifyError } from "Utilities/Notifications";
+import { login } from "Redux/Reducers-Redux/authSlice";
 function LogInForm() {
-  
+  const dispatch = useDispatch();
   const [viewPassword, setViewPassword] = useState(false);
   const [details, setDetails] = useState({
     email: "",
     password: "",
   });
   const { logInHandler } = useUserDetails();
-  function clickHandler(e) {
-    //  to prevent initial refreshing of the page
-    e.preventDefault();
-
-    logInHandler(details.email, details.password);
-  }
+ const passwordRegEx = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
+ function validateDetails(details) {
+   if (details.email === "" || details.password === "") {
+     notifyError("Fill all the fields");
+     return false;
+   } else if (passwordRegEx.test(details.password)) {
+     return passwordRegEx.test(details.password);
+   } else {
+     notifyError("Please fill password correctly");
+     return false;
+   }
+ }
+ function clickHandler(e) {
+   //  to prevent initial refreshing of the page
+   e.preventDefault();
+   if (validateDetails(details)) {
+     dispatch(login(details));
+   }
+ }
 
   return (
     <form className="form flex-column-center card-shadow background-white no-border width-38">
@@ -67,7 +82,7 @@ function LogInForm() {
         className="btn btn-outline-pri form-btn smooth-square-radius "
         onClick={(e) => {
           e.preventDefault();
-          logInHandler("adarshbalika@gmail.com", "adarshbalika");
+        dispatch(  login({ email: "adarshbalika@gmail.com", password: "adarshbalika" }));
         }}
       >
         Guest Log-In

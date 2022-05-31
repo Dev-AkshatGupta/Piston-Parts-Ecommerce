@@ -12,22 +12,20 @@ import { useAuthorization } from "./pages/contextsAndReducer/AuthProvider";
 import { PrivateRoute } from "./components/PrivateRoute/PrivateRoute";
 import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
 import { Navigate } from "react-router-dom";
-import { checkToken } from "Redux/Reducers-Redux/authSlice";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import AllRoutes from "./AllRoutes";
-function App() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(checkToken());
-    
-  }, []);
+const AllRoutes = () => {
   return (
-    <div className="App">
-      <ToastContainer />
-      <AllRoutes />
-    </div>
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/products-page" element={<ProductsPage />} />
+      <Route path="/signUp-Page" element={<SignUpPage />} />
+      <Route path="*" element={<Page404 />} />
+      <Route path="/logIn-Page" element={<LogInPage />} />
+      <Route path="/cart-page" element={<CartPage />} />
+      <Route path="/profile-page" element={<ProfilePage />} />
+      <Route path="/wishlist-page" element={<WishlistPage />} />
+      {/* <Route path="/mock" element={<Mockman />} /> */}
+    </Routes>
   );
-}
+};
 
-export default App;
+export default AllRoutes;
