@@ -20,7 +20,7 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(checkToken());
-    
+    // dispatch();
   }, []);
   return (
     <div className="App">

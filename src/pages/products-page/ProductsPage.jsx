@@ -5,12 +5,12 @@ import {
   Footer,
   BothCard,
   AsideFilter,
-  useCartManager,
+  // useCartManager,
   useFilterManger,
 } from "./importsAndExports";
 import { ResponsiveAside } from "../../components/ResponsiveAside/ResponsiveAside";
 const ProductsPage = () => {
-  const { dispatch, state } = useCartManager();
+  // const { dispatch, state } = useCartManager();
   const { filtered, filterManager } = useFilterManger();
   return (
     <div>
@@ -18,7 +18,7 @@ const ProductsPage = () => {
       <div className="empty"></div>
       <section className="hero-sec-grid">
         <AsideFilter />
-<ResponsiveAside/>
+        <ResponsiveAside />
         <main className="products-main">
           {filtered.sorted.map((item, i) => {
             return (

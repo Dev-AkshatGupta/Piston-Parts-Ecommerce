@@ -11,9 +11,9 @@ const initialState = {
   wishlist: [],
   cart: [],
 };
-const getCategories = createAsyncThunk("operations/getCategories");
+// const getCategories = createAsyncThunk("operations/getCategories");
 
-const getCartData = createAsyncThunk(
+export const getCartData = createAsyncThunk(
   "operations/getCartData",
   async function (_, { rejectWithValue }) {
     const encodedToken = localStorage.getItem("token");
@@ -30,7 +30,7 @@ const getCartData = createAsyncThunk(
   }
 );
 
-const addToCart = createAsyncThunk(
+export const addToCart = createAsyncThunk(
   "operations/addToCart",
   async function (product, { rejectWithValue }) {
     const encodedToken = localStorage.getItem("token");
@@ -53,7 +53,7 @@ const addToCart = createAsyncThunk(
   }
 );
 
-const deleteItemFromCart = createAsyncThunk(
+export const deleteItemFromCart = createAsyncThunk(
   "operations/deleteItemFromCart",
   async function (productId, { rejectWithValue }) {
     const encodedToken = localStorage.getItem("token");
@@ -70,7 +70,8 @@ const deleteItemFromCart = createAsyncThunk(
     }
   }
 );
-const increaseItemInCart = createAsyncThunk(
+
+export const increaseItemInCart = createAsyncThunk(
   "operations/increaseItemInCart",
   async function (productId, { rejectWithValue }) {
     const encodedToken = localStorage.getItem("token");
@@ -95,7 +96,8 @@ const increaseItemInCart = createAsyncThunk(
     }
   }
 );
-const decreaseItemInCart = createAsyncThunk(
+
+export const decreaseItemInCart = createAsyncThunk(
   "operations/decreaseItemInCart",
   async function (productId, { rejectWithValue }) {
     const encodedToken = localStorage.getItem("token");
@@ -120,7 +122,7 @@ const decreaseItemInCart = createAsyncThunk(
   }
 );
 
-const getWishlist = createAsyncThunk(
+export const getWishlist = createAsyncThunk(
   "operations/getWishlist",
   async function (_, { rejectWithValue }) {
     const encodedToken = localStorage.getItem("token");
@@ -136,7 +138,8 @@ const getWishlist = createAsyncThunk(
     }
   }
 );
-const postItemToWishlist = createAsyncThunk(
+
+export const postItemToWishlist = createAsyncThunk(
   "operations/postItemToWishlist",
   async function (item, { rejectWithValue }) {
     const encodedToken = localStorage.getItem("token");
@@ -160,7 +163,7 @@ const postItemToWishlist = createAsyncThunk(
   }
 );
 
-const deleteItemFromWishlist = createAsyncThunk(
+export const deleteItemFromWishlist = createAsyncThunk(
   "operations/deleteItemFromWishlist",
   async function (productId, { rejectWithValue }) {
     const encodedToken = localStorage.getItem("token");
@@ -178,6 +181,7 @@ const deleteItemFromWishlist = createAsyncThunk(
     }
   }
 );
+
 const operationsSlice = createSlice({
   name: "operations",
   initialState,

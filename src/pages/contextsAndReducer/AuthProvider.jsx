@@ -9,13 +9,13 @@ import {
   notifyInfo,
   notifyWarn,
 } from "../../Utilities";
-import { useCartManager } from "./CartManagementProvider";
+// import { useCartManager } from "./CartManagementProvider";
 const AuthContext = createContext();
 const useAuthorization = () => useContext(AuthContext);
 
 const AuthProvider = ({ children }) => {
   //   reducer function for handling signUp and login
-  const { dispatch } = useCartManager();
+  // const { dispatch } = useCartManager();
   const reducer = (state, action) => {
     switch (action.type) {
       case "SIGN_IN":
@@ -50,7 +50,9 @@ const AuthProvider = ({ children }) => {
   const [authState, authDispatch] = useReducer(reducer, {
     firstName: "",
     id: "",
-    token: "",
+    // token: "",
+    token:
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiJmMTBlZDIzYy1jZmZkLTRhNjEtYjNjNi1jMGNmMmQ0ZjUwYzEiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20ifQ.7fUggqmGULbsZMfiCal7_9oRx7ieeRIJeGriD-rb8Sw",
     wishlist: [],
     cart: [],
   });

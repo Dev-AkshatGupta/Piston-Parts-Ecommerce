@@ -1,11 +1,13 @@
 import "./horizontal-card.css";
 import { RiDeleteBin6Line } from "react-icons/ri";
-
 import {
-  useCartData,
-  useWishlistData,
-} from "../../../pages/authenticationPages/dataFetchingAndAuthentication";
-import { useCartManager } from "../../../pages/contextsAndReducer/CartManagementProvider";
+  deleteItemFromWishlist,
+  postItemToWishlist,
+  deleteItemFromCart,
+  increaseItemInCart,
+  decreaseItemInCart,
+} from "./../../../Redux/Reducers-Redux/operationsSlice";
+import { useDispatch,useSelector } from "react-redux";
 const HorizontalCard = ({
   image,
   alt,
@@ -14,13 +16,14 @@ const HorizontalCard = ({
   quantity,
   wholeItem,
 }) => {
-  const { deleteCartData, incrementProduct, decreaseProduct } = useCartData();
-  const { state } = useCartManager();
-  const { deleteWishlistData, postWishListData } = useWishlistData();
-  const addToWishlist = state.wishlist.findIndex(
+  const dispatch=useDispatch();
+ 
+
+  const wishlist=useSelector(state=>state.operations.wishlist);
+  const addToWishlist = wishlist.findIndex(
     (item) => item.name === wholeItem.name
   );
-
+ 
   return (
     <>
       <div className="horizontal-card text margin-1 ">
@@ -32,27 +35,31 @@ const HorizontalCard = ({
           <div className="horizontal-cardBtn">
             <button
               className="btn-icon-med padding-none background-inherit  "
-              onClick={() => deleteCartData(wholeItem._id)}
+             
+              onClick={() =>dispatch(deleteItemFromCart(wholeItem._id))}
             >
               <RiDeleteBin6Line />
             </button>
             <button
               className="btn "
-              onClick={() => incrementProduct(wholeItem._id)}
+         
+              onClick={() => dispatch(increaseItemInCart(wholeItem._id))}
             >
               +
             </button>
             <button
               disabled={quantity === 1 ? true : false}
               className="btn "
-              onClick={() => decreaseProduct(wholeItem._id)}
+              
+              onClick={() =>dispatch( decreaseItemInCart(wholeItem._id))}
             >
               -
             </button>
             {addToWishlist > -1 && (
               <button
                 className="btn "
-                onClick={() => deleteWishlistData(wholeItem._id)}
+         
+                onClick={() => dispatch(deleteItemFromWishlist(wholeItem._id))}
               >
                 <i className="fa fa-heart text-red" aria-hidden="true"></i>
               </button>
@@ -60,7 +67,8 @@ const HorizontalCard = ({
             {addToWishlist === -1 && (
               <button
                 className="btn "
-                onClick={() => postWishListData(wholeItem)}
+           
+                onClick={() => dispatch(postItemToWishlist(wholeItem))}
               >
                 <i className="fa fa-heart " aria-hidden="true"></i>
               </button>

@@ -1,10 +1,12 @@
 import "./WishlistCard.css";
 import { BsSuitHeartFill } from "react-icons/bs";
 import { TiTickOutline } from "react-icons/ti";
-import {
-  useWishlistData,
-  useCartData,
-} from "../../../pages/authenticationPages/dataFetchingAndAuthentication";
+// import {
+//   useWishlistData,
+//   useCartData,
+// } from "../../../pages/authenticationPages/dataFetchingAndAuthentication";
+import {deleteItemFromWishlist,addToCart} from "./../../../Redux/Reducers-Redux/operationsSlice";
+import { useDispatch } from "react-redux";
 const WishlistCard = ({
   image,
   manufacturerName,
@@ -14,14 +16,15 @@ const WishlistCard = ({
   id,
   obj,
 }) => {
-  const { deleteWishlistData } = useWishlistData();
-  const { postCartData } = useCartData();
+  // const { deleteWishlistData } = useWishlistData();
+  // const { postCartData } = useCartData();
+  const dispatch=useDispatch();
   return (
     <div className=" card-vertical border-r-3  padding-2 margin-top-1 ">
       <div className="card-product-image position-relative">
         <img src={image} className="border-r-3 " />
         <div className="go-like active-liked">
-          <BsSuitHeartFill onClick={() => deleteWishlistData(id)} />
+          <BsSuitHeartFill onClick={() => dispatch(deleteItemFromWishlist(id))} />
         </div>
       </div>
       <div className="card-vertical-text">
@@ -45,8 +48,10 @@ const WishlistCard = ({
         <button
           className="btn btn-outline-pri margin-1"
           onClick={() => {
-            postCartData(obj);
-            deleteWishlistData(id);
+            // postCartData(obj);
+            // deleteWishlistData(id);
+            dispatch(addToCart(obj));
+            dispatch(deleteItemFromWishlist(id));
           }}
         >
           Add to Cart

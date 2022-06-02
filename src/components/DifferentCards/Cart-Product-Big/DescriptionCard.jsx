@@ -28,14 +28,20 @@ function CardProductBig({
 }) {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.operations.cart);
-  const wishlist = useSelector((state) => state.operation.wishlist);
-  const { postCartData } = useCartData();
-  const { postWishListData, deleteWishlistData } = useWishlistData();
-  const { state: cartsState } = useCartManager();
-  const addToWishlist = cartsState.wishlist.findIndex(
+  const wishlist = useSelector((state) => state.operations.wishlist);
+  // const { postCartData } = useCartData();
+  // const { postWishListData, deleteWishlistData } = useWishlistData();
+  // const { state: cartsState } = useCartManager();
+  // const addToWishlist = cartsState.wishlist.findIndex(
+  //   (item) => item.name === wholeItem.name
+  // );
+  const addToWishlist = wishlist.findIndex(
     (item) => item.name === wholeItem.name
   );
-  const cartItemsInState = cartsState.cart.findIndex(
+  // const cartItemsInState = cartsState.cart.findIndex(
+  //   (item) => item.name === wholeItem.name
+  // );
+  const cartItemsInState = cart.findIndex(
     (item) => item.name === wholeItem.name
   );
   const {
@@ -62,7 +68,8 @@ function CardProductBig({
                 <div className="go-like active-liked ">
                   <BsSuitHeartFill
                     onClick={() => {
-                      deleteWishlistData(id);
+                      // deleteWishlistData(id);
+                      dispatch(deleteItemFromWishlist(id));
                     }}
                   />
                 </div>
@@ -71,7 +78,8 @@ function CardProductBig({
                 <div className="go-like ">
                   <BsSuitHeartFill
                     onClick={(e) => {
-                      postWishListData(wholeItem);
+                      // postWishListData(wholeItem);
+                      dispatch(postItemToWishlist);
                     }}
                   />
                 </div>
@@ -138,7 +146,8 @@ function CardProductBig({
                       <button
                         className="add-to-cart btn btn-outline text"
                         onClick={(e) => {
-                          postCartData(wholeItem);
+                          // postCartData(wholeItem);
+                          dispatch(addToCart(wholeItem));
                         }}
                       >
                         Add to cart

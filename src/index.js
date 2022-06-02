@@ -17,11 +17,11 @@ ReactDOM.render(
     <Provider store={store}>
       <Router>
         <FilterDataProvider>
-          <CartManagementProvider>
+          {/* <CartManagementProvider> */}
             <AuthProvider>
               <App />
             </AuthProvider>
-          </CartManagementProvider>
+          {/* </CartManagementProvider> */}
         </FilterDataProvider>
       </Router>
     </Provider>
