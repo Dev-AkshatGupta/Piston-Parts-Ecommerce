@@ -9,13 +9,13 @@ import {
   notifyInfo,
   notifyWarn,
 } from "../../Utilities";
-// import { useCartManager } from "./CartManagementProvider";
+
 const AuthContext = createContext();
 const useAuthorization = () => useContext(AuthContext);
 
 const AuthProvider = ({ children }) => {
   //   reducer function for handling signUp and login
-  // const { dispatch } = useCartManager();
+
   const reducer = (state, action) => {
     switch (action.type) {
       case "SIGN_IN":

@@ -4,7 +4,6 @@ import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter as Router } from "react-router-dom";
-import { CartManagementProvider } from "./pages/contextsAndReducer/CartManagementProvider";
 import { FilterDataProvider } from "./pages/contextsAndReducer/FilterDataProvider";
 import { AuthProvider } from "./pages/contextsAndReducer/AuthProvider";
 import { Provider } from "react-redux";
@@ -17,11 +16,9 @@ ReactDOM.render(
     <Provider store={store}>
       <Router>
         <FilterDataProvider>
-          {/* <CartManagementProvider> */}
-            <AuthProvider>
-              <App />
-            </AuthProvider>
-          {/* </CartManagementProvider> */}
+          <AuthProvider>
+            <App />
+          </AuthProvider>
         </FilterDataProvider>
       </Router>
     </Provider>

@@ -125,7 +125,6 @@ function NavBar({ menuBtn = false }) {
             </li>
 
             <li className="nav-bottom__list-item position-relative">
-              {/* <Link */}
               <div
                 to="/logIn-Page"
                 className="btn-icon-med nav-bottom-icons"
