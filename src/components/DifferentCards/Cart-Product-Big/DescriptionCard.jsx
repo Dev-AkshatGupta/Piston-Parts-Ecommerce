@@ -1,7 +1,5 @@
-import { useState } from "react";
 import "./Cart-Product-Big.css";
-import { BsSuitHeart, BsSuitHeartFill } from "react-icons/bs";
-import { TiTickOutline } from "react-icons/ti";
+import { BsSuitHeartFill } from "react-icons/bs";
 import { useCartManager } from "../../../pages/contextsAndReducer/CartManagementProvider";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthorization } from "../../../pages/contextsAndReducer/AuthProvider";
@@ -10,7 +8,12 @@ import {
   useCartData,
   useWishlistData,
 } from "../../../pages/authenticationPages/dataFetchingAndAuthentication";
-
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addToCart,
+  deleteItemFromWishlist,
+  postItemToWishlist,
+} from "./../../../Redux/Reducers-Redux/operationsSlice";
 function CardProductBig({
   image,
   manufacturerName,
@@ -23,6 +26,9 @@ function CardProductBig({
   wholeItem,
   rating,
 }) {
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.operations.cart);
+  const wishlist = useSelector((state) => state.operation.wishlist);
   const { postCartData } = useCartData();
   const { postWishListData, deleteWishlistData } = useWishlistData();
   const { state: cartsState } = useCartManager();
@@ -35,6 +41,7 @@ function CardProductBig({
   const {
     authState: { token },
   } = useAuthorization();
+
   const navigate = useNavigate();
   return (
     <>
