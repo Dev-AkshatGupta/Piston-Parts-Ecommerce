@@ -1,13 +1,8 @@
 import "./Cart-Product-Big.css";
 import { BsSuitHeartFill } from "react-icons/bs";
-import { useCartManager } from "../../../pages/contextsAndReducer/CartManagementProvider";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthorization } from "../../../pages/contextsAndReducer/AuthProvider";
 import { Rating } from "../../../components/Rating/Rating";
-import {
-  useCartData,
-  useWishlistData,
-} from "../../../pages/authenticationPages/dataFetchingAndAuthentication";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addToCart,
@@ -29,18 +24,11 @@ function CardProductBig({
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.operations.cart);
   const wishlist = useSelector((state) => state.operations.wishlist);
-  // const { postCartData } = useCartData();
-  // const { postWishListData, deleteWishlistData } = useWishlistData();
-  // const { state: cartsState } = useCartManager();
-  // const addToWishlist = cartsState.wishlist.findIndex(
-  //   (item) => item.name === wholeItem.name
-  // );
+
   const addToWishlist = wishlist.findIndex(
     (item) => item.name === wholeItem.name
   );
-  // const cartItemsInState = cartsState.cart.findIndex(
-  //   (item) => item.name === wholeItem.name
-  // );
+
   const cartItemsInState = cart.findIndex(
     (item) => item.name === wholeItem.name
   );
@@ -68,7 +56,6 @@ function CardProductBig({
                 <div className="go-like active-liked ">
                   <BsSuitHeartFill
                     onClick={() => {
-                      // deleteWishlistData(id);
                       dispatch(deleteItemFromWishlist(id));
                     }}
                   />
@@ -77,8 +64,7 @@ function CardProductBig({
               {addToWishlist === -1 && token ? (
                 <div className="go-like ">
                   <BsSuitHeartFill
-                    onClick={(e) => {
-                      // postWishListData(wholeItem);
+                    onClick={() => {
                       dispatch(postItemToWishlist);
                     }}
                   />
@@ -87,7 +73,7 @@ function CardProductBig({
                 addToWishlist === -1 && (
                   <div className="go-like ">
                     <BsSuitHeartFill
-                      onClick={(e) => {
+                      onClick={() => {
                         navigate("/logIn-page");
                       }}
                     />
@@ -145,8 +131,7 @@ function CardProductBig({
                     {cartItemsInState === -1 && token ? (
                       <button
                         className="add-to-cart btn btn-outline text"
-                        onClick={(e) => {
-                          // postCartData(wholeItem);
+                        onClick={() => {
                           dispatch(addToCart(wholeItem));
                         }}
                       >

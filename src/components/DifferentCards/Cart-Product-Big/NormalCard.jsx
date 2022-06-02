@@ -1,22 +1,16 @@
 import "./Cart-Product-Big.css";
-import {useState} from "react";
-import {  BsSuitHeartFill } from "react-icons/bs";
+import { BsSuitHeartFill } from "react-icons/bs";
 import { TiTickOutline } from "react-icons/ti";
-import { useCartManager } from "../../../pages/contextsAndReducer/CartManagementProvider";
 import { useAuthorization } from "../../../pages/contextsAndReducer/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
-import {
-  useCartData,
-  useWishlistData,
-} from "../../../pages/authenticationPages/dataFetchingAndAuthentication";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addToCart,
   deleteItemFromWishlist,
   postItemToWishlist,
 } from "./../../../Redux/Reducers-Redux/operationsSlice";
-import { useEffect } from "react";
-// Small product CArd
+
+// Small product Card
 const Card = ({
   image,
   manufacturerName,
@@ -28,31 +22,19 @@ const Card = ({
   id,
   wholeItem,
 }) => {
-  // const { postCartData } = useCartData();
-  // const { postWishListData, deleteWishlistData } = useWishlistData();
-  // const { state: cartsState } = useCartManager();
-  // const addToWishlist = cartsState.wishlist.findIndex(
-  //   (item) => item.name === wholeItem.name
-  // );
-  // const cartItemsInState = cartsState.cart.findIndex(
-  //   (item) => item.name === wholeItem.name
-  // );
-    const dispatch = useDispatch();
-    const cart = useSelector((state) => state.operations.cart);
-    const wishlist = useSelector((state) => state.operations.wishlist);
-    const addToWishlist = wishlist.findIndex(
-      (item) => item.name === wholeItem.name
-    );
-    const cartItemsInState = cart.findIndex(
-      (item) => item.name === wholeItem.name
-    );
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.operations.cart);
+  const wishlist = useSelector((state) => state.operations.wishlist);
+  const addToWishlist = wishlist.findIndex(
+    (item) => item.name === wholeItem.name
+  );
+  const cartItemsInState = cart.findIndex(
+    (item) => item.name === wholeItem.name
+  );
   const {
     authState: { token },
   } = useAuthorization();
-  // const [token,setToken]=useState("");
-  // useEffect(()=>{
-  //   setToken(localStorage.getItem("token"));
-  // },[])
+
   const navigate = useNavigate();
   return (
     <div className=" card-vertical border-r-3  padding-2 margin-top-1 height-53R">
@@ -63,7 +45,6 @@ const Card = ({
           <div className="go-like active-liked ">
             <BsSuitHeartFill
               onClick={() => {
-                // deleteWishlistData(id);
                 dispatch(deleteItemFromWishlist(id));
               }}
             />
@@ -73,7 +54,6 @@ const Card = ({
           <div className="go-like ">
             <BsSuitHeartFill
               onClick={(e) => {
-                // postWishListData(wholeItem);
                 dispatch(postItemToWishlist(wholeItem));
               }}
             />
@@ -82,7 +62,7 @@ const Card = ({
           addToWishlist === -1 && (
             <div className="go-like ">
               <BsSuitHeartFill
-                onClick={(e) => {
+                onClick={() => {
                   navigate("/logIn-page");
                 }}
               />
@@ -106,8 +86,7 @@ const Card = ({
         {cartItemsInState === -1 && token ? (
           <button
             className="btn btn-outline-pri margin-1"
-            onClick={(e) => {
-              // postCartData(wholeItem);
+            onClick={() => {
               dispatch(addToCart(wholeItem));
             }}
           >
