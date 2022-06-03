@@ -9,7 +9,6 @@ import {
   deleteItemFromWishlist,
   postItemToWishlist,
 } from "./../../../Redux/Reducers-Redux/operationsSlice";
-
 // Small product Card
 const Card = ({
   image,
@@ -71,7 +70,11 @@ const Card = ({
         )}
       </div>
       <div className="card-vertical-text">
-        <h3 className="text-center margin-bottom-0">{name}</h3>
+        <h3 className="text-center margin-bottom-0">
+          <Link className="text-black " to={`/singleProduct-page/${id}`}>
+            {name}
+          </Link>
+        </h3>
         <p className="sub-text margin-bottom-5 margin-top-0">
           {manufacturerName}
         </p>

@@ -96,16 +96,14 @@ function CardProductBig({
                 </div>
                 <div className="product-right">
                   <div className="product-description text">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Eum, iusto in. Aliquam voluptas, libero distinctio iure
-                    culpa, doloribus laborum deserunt nobis aperiam corrupti
-                    adipisci magni ipsam cumque maiores ab officia.
+                   
+                    {wholeItem?.description}
                   </div>
                   <div className="product-available text">
                     {availability && <>In stock.</>}
                     {!availability && <>Out of stock.</>}
                     <span className="product-extended">
-                      <span className="link-btn">Buy Extended Warranty</span>
+                      <Link to={`/singleProduct-page/${id}`} className="link-btn">View Product</Link>
                     </span>
                   </div>
                   <div className="product-rating text">

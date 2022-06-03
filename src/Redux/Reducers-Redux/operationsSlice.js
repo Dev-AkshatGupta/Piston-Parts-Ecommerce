@@ -10,8 +10,18 @@ import {
 const initialState = {
   wishlist: [],
   cart: [],
+  // used for the single product page
+  currentProduct:{}
 };
 // const getCategories = createAsyncThunk("operations/getCategories");
+export const getAProduct=createAsyncThunk("operations/getAProduct",async(id,{rejectWithValue})=>{
+ try {
+   const { data } = await axios.get(`/api/products/${id}`);  
+   return data;
+ } catch (error) {
+   console.log(error);
+ }
+})
 
 export const getCartData = createAsyncThunk(
   "operations/getCartData",
@@ -188,6 +198,11 @@ const operationsSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder
+      .addCase(getAProduct.pending, (state, action) => {})
+      .addCase(getAProduct.fulfilled, (state, action) => {
+        state.currentProduct = action.payload.product;
+      })
+      .addCase(getAProduct.rejected, (state, action) => {})
       .addCase(getCartData.pending, (state, action) => {})
       .addCase(getCartData.fulfilled, (state, action) => {
         state.cart = action.payload.cart;
