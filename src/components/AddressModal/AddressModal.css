@@ -1,0 +1,35 @@
+.address-modal__blanket {
+    background-color: rgba(30, 30, 30, 0.9);
+    display: block;
+    height: 100vh;
+    position: fixed;
+    overflow-y: scroll;
+    top: 0;
+    width: 100vw;
+    z-index: 20;
+}
+
+.address-modal__container-popup {
+    height: 100%;
+    width: auto;
+    display: table;
+    margin: auto;
+    position: static;
+}
+
+.address-modal__container-vertical {
+    height: 100%;
+    vertical-align: middle;
+    display: table-cell;
+}
+
+.address-modal__container-wrapper {
+    background-color: white;
+    background-color: white;
+    display: block;
+    padding: 2rem;
+    width:30rem;
+}
+.address-modal__container-wrapper>input{
+    width: 100%;
+}

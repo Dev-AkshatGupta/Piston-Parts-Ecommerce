@@ -1,0 +1,16 @@
+.profile-nav{
+    width: 30rem;
+    /* border */
+}
+.profile-nav___link{
+    text-decoration: none;
+    width: 50%;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    font-size: 2rem;
+    /* border:solid var(--ACCENT-COLOR); */
+    color:var(--GREY);
+}
+/* .profile-nav___link+.profile-nav___link{
+   padding-right: 4.2rem; 
+} */

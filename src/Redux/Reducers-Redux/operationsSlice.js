@@ -11,17 +11,25 @@ const initialState = {
   wishlist: [],
   cart: [],
   // used for the single product page
-  currentProduct:{}
+  currentProduct: {},
+  // for the address
+  address: [],
+  // isAddressModalOpen: false,
+  isAddressModalOpen: true,
+  isAddressEditModalOpen: false,
 };
-// const getCategories = createAsyncThunk("operations/getCategories");
-export const getAProduct=createAsyncThunk("operations/getAProduct",async(id,{rejectWithValue})=>{
- try {
-   const { data } = await axios.get(`/api/products/${id}`);  
-   return data;
- } catch (error) {
-   console.log(error);
- }
-})
+
+export const getAProduct = createAsyncThunk(
+  "operations/getAProduct",
+  async (id, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.get(`/api/products/${id}`);
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
 
 export const getCartData = createAsyncThunk(
   "operations/getCartData",
@@ -37,6 +45,57 @@ export const getCartData = createAsyncThunk(
     } catch (error) {
       console.log(error);
     }
+  }
+);
+
+export const getAllAddress = createAsyncThunk(
+  "operations/getAllAddress",
+  async (_, { rejectWithValue }) => {
+    try {
+      // console.log(details);
+    } catch (error) {}
+  }
+);
+
+export const addAddress = createAsyncThunk(
+  "operations/addAddress",
+  async (details, { rejectWithValue }) => {
+    const {address}=details;
+    console.log(address);
+    try {
+       const encodedToken = localStorage.getItem("token");
+      const { data } = await axios.post(
+        "api/user/address",
+        {
+          address,
+        },
+        {
+          headers: {
+            authorization: encodedToken,
+          },
+        }
+      );
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+      notifyError(error);
+    }
+  }
+);
+
+export const deleteAddress = createAsyncThunk(
+  "operations/deleteAddress",
+  async (state, { rejectWithValue }) => {
+    try {
+    } catch (error) {}
+  }
+);
+
+export const editAddress = createAsyncThunk(
+  "operations/editAddress",
+  async (state, { rejectWithValue }) => {
+    try {
+    } catch (error) {}
   }
 );
 
@@ -195,7 +254,14 @@ export const deleteItemFromWishlist = createAsyncThunk(
 const operationsSlice = createSlice({
   name: "operations",
   initialState,
-  reducers: {},
+  reducers: {
+    openAddressModal(state) {
+      state.isAddressModalOpen = !state.isAddressModalOpen;
+    },
+    openAddressEditModal(state) {
+      state.isAddressEditModalOpen = !state.isAddressEditModalOpen;
+    },
+  },
   extraReducers(builder) {
     builder
       .addCase(getAProduct.pending, (state, action) => {})
@@ -242,8 +308,15 @@ const operationsSlice = createSlice({
       .addCase(deleteItemFromWishlist.fulfilled, (state, action) => {
         state.wishlist = action.payload.wishlist;
       })
-      .addCase(deleteItemFromWishlist.rejected, (state, action) => {});
+      .addCase(deleteItemFromWishlist.rejected, (state, action) => {})
+      .addCase(getAllAddress.pending, (state, action) => {})
+      .addCase(getAllAddress.fulfilled, (state, action) => {
+        // state.wishlist = action.payload.wishlist;
+        // console.log(action.payload);
+      })
+      .addCase(getAllAddress.rejected, (state, action) => {});
   },
 });
-// export const {}=operationsSlice.actions;
+export const { openAddressModal, openAddressEditModal } =
+  operationsSlice.actions;
 export default operationsSlice.reducer;

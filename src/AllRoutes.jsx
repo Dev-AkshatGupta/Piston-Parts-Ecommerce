@@ -8,6 +8,7 @@ import { SignUpPage } from "./pages/authenticationPages/SignUpPage";
 import { CartPage } from "./pages/cart-page.jsx/CartPage";
 import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
 import { SingleProductPage } from "pages/SingleProductPage/SingleProductPage";
+import {CheckOutPage} from "pages/CheckOutPage/CheckOutPage";
 const AllRoutes = () => {
   return (
     <Routes>
@@ -20,6 +21,7 @@ const AllRoutes = () => {
       <Route path="/profile-page" element={<ProfilePage />} />
       <Route path="/wishlist-page" element={<WishlistPage />} />
       <Route path="/singleProduct-page/:id" element={<SingleProductPage />} />
+      <Route path="/checkout-page" element={<CheckOutPage />} />
     </Routes>
   );
 };
