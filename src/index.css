@@ -144,6 +144,9 @@ html::-webkit-scrollbar-track {
 .margin-top-1 {
   margin-top: 1rem;
 }
+.margin-top-2 {
+  margin-top: 2rem;
+}
 
 .margin-bottom-0 {
   margin-bottom: 0;
@@ -203,7 +206,10 @@ html::-webkit-scrollbar-track {
 .text-line-through {
   text-decoration: line-through;
   text-decoration-thickness: 2px;
+}
 
+.text-center{
+text-align: center;
 }
 
 .font-weight-900 {
@@ -242,7 +248,9 @@ html::-webkit-scrollbar-track {
 .width-70 {
   width: 70%;
 }
-
+.width-100{
+  width:100%
+}
 
 .flex-wrap {
   flex-wrap: wrap;
