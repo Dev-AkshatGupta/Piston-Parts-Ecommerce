@@ -1,6 +1,7 @@
 import { v4 as uuid } from "uuid";
 import { Response } from "miragejs";
 import { formatDate } from "../utils/authUtils";
+import jwt_decode from "jwt-decode";
 const sign = require("jwt-encode");
 /**
  * All the routes related to Auth are present here.
@@ -14,7 +15,9 @@ const sign = require("jwt-encode");
  * */
 
 export const signupHandler = function (schema, request) {
-  const { email, password, ...rest } = JSON.parse(request.requestBody);
+  const { firstName, lastName, email, password, ...rest } = JSON.parse(
+    request.requestBody
+  );
   try {
     // check if email already exists
     const foundUser = schema.users.findBy({ email });
@@ -32,6 +35,8 @@ export const signupHandler = function (schema, request) {
       _id,
       email,
       password,
+      firstName,
+      lastName,
       createdAt: formatDate(),
       updatedAt: formatDate(),
       ...rest,
@@ -85,6 +90,41 @@ export const loginHandler = function (schema, request) {
           "The credentials you entered are invalid. Unauthorized access error.",
         ],
       }
+    );
+  } catch (error) {
+    return new Response(
+      500,
+      {},
+      {
+        error,
+      }
+    );
+  }
+};
+
+/**
+ * This handler handles user verification.
+ * send POST Request at /api/auth/verify
+ * body contains {encodedToken}
+ * */
+
+export const verifyUser = function (schema, request) {
+  const { encodedToken } = JSON.parse(request.requestBody);
+  const decodedToken = jwt_decode(
+    encodedToken,
+    process.env.REACT_APP_JWT_SECRET
+  );
+  try {
+    if (decodedToken) {
+      const user = this.db.users.findBy({ username: decodedToken.username });
+      if (user) {
+        return new Response(200, {}, { user });
+      }
+    }
+    return new Response(
+      401,
+      {},
+      { errors: ["The token is invalid. Unauthorized access error."] }
     );
   } catch (error) {
     return new Response(

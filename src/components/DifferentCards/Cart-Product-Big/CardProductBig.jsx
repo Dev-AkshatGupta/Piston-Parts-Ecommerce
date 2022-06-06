@@ -1,13 +1,5 @@
 import { useState } from "react";
 import "./Cart-Product-Big.css";
-import { BsSuitHeart, BsSuitHeartFill } from "react-icons/bs";
-import { TiTickOutline } from "react-icons/ti";
-import { useCartManager } from "../../../pages/contextsAndReducer/CartManagementProvider";
-import { Link } from "react-router-dom";
-import {
-  useCartData,
-  useWishlistData,
-} from "../../../pages/authenticationPages/dataFetchingAndAuthentication";
 import { CardProductBig } from "./DescriptionCard";
 import { Card } from "./NormalCard";
 

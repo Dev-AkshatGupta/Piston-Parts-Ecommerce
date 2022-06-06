@@ -1,0 +1,18 @@
+.profile-address{
+    width: 30rem;
+    border-top: 2px var(--ACCENT-COLOR) solid;
+       box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.profile-address__heading{
+border-bottom: solid 2px var(--ACCENT-COLOR) ;
+padding: 1rem;
+width: fit-content;
+margin-left: 5px;
+color: var(--GREY);
+padding-bottom:1px ;
+}
+
+.profile-address__address-block{
+    padding-left: 1rem;
+}

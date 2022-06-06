@@ -23,9 +23,17 @@ function ResponsiveAside() {
             <input
               type="radio"
               name="Price"
-              onChange={() => filterManager({ type: "PRICE_HIGH_TO_LOW" })}
-              checked={filtered.priceSort === "PRICE_HIGH_TO_LOW"}
+              onChange={() =>
+                filterManager({
+                  type: "PRICE_HIGH_TO_LOW",
+                  payload: "PRICE_HIGH_TO_LOW",
+                })
+              }
+              // checked={filtered.priceSort == "PRICE_HIGH_TO_LOW"}
+              checked={true}
             />
+            {console.log(filtered.priceSort === "PRICE_HIGH_TO_LOW")}
+
             <label htmlFor="input" className="sub-text">
               Price High to low
             </label>
@@ -37,6 +45,7 @@ function ResponsiveAside() {
               onChange={() => filterManager({ type: "PRICE_LOW_TO_HIGH" })}
               checked={filtered.priceSort === "PRICE_LOW_TO_HIGH"}
             />
+            {console.log(filtered.priceSort === "PRICE_LOW_TO_HIGH")}
             <label htmlFor="input" className="sub-text">
               Price Low to High
             </label>

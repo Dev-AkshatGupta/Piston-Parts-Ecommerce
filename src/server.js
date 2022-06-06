@@ -2,6 +2,7 @@ import { Server, Model, RestSerializer } from "miragejs";
 import {
   loginHandler,
   signupHandler,
+  verifyUser,
 } from "./backend/controllers/AuthController";
 import {
   addItemToCartHandler,
@@ -25,7 +26,12 @@ import {
 import { categories } from "./backend/db/categories";
 import { products } from "./backend/db/products";
 import { users } from "./backend/db/users";
-
+import {
+  getAddressHandler,
+  addAddressHandler,
+  removeAddressHandler,
+  updateAddressHandler,
+} from "./backend/controllers/AddressController";
 export function makeServer({ environment = "development" } = {}) {
   return new Server({
     serializers: {
@@ -60,6 +66,7 @@ export function makeServer({ environment = "development" } = {}) {
       // auth routes (public)
       this.post("/auth/signup", signupHandler.bind(this));
       this.post("/auth/login", loginHandler.bind(this));
+      this.post("/auth/verify", verifyUser.bind(this));
 
       // products routes (public)
       this.get("/products", getAllProductsHandler.bind(this));
@@ -85,6 +92,11 @@ export function makeServer({ environment = "development" } = {}) {
         "/user/wishlist/:productId",
         removeItemFromWishlistHandler.bind(this)
       );
+      // address routes (private)
+      this.get("/user/address", getAddressHandler.bind(this));
+      this.post("/user/address", addAddressHandler.bind(this));
+      this.post("/user/address/:addressId", updateAddressHandler.bind(this));
+      this.delete("/user/address/:addressId", removeAddressHandler.bind(this));
     },
   });
 }

@@ -3,20 +3,19 @@ import "./wishlist.css";
 import {
   NavBar,
   Footer,
-  useCartManager,
   WishlistCard,
 } from "./importsAndExports";
 import { Link } from "react-router-dom";
-
+import {useSelector} from "react-redux";
 function WishlistPage() {
-  const { state } = useCartManager();
+  const wishlist=useSelector(state=>state.operations.wishlist);
   return (
     <div>
       
       <NavBar />
       <div className="banner-upper-empty"></div>
       <div className="products-main">
-        {state.wishlist.length < 1 && (
+        {wishlist?.length < 1 && (
           <div className="height-100vh flex-center">
             <div className="flex-center ">
               <span className="text-3">There is nothing in the Wishlist</span>
@@ -29,8 +28,8 @@ function WishlistPage() {
             </div>
           </div>
         )}
-        {state.wishlist.length > 0 &&
-          state.wishlist.map((item) => (
+        {wishlist?.length > 0 &&
+        wishlist.map((item) => (
             <WishlistCard
               image={item.image.src}
               key={item._id}

@@ -1,18 +1,18 @@
 import "./navBar.css";
 import React from "react";
-import { useAuthorization } from "../../pages/contextsAndReducer/AuthProvider";
 import { NavLink } from "react-router-dom";
 import { useNavigate, Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function DropDownBox() {
-  const { authState } = useAuthorization();
   const navigate = useNavigate();
   function LogOut() {
     localStorage.clear();
   }
+  const id = useSelector((state) => state.auth?.currentUser._id);
   return (
     <div className="DropDown">
-      {!authState.token ? (
+      {!id ? (
         <>
           <div>
             <NavLink

@@ -1,16 +1,13 @@
-import { useState } from "react";
 import "./Cart-Product-Big.css";
-import { BsSuitHeart, BsSuitHeartFill } from "react-icons/bs";
-import { TiTickOutline } from "react-icons/ti";
-import { useCartManager } from "../../../pages/contextsAndReducer/CartManagementProvider";
-import { Link, useNavigate } from "react-router-dom";
-import { useAuthorization } from "../../../pages/contextsAndReducer/AuthProvider";
+import { BsSuitHeartFill } from "react-icons/bs";
+import { Link, useNavigate,useLocation } from "react-router-dom";
 import { Rating } from "../../../components/Rating/Rating";
+import { useDispatch, useSelector } from "react-redux";
 import {
-  useCartData,
-  useWishlistData,
-} from "../../../pages/authenticationPages/dataFetchingAndAuthentication";
-
+  addToCart,
+  deleteItemFromWishlist,
+  postItemToWishlist,
+} from "./../../../Redux/Reducers-Redux/operationsSlice";
 function CardProductBig({
   image,
   manufacturerName,
@@ -23,19 +20,44 @@ function CardProductBig({
   wholeItem,
   rating,
 }) {
-  const { postCartData } = useCartData();
-  const { postWishListData, deleteWishlistData } = useWishlistData();
-  const { state: cartsState } = useCartManager();
-  const addToWishlist = cartsState.wishlist.findIndex(
-    (item) => item.name === wholeItem.name
-  );
-  const cartItemsInState = cartsState.cart.findIndex(
-    (item) => item.name === wholeItem.name
-  );
-  const {
-    authState: { token },
-  } = useAuthorization();
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
+   const navigate = useNavigate();
+  const currentPath = useLocation();
+  const cart = useSelector((state) => state.operations.cart);
+  const wishlist = useSelector((state) => state.operations.wishlist);
+  const isItemInWishlist =
+    wishlist.findIndex((item) => item.name === wholeItem.name) === -1
+      ? false
+      : true;
+  const isItemInCart =
+    cart.findIndex((item) => item.name === wholeItem.name) === -1
+      ? false
+      : true;
+
+  const userId = useSelector((state) => state.auth.currentUser?._id);
+  const handleAddToCart = () => {
+    userId
+      ? isItemInCart
+        ? navigate("/cart-page")
+        : dispatch(addToCart(wholeItem))
+      : navigate("/logIn-Page", {
+          state: { from: currentPath },
+          replace: true,
+        });
+  };
+  const handleWishlist = () => {
+    userId
+      ? isItemInWishlist
+        ? dispatch(deleteItemFromWishlist(id))
+        : dispatch(postItemToWishlist(wholeItem))
+      : navigate("/logIn-Page", {
+          state: { from: currentPath },
+          replace: true,
+        });
+  };
+  
+
+ 
   return (
     <>
       <div className="lightbox-blanket">
@@ -51,33 +73,22 @@ function CardProductBig({
                 ></i>
               </div>
 
-              {addToWishlist > -1 && (
+              {isItemInWishlist ? (
                 <div className="go-like active-liked ">
                   <BsSuitHeartFill
                     onClick={() => {
-                      deleteWishlistData(id);
-                    }}
-                  />
-                </div>
-              )}
-              {addToWishlist === -1 && token ? (
-                <div className="go-like ">
-                  <BsSuitHeartFill
-                    onClick={(e) => {
-                      postWishListData(wholeItem);
+                      handleWishlist();
                     }}
                   />
                 </div>
               ) : (
-                addToWishlist === -1 && (
-                  <div className="go-like ">
-                    <BsSuitHeartFill
-                      onClick={(e) => {
-                        navigate("/logIn-page");
-                      }}
-                    />
-                  </div>
-                )
+                <div className="go-like ">
+                  <BsSuitHeartFill
+                    onClick={(e) => {
+                      handleWishlist();
+                    }}
+                  />
+                </div>
               )}
               <div className="product-details">
                 <div className="product-left">
@@ -95,16 +106,18 @@ function CardProductBig({
                 </div>
                 <div className="product-right">
                   <div className="product-description text">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Eum, iusto in. Aliquam voluptas, libero distinctio iure
-                    culpa, doloribus laborum deserunt nobis aperiam corrupti
-                    adipisci magni ipsam cumque maiores ab officia.
+                    {wholeItem?.description}
                   </div>
                   <div className="product-available text">
                     {availability && <>In stock.</>}
                     {!availability && <>Out of stock.</>}
                     <span className="product-extended">
-                      <span className="link-btn">Buy Extended Warranty</span>
+                      <Link
+                        to={`/singleProduct-page/${id}`}
+                        className="link-btn"
+                      >
+                        View Product
+                      </Link>
                     </span>
                   </div>
                   <div className="product-rating text">
@@ -127,33 +140,14 @@ function CardProductBig({
                     </div>
                   </div>
                   <div className="product-checkout-actions">
-                    {cartItemsInState === -1 && token ? (
-                      <button
-                        className="add-to-cart btn btn-outline text"
-                        onClick={(e) => {
-                          postCartData(wholeItem);
-                        }}
-                      >
-                        Add to cart
-                      </button>
-                    ) : (
-                      cartItemsInState === -1 && (
-                        <Link
-                          to="/logIn-page"
-                          className="add-to-cart btn btn-outline text"
-                        >
-                          Add to cart
-                        </Link>
-                      )
-                    )}
-                    {cartItemsInState > -1 && (
-                      <Link
-                        to="/cart-page"
-                        className="add-to-cart btn btn-outline text"
-                      >
-                        Go to Cart
-                      </Link>
-                    )}
+                    <button
+                      className="btn btn-outline-pri "
+                      onClick={() => {
+                        handleAddToCart();
+                      }}
+                    >
+                      {isItemInCart ? "Go to Cart" : "Add to Cart"}
+                    </button>
                   </div>
                 </div>
               </div>

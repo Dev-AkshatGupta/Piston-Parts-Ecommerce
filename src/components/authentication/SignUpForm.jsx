@@ -1,28 +1,33 @@
 import React, { useState } from "react";
 import "./authentication.css";
 import { Link } from "react-router-dom";
-
-import { useUserDetails } from "../../pages/authenticationPages/dataFetchingAndAuthentication";
+import { useDispatch } from "react-redux";
+import { notifyError } from "./../../Utilities/Notifications";
+import { signUp } from "Redux/Reducers-Redux/authSlice";
 function SignUpForm() {
- 
-  const { signUpHandler } = useUserDetails();
+  const dispatch = useDispatch();
   const [details, setDetails] = useState({
     firstName: "",
     lastName: "",
     email: "",
     password: "",
   });
+   const passwordRegEx =
+     /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
+  function validateDetails(details) {
+    if (details.email === "" || details.password === "" || details.firstName===""||details.lastName==="") {
+      notifyError("Fill all the fields");
+      return false;
+    } else if (passwordRegEx.test(details.password)) {
+      return passwordRegEx.test(details.password);
+    } else {
+      notifyError("Please fill password correctly");
+      return false;
+    }
+  }
   function clickHandler(e) {
-    //  to prevent initial refreshing of the page
     e.preventDefault();
-    signUpHandler(
-      details.firstName,
-      details.lastName,
-      details.email,
-      details.password
-    );
- 
- 
+    if(validateDetails(details))dispatch(signUp(details));
   }
   const [viewPassword, setViewPassword] = useState(false);
   return (

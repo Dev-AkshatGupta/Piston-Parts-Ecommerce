@@ -2,13 +2,11 @@ import React from "react";
 import "./navBar.css";
 import { CgProfile } from "react-icons/cg";
 import { ImMenu } from "react-icons/im";
-import { FaSun, FaMoon } from "react-icons/fa";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { DropDownBox } from "./DropDown.jsx";
-import { useCartManager } from "../../pages/contextsAndReducer/CartManagementProvider";
 import { useFilterManger } from "../../pages/contextsAndReducer/FilterDataProvider";
-
+import { useSelector } from "react-redux";
 export const HiddenDivRow = ({ name, price, image, alt }) => {
   return (
     <div className="hidden-div-row margin-1">
@@ -45,7 +43,8 @@ function NavBar({ menuBtn = false }) {
     toggleWishListView: false,
   });
 
-  const { state } = useCartManager();
+  
+  const state=useSelector(state=>state.operations);
   const [dropBox, setDropBox] = useState(false);
   const { aside, setAside } = useFilterManger();
   return (
@@ -126,7 +125,6 @@ function NavBar({ menuBtn = false }) {
             </li>
 
             <li className="nav-bottom__list-item position-relative">
-              {/* <Link */}
               <div
                 to="/logIn-Page"
                 className="btn-icon-med nav-bottom-icons"

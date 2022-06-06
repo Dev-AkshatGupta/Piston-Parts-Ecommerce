@@ -7,18 +7,18 @@ import {
   useCartManager,
   HorizontalCard,
 } from "./importsAndExports";
-
+import {useSelector} from "react-redux";
 function CartPage() {
-  const { state } = useCartManager();
-  {
-    console.log(state.cart);
-  }
+  // const { state } = useCartManager();
+ const cart=useSelector(state=>state.operations.cart);
   return (
     <div>
       <NavBar />
       <div className="banner-upper-empty"></div>
 
-      {state.cart.length <0 &&
+      {cart.length<0
+      // state.cart.length <0 
+      &&
       (
         <div className="height-100vh flex-center">
           <div className="flex-center ">
@@ -33,10 +33,15 @@ function CartPage() {
         </div>
       )}
 
-      {state.cart.length > -1 && (
+      {
+      // state.cart.length > -1 
+      cart.length > -1 
+      && 
+      (
         <div className="carts-page">
           <div className="selected-items-display">
-            {state.cart.map((item) => (
+            {/* {state.cart.map((item) => ( */}
+            {cart.map((item) => (
               <HorizontalCard
                 key={item._id}
                 wholeItem={item}
@@ -58,14 +63,18 @@ function CartPage() {
             <div className="flex-center-space-betw padding-l-r">
               <p className="text">
                 Price(
-                {state.cart.reduce((acc, pri) => {
+                {
+                // state.cart.reduce((acc, pri)
+                cart.reduce((acc, pri) => {
                   return acc + pri.qty;
                 }, 0)}
                 <span className="margin-l-1">items</span> ):
               </p>
               <p className="text">
                 ₹
-                {state.cart.reduce((acc, pri) => {
+                {
+                // state.cart.reduce((acc, pri) 
+                cart.reduce((acc, pri)  => {
                   return acc + pri.qty * pri.price.previousPrice;
                 }, 0)}
               </p>
@@ -75,7 +84,9 @@ function CartPage() {
               <p className="text">Discount:</p>
               <p className="text ztext-line-through">
                 -
-                {state.cart.reduce((acc, pri) => {
+                {
+                // state.cart.reduce((acc, pri)
+                cart.reduce((acc, pri) => {
                   return (
                     acc +
                     pri.qty * pri.price.previousPrice -
@@ -94,7 +105,9 @@ function CartPage() {
               <h3>Total</h3>
               <h3>
                 ₹
-                {state.cart.reduce((acc, pri) => {
+                {
+                // state.cart.reduce((acc, pri) 
+              cart.reduce((acc, pri)  => {
                   return acc + pri.qty * pri.price.actualPrice;
                 }, 0)}
               </h3>
@@ -102,7 +115,9 @@ function CartPage() {
             <div className="divider-2"></div>
             <p className="text padding-l-r">
               You will save ₹
-              {state.cart.reduce((acc, pri) => {
+              {
+              // state.cart.reduce((acc, pri) 
+              cart.reduce((acc, pri)  => {
                 return (
                   acc +
                   pri.qty * pri.price.previousPrice -
