@@ -1,7 +1,11 @@
-import React from "react";
-
-import "./AddressModal.css";
-const AddressModal = ({ state, setState, children }) => {
+import React,{useState} from 'react';
+import "./EditAddressModal.css";
+import { useSelector ,useDispatch } from 'react-redux';
+import {  openAddressEditModal,editAddress} from "Redux/Reducers-Redux/operationsSlice";
+const EditAddressModal = () => {
+  const dispatch=useDispatch();
+  const addressToEdit = useSelector((state) => state.operations?.addressToEdit);
+  const [state, setState] = useState(addressToEdit);
   return (
     <div className="address-modal__blanket">
       <div className="address-modal__container-popup">
@@ -63,7 +67,34 @@ const AddressModal = ({ state, setState, children }) => {
               />
             </form>
             <div className="divider-2"></div>
-            {children}
+           
+            <div className="flex-center-space-betw">
+              <button
+                className="btn btn-outline-error form-btn smooth-square-radius "
+                onClick={() => dispatch(openAddressEditModal())}
+              >
+                Cancel
+              </button>
+              <button
+                className="btn btn-outline-pri form-btn smooth-square-radius "
+                onClick={() => {
+                  setState();
+               
+                  dispatch(editAddress( state ));
+                  // setAddress({
+                  //   name: "",
+                  //   house: "",
+                  //   city: "",
+                  //   state: "",
+                  //   postalCode: "",
+                  //   mobileNumber: "",
+                  // });
+                  dispatch(openAddressEditModal());
+                }}
+              >
+                Add Address
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -71,4 +102,4 @@ const AddressModal = ({ state, setState, children }) => {
   );
 };
 
-export { AddressModal };
+export { EditAddressModal}

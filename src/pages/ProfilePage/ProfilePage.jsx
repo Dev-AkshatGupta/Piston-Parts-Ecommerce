@@ -6,11 +6,9 @@ import { useAuthorization } from "../contextsAndReducer/AuthProvider";
 import { useSelector } from "react-redux";
 import "./ProfilePage.css";
 import {ProfileNav} from "components/ProfileNav/ProfileNav";
+import { Outlet } from "react-router-dom";
 function ProfilePage() {
-  const {
-    authState: { token, firstName },
-  } = useAuthorization();
-  const currentUser=useSelector(state=>state?.auth?.currentUser);
+
   return (
     <div>
       <NavBar />
@@ -18,7 +16,7 @@ function ProfilePage() {
       <div className="profile-main">
         <div>
           <ProfileNav/>
-          <ProfileCard userDetails={currentUser} />
+          <Outlet/>
         </div>
       </div>
       <Footer />

@@ -1,5 +1,5 @@
 import "./ProfileCard.css";
-import { Link } from "react-router-dom";
+
 
 function ProfileCard({ userDetails }) {
   return (

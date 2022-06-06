@@ -57,13 +57,13 @@ export const addAddressHandler = function (schema, request) {
     let userAddress = schema.users.findBy({
       _id: userId,
     }).address;
-    userAddress=userAddress?userAddress:[];
+    userAddress = userAddress ? userAddress : [];
     // Ignore the commented code
 
     // const userAddress = schema.users.findBy({
     //   _id: userId,
     // }).address;
- 
+
     const { address } = JSON.parse(request.requestBody);
     userAddress.push({
       ...address,
@@ -171,22 +171,28 @@ export const updateAddressHandler = function (schema, request) {
       _id: userId,
     }).address;
 
+ 
     const {
-      address: { name, street, city, state, country, zipCode, mobile },
+      address: { name,
+    house,
+    city,
+    state,
+    postalCode,
+    mobileNumber, },
     } = JSON.parse(request.requestBody);
 
     userAddress.forEach((address) => {
       if (address._id === addressId) {
         address.name = name;
-        address.street = street;
+        address.house = house;
         address.city = city;
         address.state = state;
-        address.country = country;
-        address.zipCode = zipCode;
-        address.mobile = mobile;
+        address.postalCode = postalCode;
+        address.mobileNumber = mobileNumber;
         address.updatedAt = formatDate();
       }
     });
+  
     this.db.users.update(
       {
         _id: userId,

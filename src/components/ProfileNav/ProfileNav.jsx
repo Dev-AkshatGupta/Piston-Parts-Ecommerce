@@ -1,13 +1,27 @@
-import React from 'react';
+import React from "react";
 import "./ProfileNav.css";
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 const ProfileNav = () => {
   return (
     <div className="profile-nav">
-      <a href="" className="profile-nav___link ">first Link</a>
-      <a href="" className="profile-nav___link"> second Link</a>
+      <NavLink
+        to="/profile-page"
+        className={({ isActive }) =>
+          isActive ? "profile-nav___link active" : "profile-nav___link "
+        }
+      >
+        Profile
+      </NavLink>
+      <NavLink
+        to="/profile-page/address"
+        className={({ isActive }) =>
+          isActive ? "profile-nav___link active" : "profile-nav___link "
+        }
+      >
+        Address
+      </NavLink>
     </div>
   );
-}
+};
 
-export { ProfileNav}
+export { ProfileNav };

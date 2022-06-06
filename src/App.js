@@ -2,8 +2,6 @@ import { ToastContainer } from "react-toastify";
 import { checkToken } from "Redux/Reducers-Redux/authSlice";
 import {
   openAddressModal,
-  openAddressEditModal,
-  getAllAddress,
   addAddress,
 } from "Redux/Reducers-Redux/operationsSlice";
 import { AddressModal } from "components/AddressModal/AddressModal";
@@ -11,22 +9,31 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import AllRoutes from "./AllRoutes";
 import { useState } from "react";
+import {EditAddressModal} from "components/EditAddressModal/EditAddressModal";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(checkToken());
-    dispatch(getAllAddress());
+    // dispatch(getAllAddress());
+
   }, []);
+
+   
+
   const [address, setAddress] = useState({
-    name: "",
+ name: "",
     house: "",
     city: "",
     state: "",
     postalCode: "",
-    mobileNumber: "",
+    mobileNumber: "",   
   });
+  
   const showAddressModal = useSelector(
     (state) => state.operations.isAddressModalOpen
+  );
+  const showEditAddressModal = useSelector(
+    (state) => state.operations.isAddressEditModalOpen
   );
   return (
     <div className="App">
@@ -54,6 +61,7 @@ function App() {
                   postalCode: "",
                   mobileNumber: "",
                 });
+                dispatch(openAddressModal());
               }}
             >
               Add Address
@@ -61,6 +69,9 @@ function App() {
           </div>
         </AddressModal>
       )}
+
+      {showEditAddressModal && (
+        <EditAddressModal/ > )}
     </div>
   );
 }

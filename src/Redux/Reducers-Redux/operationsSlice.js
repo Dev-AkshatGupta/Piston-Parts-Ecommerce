@@ -15,8 +15,9 @@ const initialState = {
   // for the address
   address: [],
   // isAddressModalOpen: false,
-  isAddressModalOpen: true,
+  isAddressModalOpen: false,
   isAddressEditModalOpen: false,
+  addressToEdit:{}
 };
 
 export const getAProduct = createAsyncThunk(
@@ -60,12 +61,11 @@ export const getAllAddress = createAsyncThunk(
 export const addAddress = createAsyncThunk(
   "operations/addAddress",
   async (details, { rejectWithValue }) => {
-    const {address}=details;
-    console.log(address);
+    const { address } = details;
     try {
-       const encodedToken = localStorage.getItem("token");
+      const encodedToken = localStorage.getItem("token");
       const { data } = await axios.post(
-        "api/user/address",
+        "/api/user/address",
         {
           address,
         },
@@ -76,6 +76,7 @@ export const addAddress = createAsyncThunk(
         }
       );
       console.log(data);
+      return data;
     } catch (error) {
       console.log(error);
       notifyError(error);
@@ -85,17 +86,45 @@ export const addAddress = createAsyncThunk(
 
 export const deleteAddress = createAsyncThunk(
   "operations/deleteAddress",
-  async (state, { rejectWithValue }) => {
+  async (details, { rejectWithValue }) => {
+    const encodedToken = localStorage.getItem("token");
     try {
-    } catch (error) {}
+      const { id } = details;
+     console.log(id);
+      const { data } = await axios.delete(`/api/user/address/${id}`, {
+        headers: {
+          authorization: encodedToken,
+        },
+      });
+      console.log(data);
+      notifyWarn("Address Removed");
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
   }
 );
 
 export const editAddress = createAsyncThunk(
   "operations/editAddress",
-  async (state, { rejectWithValue }) => {
+  async (details, { rejectWithValue }) => {
     try {
-    } catch (error) {}
+         const encodedToken = localStorage.getItem("token");
+         
+       const {_id: id } = details;
+       const { data } = await axios.post(`/api/user/address/${id}`,{
+         address:details
+       }, {
+         headers: {
+           authorization: encodedToken,
+         },
+       });
+       notifyWarn("Address Removed");
+       console.log(data);
+       return data;
+    } catch (error) {
+      console.log(error);
+    }
   }
 );
 
@@ -261,6 +290,10 @@ const operationsSlice = createSlice({
     openAddressEditModal(state) {
       state.isAddressEditModalOpen = !state.isAddressEditModalOpen;
     },
+    getTheAddresToEdit(state,action){
+      state.addressToEdit=action.payload;
+
+    }
   },
   extraReducers(builder) {
     builder
@@ -311,12 +344,26 @@ const operationsSlice = createSlice({
       .addCase(deleteItemFromWishlist.rejected, (state, action) => {})
       .addCase(getAllAddress.pending, (state, action) => {})
       .addCase(getAllAddress.fulfilled, (state, action) => {
-        // state.wishlist = action.payload.wishlist;
-        // console.log(action.payload);
+        state.address = action.payload.address;
       })
-      .addCase(getAllAddress.rejected, (state, action) => {});
+      .addCase(getAllAddress.rejected, (state, action) => {})
+      .addCase(addAddress.pending, (state, action) => {})
+      .addCase(addAddress.fulfilled, (state, action) => {
+        state.address = action.payload.address;
+      })
+      .addCase(addAddress.rejected, (state, action) => {})
+      .addCase(deleteAddress.pending, (state, action) => {})
+      .addCase(deleteAddress.fulfilled, (state, action) => {
+        state.address = action.payload.address;
+      })
+      .addCase(deleteAddress.rejected, (state, action) => {})
+      .addCase(editAddress.pending, (state, action) => {})
+      .addCase(editAddress.fulfilled, (state, action) => {
+        state.address = action.payload.address;
+      })
+      .addCase(editAddress.rejected, (state, action) => {});
   },
 });
-export const { openAddressModal, openAddressEditModal } =
+export const { openAddressModal, openAddressEditModal, getTheAddresToEdit } =
   operationsSlice.actions;
 export default operationsSlice.reducer;

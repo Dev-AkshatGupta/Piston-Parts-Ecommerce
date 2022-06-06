@@ -1,16 +1,25 @@
 .profile-nav{
     width: 30rem;
-    /* border */
+    border: 2px solid var(--ACCENT-COLOR);
+    border-radius: 10px 10px 0 0 ;
+    border-bottom: none;
+
 }
 .profile-nav___link{
     text-decoration: none;
-    width: 50%;
-    padding-left: 3rem;
-    padding-right: 3rem;
+ 
+    padding: 2px 5rem ;
+    width: 15rem;
     font-size: 2rem;
-    /* border:solid var(--ACCENT-COLOR); */
     color:var(--GREY);
+    font-weight: 600;
+    border-radius:  10px 0 0 0 ;
 }
-/* .profile-nav___link+.profile-nav___link{
-   padding-right: 4.2rem; 
-} */
+.profile-nav___link+.profile-nav___link{
+    padding-right: 4.2rem;
+    border-radius: 0 10px 0 0 ;
+}
+.profile-nav___link.active{
+    background-color: var(--ACCENT-COLOR);
+    color:var(--PURE-WHITE);
+}
