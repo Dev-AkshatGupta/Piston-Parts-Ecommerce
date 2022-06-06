@@ -44,7 +44,7 @@ function FilterDataProvider({ children }) {
       case "PRICE_LOW_TO_HIGH": {
         const returnData = {
           ...state,
-          priceSort: "PRICE_LOW_TO_HIGH",
+          priceSort: action.payload,
           sorted: state.defaultData.sort(
             ({ price: first }, { price: second }) =>
               first.actualPrice - second.actualPrice
@@ -56,7 +56,7 @@ function FilterDataProvider({ children }) {
       case "PRICE_HIGH_TO_LOW": {
         const returnData = {
           ...state,
-          priceSort:action.payload,
+          priceSort: action.payload,
           sorted: state.defaultData.sort(
             ({ price: first }, { price: second }) =>
               second.actualPrice - first.actualPrice
@@ -128,7 +128,7 @@ function FilterDataProvider({ children }) {
     defaultData: [],
     categories: [],
     categoriesData: [],
-    priceSort: [],
+    priceSort: "",
     sliderAmount: "",
     ratings: 5,
   });

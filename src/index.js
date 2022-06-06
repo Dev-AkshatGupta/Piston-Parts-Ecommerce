@@ -11,7 +11,7 @@ import store from "./Redux/store";
 makeServer();
 
 ReactDOM.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <Provider store={store}>
       <Router>
         <FilterDataProvider>
@@ -19,6 +19,7 @@ ReactDOM.render(
         </FilterDataProvider>
       </Router>
     </Provider>
-  </React.StrictMode>,
+  // </React.StrictMode>
+  ,
   document.getElementById("root")
 );

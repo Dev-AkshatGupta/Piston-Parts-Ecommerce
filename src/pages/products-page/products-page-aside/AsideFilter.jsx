@@ -3,6 +3,7 @@ import "./aside.css";
 import { useFilterManger } from "../../contextsAndReducer/FilterDataProvider";
 function AsideFilter() {
   const { filtered, filterManager } = useFilterManger();
+
   return (
     <aside className="aside-nav box-shadow-right hero-aside aside-display">
       <div className="aside-container-pri ">
@@ -21,10 +22,15 @@ function AsideFilter() {
           <li>
             <input
               type="radio"
-              name="Price"
-              onChange={() => filterManager({ type: "PRICE_HIGH_TO_LOW" })}
+              onChange={() => {
+                filterManager({
+                  type: "PRICE_HIGH_TO_LOW",
+                  payload: "PRICE_HIGH_TO_LOW",
+                });
+              }}
               checked={filtered.priceSort === "PRICE_HIGH_TO_LOW"}
             />
+           
             <label htmlFor="input" className="sub-text">
               Price High to low
             </label>
@@ -32,8 +38,12 @@ function AsideFilter() {
           <li>
             <input
               type="radio"
-              name="Price"
-              onChange={() => filterManager({ type: "PRICE_LOW_TO_HIGH" })}
+              onChange={() => {
+                filterManager({
+                  type: "PRICE_LOW_TO_HIGH",
+                  payload: "PRICE_LOW_TO_HIGH",
+                });
+              }}
               checked={filtered.priceSort === "PRICE_LOW_TO_HIGH"}
             />
             <label htmlFor="input" className="sub-text">

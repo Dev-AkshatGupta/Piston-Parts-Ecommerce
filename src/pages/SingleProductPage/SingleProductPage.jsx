@@ -46,13 +46,13 @@ const SingleProductPage = () => {
               </span>
               <span className="text-red margin-l-1 margin-top-0 ">
                 (
-                {`${
-                  Math.floor((-(
+                {`${Math.floor(
+                  (-(
                     product?.price?.actualPrice - product?.price?.previousPrice
                   ) *
                     100) /
-                  product?.price?.previousPrice)
-                }%`}
+                    product?.price?.previousPrice
+                )}%`}
                 )
               </span>
             </p>
@@ -69,14 +69,7 @@ const SingleProductPage = () => {
               </details>
             </div>
             <div
-              className=""
-              style={{
-                width: "100%",
-                marginTop: "2rem",
-                display: "flex",
-                justifyContent: "space-evenly",
-                flexWrap: "wrap",
-              }}
+              className="flex-wrap flex-center-space-betw width-100 margin-top-2"
             >
               {cartItemsInState === -1 ? (
                 <button
