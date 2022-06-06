@@ -46,6 +46,7 @@ export const addItemToWishlistHandler = function (schema, request) {
       );
     }
     const userWishlist = schema.users.findBy({ _id: userId }).wishlist;
+  
     const { product } = JSON.parse(request.requestBody);
     userWishlist.push({
       ...product,
@@ -55,6 +56,7 @@ export const addItemToWishlistHandler = function (schema, request) {
     this.db.users.update({ _id: userId }, { wishlist: userWishlist });
     return new Response(201, {}, { wishlist: userWishlist });
   } catch (error) {
+   
     return new Response(
       500,
       {},

@@ -1,10 +1,6 @@
 import "./WishlistCard.css";
 import { BsSuitHeartFill } from "react-icons/bs";
 import { TiTickOutline } from "react-icons/ti";
-// import {
-//   useWishlistData,
-//   useCartData,
-// } from "../../../pages/authenticationPages/dataFetchingAndAuthentication";
 import {deleteItemFromWishlist,addToCart} from "./../../../Redux/Reducers-Redux/operationsSlice";
 import { useDispatch } from "react-redux";
 const WishlistCard = ({
@@ -16,8 +12,7 @@ const WishlistCard = ({
   id,
   obj,
 }) => {
-  // const { deleteWishlistData } = useWishlistData();
-  // const { postCartData } = useCartData();
+  
   const dispatch=useDispatch();
   return (
     <div className=" card-vertical border-r-3  padding-2 margin-top-1 ">
@@ -48,8 +43,6 @@ const WishlistCard = ({
         <button
           className="btn btn-outline-pri margin-1"
           onClick={() => {
-            // postCartData(obj);
-            // deleteWishlistData(id);
             dispatch(addToCart(obj));
             dispatch(deleteItemFromWishlist(id));
           }}

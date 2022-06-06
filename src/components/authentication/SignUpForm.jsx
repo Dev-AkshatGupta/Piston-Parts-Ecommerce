@@ -3,11 +3,9 @@ import "./authentication.css";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { notifyError } from "./../../Utilities/Notifications";
-import { useUserDetails } from "../../pages/authenticationPages/dataFetchingAndAuthentication";
 import { signUp } from "Redux/Reducers-Redux/authSlice";
 function SignUpForm() {
   const dispatch = useDispatch();
-  const { signUpHandler } = useUserDetails();
   const [details, setDetails] = useState({
     firstName: "",
     lastName: "",

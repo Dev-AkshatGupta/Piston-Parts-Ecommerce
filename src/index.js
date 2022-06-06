@@ -5,7 +5,6 @@ import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter as Router } from "react-router-dom";
 import { FilterDataProvider } from "./pages/contextsAndReducer/FilterDataProvider";
-import { AuthProvider } from "./pages/contextsAndReducer/AuthProvider";
 import { Provider } from "react-redux";
 import store from "./Redux/store";
 // Call make Server
@@ -16,9 +15,7 @@ ReactDOM.render(
     <Provider store={store}>
       <Router>
         <FilterDataProvider>
-          <AuthProvider>
             <App />
-          </AuthProvider>
         </FilterDataProvider>
       </Router>
     </Provider>

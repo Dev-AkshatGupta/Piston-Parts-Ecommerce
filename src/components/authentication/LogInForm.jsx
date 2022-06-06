@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./authentication.css";
 import { Link } from "react-router-dom";
-import { useUserDetails } from "../../pages/authenticationPages/dataFetchingAndAuthentication";
 import { useDispatch } from "react-redux";
 import { notifyError } from "Utilities/Notifications";
 import { login } from "Redux/Reducers-Redux/authSlice";
@@ -12,7 +11,6 @@ function LogInForm() {
     email: "",
     password: "",
   });
-  const { logInHandler } = useUserDetails();
  const passwordRegEx = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
  function validateDetails(details) {
    if (details.email === "" || details.password === "") {
