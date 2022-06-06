@@ -9,7 +9,7 @@ function DropDownBox() {
   function LogOut() {
     localStorage.clear();
   }
-  const id=useSelector(state=>state.auth?.currentUser._id);
+  const id = useSelector((state) => state.auth?.currentUser._id);
   return (
     <div className="DropDown">
       {!id ? (
