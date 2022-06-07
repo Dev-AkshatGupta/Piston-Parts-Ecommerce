@@ -52,7 +52,7 @@ export const getAllAddress = createAsyncThunk(
   "operations/getAllAddress",
   async (_, { rejectWithValue }) => {
     try {
-      // console.log(details);
+   
     } catch (error) {}
   }
 );
@@ -74,7 +74,7 @@ export const addAddress = createAsyncThunk(
           },
         }
       );
-      console.log(data);
+     
       return data;
     } catch (error) {
       console.log(error);
@@ -89,13 +89,11 @@ export const deleteAddress = createAsyncThunk(
     const encodedToken = localStorage.getItem("token");
     try {
       const { id } = details;
-     console.log(id);
       const { data } = await axios.delete(`/api/user/address/${id}`, {
         headers: {
           authorization: encodedToken,
         },
       });
-      console.log(data);
       notifyWarn("Address Removed");
       return data;
     } catch (error) {
@@ -119,7 +117,7 @@ export const editAddress = createAsyncThunk(
          },
        });
        notifyWarn("Address Removed");
-       console.log(data);
+   
        return data;
     } catch (error) {
       console.log(error);
@@ -155,6 +153,7 @@ export const deleteItemFromCart = createAsyncThunk(
   async function (productId, { rejectWithValue }) {
     const encodedToken = localStorage.getItem("token");
     try {
+
       const { data } = await axios.delete(`/api/user/cart/${productId}`, {
         headers: {
           authorization: encodedToken,

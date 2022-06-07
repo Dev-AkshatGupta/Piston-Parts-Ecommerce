@@ -50,7 +50,7 @@ function FilterDataProvider({ children }) {
               first.actualPrice - second.actualPrice
           ),
         };
-        console.log(returnData);
+        
         return returnData;
       }
       case "PRICE_HIGH_TO_LOW": {
@@ -62,7 +62,7 @@ function FilterDataProvider({ children }) {
               second.actualPrice - first.actualPrice
           ),
         };
-        console.log(returnData);
+      
         return returnData;
       }
       case "SLIDER":

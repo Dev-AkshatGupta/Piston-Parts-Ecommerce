@@ -51,7 +51,6 @@ function App() {
             <button
               className="btn btn-outline-pri form-btn smooth-square-radius "
               onClick={() => {
-                console.log(address);
                 dispatch(addAddress({ address }));
                 setAddress({
                   name: "",
