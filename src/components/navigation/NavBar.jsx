@@ -1,52 +1,24 @@
-import React from "react";
-import "./navBar.css";
+import "./NavBar.css";
 import { CgProfile } from "react-icons/cg";
 import { ImMenu } from "react-icons/im";
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { DropDownBox } from "./DropDown.jsx";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useFilterManger } from "../../ContextsAndReducer/FilterDataProvider";
 import { useSelector } from "react-redux";
-export const HiddenDivRow = ({ name, price, image, alt }) => {
-  return (
-    <div className="hidden-div-row margin-1">
-      <span className="hidden-span">
-        <img src={image} alt={alt} />
-      </span>
-      <p className="toast-text">{name}</p>
-      <p className="text relative">
-        Price :<span className="margin-l-1">{price}</span>
-      </p>
-    </div>
-  );
-};
-export const HiddenDiv = ({ position }) => {
-  return (
-    <div className={`hidden-div  ${position}`}>
-      <div className="card-vertical-upper-text">
-        <p className=" padding-l-r  margin-l-1  flex-center-space-betw padding-r-3 ">
-          <span>Total Price :</span>
-          {/* total Price calculator */}
-          <span>500</span>
-        </p>
-        <div className="card-element__bottom">
-          <button className="modal-button btn btn-pri ">Go to Cart </button>
-          <button className="modal-button btn btn-pri">Check Out</button>
-        </div>
-      </div>
-    </div>
-  );
-};
-function NavBar({ menuBtn = false }) {
-  const [toggle, setToggle] = useState({
-    toggleCartView: false,
-    toggleWishListView: false,
-  });
 
-  
-  const state=useSelector(state=>state.operations);
-  const [dropBox, setDropBox] = useState(false);
+function NavBar({ menuBtn = false }) {
+
+  const navigate = useNavigate();
+  const state = useSelector((state) => state.operations);
+  const currentUser = useSelector((state) => state.auth.currentUser);
   const { aside, setAside } = useFilterManger();
+  const clickHandler = (navigateTo) => {
+    currentUser._id
+      ? navigate(navigateTo)
+      : navigate("/logIn-Page", {
+          state: { from:{pathname:navigateTo}},
+          replace: true,
+        });
+  };
   return (
     <>
       <nav className="navigation text-black">
@@ -113,10 +85,13 @@ function NavBar({ menuBtn = false }) {
               </Link>
             </li>
             <li className="nav-bottom__list-item relative ">
-              <Link to="/cart-page" className="btn-icon-sml nav-bottom-icons ">
+              <a
+                onClick={() => clickHandler("/cart-page")}
+                className="btn-icon-sml nav-bottom-icons "
+              >
                 <i className="fas fa-shopping-bag"></i>
-              </Link>
-              {toggle.toggleCartView && <HiddenDiv />}
+              </a>
+
               {state.cart.length > 0 && (
                 <span className="absolute badge flex-center badge-custom-text">
                   {state.cart.length}
@@ -125,24 +100,21 @@ function NavBar({ menuBtn = false }) {
             </li>
 
             <li className="nav-bottom__list-item position-relative">
-              <div
-                to="/logIn-Page"
+              <a
+                onClick={() => clickHandler("/profile-page")}
                 className="btn-icon-med nav-bottom-icons"
-                onClick={() => setDropBox(!dropBox)}
               >
                 <CgProfile />
-              </div>
-              {/* </Link> */}
-              {dropBox && <DropDownBox />}
+              </a>
             </li>
 
             <li className="nav-bottom__list-item relative">
-              <Link
-                to="/wishlist-page"
+              <a
+                onClick={() => clickHandler("/wishlist-page")}
                 className="btn-icon-sml nav-bottom-icons"
               >
                 <i className="fas fa-heart "></i>
-              </Link>
+              </a>
 
               {state.wishlist.length > 0 && (
                 <span className="absolute badge flex-center badge-custom-text">
@@ -150,9 +122,7 @@ function NavBar({ menuBtn = false }) {
                 </span>
               )}
             </li>
-            <li className="nav-bottom__list-item change-nav-display">
-              
-            </li>
+            <li className="nav-bottom__list-item change-nav-display"></li>
           </ul>
         </div>
       </nav>

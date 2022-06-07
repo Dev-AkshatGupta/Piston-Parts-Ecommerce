@@ -1,13 +1,13 @@
 import "./Cart-Product-Big.css";
 import { BsSuitHeartFill } from "react-icons/bs";
 import { Link, useNavigate,useLocation } from "react-router-dom";
-import { Rating } from "../../../components/Rating/Rating";
+import { Rating } from "../../Rating/Rating";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addToCart,
   deleteItemFromWishlist,
   postItemToWishlist,
-} from "./../../../Redux/Reducers-Redux/operationsSlice";
+} from "../../../Redux/Reducers-Redux/operationsSlice";
 function CardProductBig({
   image,
   manufacturerName,

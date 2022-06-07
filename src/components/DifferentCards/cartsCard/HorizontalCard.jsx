@@ -6,7 +6,7 @@ import {
   deleteItemFromCart,
   increaseItemInCart,
   decreaseItemInCart,
-} from "./../../../Redux/Reducers-Redux/operationsSlice";
+} from "../../../Redux/Reducers-Redux/operationsSlice";
 import { useDispatch,useSelector } from "react-redux";
 const HorizontalCard = ({
   image,

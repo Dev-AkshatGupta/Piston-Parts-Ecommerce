@@ -3,6 +3,8 @@ import { checkToken } from "Redux/Reducers-Redux/authSlice";
 import {
   openAddressModal,
   addAddress,
+  getCartData,
+  getWishlist,
 } from "Redux/Reducers-Redux/operationsSlice";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,11 +16,10 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(checkToken());
-    // dispatch(getAllAddress());
+  dispatch(getCartData());
+  dispatch(getWishlist());
 
   }, []);
-
-   
 
   const [address, setAddress] = useState({
  name: "",

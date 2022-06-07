@@ -25,6 +25,7 @@ export const getAProduct = createAsyncThunk(
     try {
       const { data } = await axios.get(`/api/products/${id}`);
       return data;
+
     } catch (error) {
       console.log(error);
     }
@@ -48,14 +49,7 @@ export const getCartData = createAsyncThunk(
   }
 );
 
-export const getAllAddress = createAsyncThunk(
-  "operations/getAllAddress",
-  async (_, { rejectWithValue }) => {
-    try {
-   
-    } catch (error) {}
-  }
-);
+
 
 export const addAddress = createAsyncThunk(
   "operations/addAddress",
@@ -340,11 +334,6 @@ const operationsSlice = createSlice({
         state.wishlist = action.payload.wishlist;
       })
       .addCase(deleteItemFromWishlist.rejected, (state, action) => {})
-      .addCase(getAllAddress.pending, (state, action) => {})
-      .addCase(getAllAddress.fulfilled, (state, action) => {
-        state.address = action.payload.address;
-      })
-      .addCase(getAllAddress.rejected, (state, action) => {})
       .addCase(addAddress.pending, (state, action) => {})
       .addCase(addAddress.fulfilled, (state, action) => {
         state.address = action.payload.address;

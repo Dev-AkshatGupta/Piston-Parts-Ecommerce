@@ -7,7 +7,7 @@ import {
   addToCart,
   deleteItemFromWishlist,
   postItemToWishlist,
-} from "./../../../Redux/Reducers-Redux/operationsSlice";
+} from "../../../Redux/Reducers-Redux/operationsSlice";
 // Small product Card
 const Card = ({
   image,
