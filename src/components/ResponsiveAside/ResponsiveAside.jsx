@@ -1,7 +1,7 @@
 import React from "react";
 import "./ResponsiveAside.css";
 
-import { useFilterManger } from "../../pages/contextsAndReducer/FilterDataProvider";
+import { useFilterManger } from "../../ContextsAndReducer/FilterDataProvider";
 function ResponsiveAside() {
   const { filtered, filterManager, aside } = useFilterManger();
   return (

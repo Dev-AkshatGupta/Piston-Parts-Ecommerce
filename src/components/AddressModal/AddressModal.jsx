@@ -1,5 +1,4 @@
 import React from "react";
-
 import "./AddressModal.css";
 const AddressModal = ({ state, setState, children }) => {
   return (

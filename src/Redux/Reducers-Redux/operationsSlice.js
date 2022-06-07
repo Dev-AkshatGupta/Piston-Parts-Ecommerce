@@ -14,7 +14,6 @@ const initialState = {
   currentProduct: {},
   // for the address
   address: [],
-  // isAddressModalOpen: false,
   isAddressModalOpen: false,
   isAddressEditModalOpen: false,
   addressToEdit:{}

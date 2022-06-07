@@ -4,12 +4,12 @@ import {
   openAddressModal,
   addAddress,
 } from "Redux/Reducers-Redux/operationsSlice";
-import { AddressModal } from "components/AddressModal/AddressModal";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import AllRoutes from "./AllRoutes";
 import { useState } from "react";
-import {EditAddressModal} from "components/EditAddressModal/EditAddressModal";
+import {EditAddressModal,AddressModal} from "components";
+
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {

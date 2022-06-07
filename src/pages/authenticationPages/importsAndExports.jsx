@@ -1,7 +1,7 @@
-import { NavBar } from "../../components/navigation/NavBar";
-import { LogInForm } from "../../components/authentication/LogInForm";
-import { SignUpForm } from "../../components/authentication/SignUpForm";
-import { Footer } from "../../components/footer/Footer";
+import { NavBar } from "../../components/Navigation/NavBar";
+import { LogInForm } from "../../components/Authentication/LogInForm";
+import { SignUpForm } from "../../components/Authentication/SignUpForm";
+import { Footer } from "../../components/Footer/Footer";
 
 export {
   NavBar,

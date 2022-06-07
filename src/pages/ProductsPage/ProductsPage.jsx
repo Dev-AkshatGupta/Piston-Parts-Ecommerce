@@ -1,17 +1,11 @@
 import React from "react";
 import "./ProductsPage.css";
-import {
-  NavBar,
-  Footer,
-  BothCard,
-  AsideFilter,
-  // useCartManager,
-  useFilterManger,
-} from "./importsAndExports";
-import { ResponsiveAside } from "../../components/ResponsiveAside/ResponsiveAside";
+import { NavBar, Footer, BothCard, ResponsiveAside } from "components";
+import { AsideFilter } from "./ProductsPageAside/AsideFilter";
+import { useFilterManger } from "ContextsAndReducer/FilterDataProvider";
+
 const ProductsPage = () => {
-  // const { dispatch, state } = useCartManager();
-  const { filtered, filterManager } = useFilterManger();
+  const { filtered } = useFilterManger();
   return (
     <div>
       <NavBar menuBtn={true} />

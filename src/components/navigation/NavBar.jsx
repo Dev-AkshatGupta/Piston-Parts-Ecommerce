@@ -5,7 +5,7 @@ import { ImMenu } from "react-icons/im";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { DropDownBox } from "./DropDown.jsx";
-import { useFilterManger } from "../../pages/contextsAndReducer/FilterDataProvider";
+import { useFilterManger } from "../../ContextsAndReducer/FilterDataProvider";
 import { useSelector } from "react-redux";
 export const HiddenDivRow = ({ name, price, image, alt }) => {
   return (

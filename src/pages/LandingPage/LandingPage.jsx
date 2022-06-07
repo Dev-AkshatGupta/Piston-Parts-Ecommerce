@@ -6,11 +6,11 @@ import {
   NavBar,
   Search,
   Footer,
-  brandNameData,
   BrandCard,
   CategoriesCard,
-  useFilterManger,
-} from "./importsAndExports";
+} from "components";
+import {useFilterManger,} from "ContextsAndReducer/FilterDataProvider";
+import { brandNameData,} from "DATA/BrandsData";
 function LandingPage() {
   const { filtered, filterManager } = useFilterManger();
   const fetchCategories = async () => {

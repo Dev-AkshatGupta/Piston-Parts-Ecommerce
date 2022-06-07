@@ -1,5 +1,5 @@
 import "./search.css";
-export function Search() {
+function Search() {
   return (
     <>
       <div className="search-box flex-center">
@@ -12,3 +12,4 @@ export function Search() {
     </>
   );
 }
+export {Search};

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { NavBar, LogInForm } from "./importsAndExports";
+import { NavBar, LogInForm } from "components";
 
 function LogInPage() {
   return (

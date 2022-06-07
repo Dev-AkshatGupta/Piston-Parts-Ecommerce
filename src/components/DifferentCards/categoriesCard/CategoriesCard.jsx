@@ -1,6 +1,6 @@
 import React from "react";
 import "./Categories-card.css";
-import { useFilterManger } from "../../../pages/contextsAndReducer/FilterDataProvider";
+import { useFilterManger } from "../../../ContextsAndReducer/FilterDataProvider";
 function CategoriesCard({ imageUrl, alt,text, category }) {
   const { filterManager } = useFilterManger();
   return (
