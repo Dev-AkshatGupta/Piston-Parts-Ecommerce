@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams, Link ,useLocation,useNavigate} from "react-router-dom";
+import { useParams, Link, useLocation, useNavigate } from "react-router-dom";
 import {
   getAProduct,
   addToCart,
@@ -11,7 +11,7 @@ import "./SingleProductPage.css";
 
 const SingleProductPage = () => {
   const { id } = useParams();
- const currentPath = useLocation();
+  const currentPath = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
@@ -25,9 +25,7 @@ const SingleProductPage = () => {
       ? false
       : true;
   const isItemInCart =
-    cart.findIndex((item) => item.name === product.name) === -1
-      ? false
-      : true;
+    cart.findIndex((item) => item.name === product.name) === -1 ? false : true;
 
   const userId = useSelector((state) => state.auth.currentUser?._id);
   const handleAddToCart = () => {
@@ -50,6 +48,7 @@ const SingleProductPage = () => {
           replace: true,
         });
   };
+  
   return (
     <>
       <NavBar />
@@ -101,11 +100,10 @@ const SingleProductPage = () => {
               <button
                 className="btn btn-outline-pri margin-1"
                 onClick={() => {
-                 
                   handleAddToCart();
                 }}
               >
-               {isItemInCart?"Go to cart":" Add to Cart"}
+                {isItemInCart ? "Go to cart" : " Add to Cart"}
               </button>
               <button
                 className="add-to-cart btn btn-outline text margin-1"
@@ -115,7 +113,6 @@ const SingleProductPage = () => {
               >
                 {isItemInWishlist ? "Go to wishlist" : "Add to Wishlist"}
               </button>
-            
             </div>
           </div>
         </div>
