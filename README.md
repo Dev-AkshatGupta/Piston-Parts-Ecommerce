@@ -20,39 +20,41 @@
 
 # About
 
-These Days social media applications are part of the daily life of every individual.This special social media website is for piston heads- AKA gear heads.
+Ecommerce are the main way of the commerce activity now days. Dealing with your beloved automobiles we need accessories and parts for their repairing Piston Parts is here to help you with all kind of accessories and stuff.
 
-##### What's different in it compared to other social media?
+##### What's different in it compared to other Ecommerce?
 
-1. As compared to others its mainly made for the individuals that are geeky and nerdy for automobiles.  
-
+This project deals with totally in the accessories and the parts of our automobiles. To take care of them .
 
 
 
 # Features
 
-1. You can signup or login in the web app
+1. You can signup or login in the web app proper user authentication with user being signed in feature.
 
 2. It's a completely responsive web app . Tablet mobile or Desktop.Ready to handle everything.
 
-3. You can post emoji or text content and images as your post and comments too.
+3. You can keep items in wishlist or your cart as per your wish but after log in only.
 
-4. You can comment on the user's post's
+4.You can also check the product details by clicking on the more details or for single product page you can go for the single product page.
 
-5.You can reply on comments ,upvote or downvote the replies .
+5. By clicking on the add to product you can add the product.
 
-6. You can like and bookmark a post .
+6. By clicking on the add to wishlist .
 
-7.You can edit and delete a post made by you .
 
-8.This is a whole private app .
+7.You can also delete item from wishlist from the same item.
 
-9.Can follow or unfollow a user you like.
+8.Different routings are done thorgh different components.
 
-10.Can update your bio name or anything same.
+9.You can also checkout after going to cart and and go for checkout page.
+
+10.You can also add the address delete it and edit it .
+
+
 # Visit the website here
 
-## [Piston-adda](https://piston-adda.vercel.app/)
+## [Piston-parTs]()
 
 
 

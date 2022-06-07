@@ -8,6 +8,7 @@ import {
   decreaseItemInCart,
 } from "../../../Redux/Reducers-Redux/operationsSlice";
 import { useDispatch,useSelector } from "react-redux";
+import {Link} from "react-router-dom";
 const HorizontalCard = ({
   image,
   alt,
@@ -27,22 +28,30 @@ const HorizontalCard = ({
   return (
     <>
       <div className="horizontal-card text margin-1 ">
-        <img src={image} alt={alt} />
+        <Link
+          className="text-black "
+          to={`/singleProduct-page/${wholeItem._id}`}
+        >
+          <img src={image} alt={alt} />
+        </Link>
         <div className="description">
           <h2 className="description__name">
-            {productName}-(qty:{quantity})
+            <Link
+              className="text-black "
+              to={`/singleProduct-page/${wholeItem._id}`}
+            >
+              {productName}-(qty:{quantity})
+            </Link>
           </h2>
           <div className="horizontal-cardBtn">
             <button
               className="btn-icon-med padding-none background-inherit  "
-             
-              onClick={() =>dispatch(deleteItemFromCart(wholeItem._id))}
+              onClick={() => dispatch(deleteItemFromCart(wholeItem._id))}
             >
               <RiDeleteBin6Line />
             </button>
             <button
               className="btn "
-         
               onClick={() => dispatch(increaseItemInCart(wholeItem._id))}
             >
               +
@@ -50,15 +59,13 @@ const HorizontalCard = ({
             <button
               disabled={quantity === 1 ? true : false}
               className="btn "
-              
-              onClick={() =>dispatch( decreaseItemInCart(wholeItem._id))}
+              onClick={() => dispatch(decreaseItemInCart(wholeItem._id))}
             >
               -
             </button>
             {addToWishlist > -1 && (
               <button
                 className="btn "
-         
                 onClick={() => dispatch(deleteItemFromWishlist(wholeItem._id))}
               >
                 <i className="fa fa-heart text-red" aria-hidden="true"></i>
@@ -67,7 +74,6 @@ const HorizontalCard = ({
             {addToWishlist === -1 && (
               <button
                 className="btn "
-           
                 onClick={() => dispatch(postItemToWishlist(wholeItem))}
               >
                 <i className="fa fa-heart " aria-hidden="true"></i>

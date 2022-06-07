@@ -8,7 +8,7 @@ import {
   deleteItemFromWishlist,
   postItemToWishlist,
 } from "../../../Redux/Reducers-Redux/operationsSlice";
-// Small product Card
+
 const Card = ({
   image,
   manufacturerName,
@@ -55,11 +55,13 @@ const Card = ({
           replace: true,
         });
   };
+  
   return (
     <div className=" card-vertical border-r-3  padding-2 margin-top-1 height-53R">
       <div className="card-product-image position-relative">
-        <img src={image} className="border-r-3 " />
-
+        <Link className="text-black " to={`/singleProduct-page/${id}`}>
+          <img src={image} className="border-r-3 " />
+        </Link>
         {isItemInWishlist ? (
           <div className="go-like active-liked ">
             <BsSuitHeartFill
@@ -121,4 +123,5 @@ const Card = ({
     </div>
   );
 };
+
 export { Card };
