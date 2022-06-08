@@ -28,8 +28,7 @@ function ResponsiveAside() {
                   payload: "PRICE_HIGH_TO_LOW",
                 })
               }
-              // checked={filtered.priceSort == "PRICE_HIGH_TO_LOW"}
-              checked={true}
+              checked={filtered.priceSort == "PRICE_HIGH_TO_LOW"}
             />
             <label htmlFor="input" className="sub-text">
               Price High to low

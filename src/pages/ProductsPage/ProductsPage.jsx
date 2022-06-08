@@ -37,7 +37,7 @@ const ProductsPage = () => {
         <AsideFilter />
         <ResponsiveAside />
         {currentPageData.length === 0 ? (
-          <div className="text height-100vh flex-center-center"> There is no such item</div>
+          <div className="text height-100vh flex-center-center"> There are no such items</div>
         ) : (
           <main className="products-main">{currentPageData}</main>
         )}
