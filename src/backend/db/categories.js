@@ -17,7 +17,7 @@ export const categories = [
     image:
       "https://drive.google.com/uc?export=view&id=18LxxSb-sMJ2C7tDBEzAJpWYCBQjN7n3c",
     text: "Body",
-     category:"",
+     category:"Body",
   },
   {_id:uuid(),
     image:
@@ -35,6 +35,6 @@ export const categories = [
     image:
       "https://drive.google.com/uc?export=view&id=1cnz0NNxtf8QDfQvqt7UsVSLFbDChsMR7",
     text: "Brakes",
-     category:"",
+     category:"Brakes",
   },
 ];
