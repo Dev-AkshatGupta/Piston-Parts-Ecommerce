@@ -18,4 +18,4 @@ export * from "./ResponsiveAside/ResponsiveAside";
 export * from "./Footer/Footer";
 export * from "./Navigation/NavBar";
 export * from "./SearchBar/Search";
-
+export * from "./DifferentCards/AddressCard/AddressCard";

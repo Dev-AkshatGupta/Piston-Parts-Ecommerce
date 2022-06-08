@@ -43,7 +43,6 @@ export const getAddressHandler = function (schema, request) {
 
 export const addAddressHandler = function (schema, request) {
   const userId = requiresAuth.call(this, request);
-  console.log(userId);
   try {
     if (!userId) {
       new Response(
@@ -58,12 +57,6 @@ export const addAddressHandler = function (schema, request) {
       _id: userId,
     }).address;
     userAddress = userAddress ? userAddress : [];
-    // Ignore the commented code
-
-    // const userAddress = schema.users.findBy({
-    //   _id: userId,
-    // }).address;
-
     const { address } = JSON.parse(request.requestBody);
     userAddress.push({
       ...address,
