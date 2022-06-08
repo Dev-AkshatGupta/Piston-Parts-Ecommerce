@@ -36,7 +36,11 @@ const ProductsPage = () => {
       <section className="hero-sec-grid">
         <AsideFilter />
         <ResponsiveAside />
-        <main className="products-main">{currentPageData}</main>
+        {currentPageData.length === 0 ? (
+          <div className="text height-100vh flex-center-center"> There is no such item</div>
+        ) : (
+          <main className="products-main">{currentPageData}</main>
+        )}
       </section>
       <div className="flex-center-center">
         <ReactPaginate
