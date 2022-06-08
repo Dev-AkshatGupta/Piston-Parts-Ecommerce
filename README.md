@@ -18,54 +18,71 @@
 
 
 
-# About
+## StarCart - a little bird-tee store
 
-Ecommerce are the main way of the commerce activity now days. Dealing with your beloved automobiles we need accessories and parts for their repairing Piston Parts is here to help you with all kind of accessories and stuff.
+<div align="center">
 
-##### What's different in it compared to other Ecommerce?
+<img alt="Piston" src="./src/assets/starling.svg" width="1048px" height="238px" />
 
-This project deals with totally in the accessories and the parts of our automobiles. To take care of them .
+Piston Parts is an e-Commerce website built with ReactJS. It offers accessories and parts for your lovely automobiles.
 
+</div>
 
+---
 
-# Features
+## Live Website: [PistonParts]()
 
-1. You can signup or login in the web app proper user authentication with user being signed in feature.
+---
 
-2. It's a completely responsive web app . Tablet mobile or Desktop.Ready to handle everything.
+## Video Demo:
 
-3. You can keep items in wishlist or your cart as per your wish but after log in only.
+<!-- https://user-images.githubusercontent.com/10892977/162265595-a965d309-41e1-48f5-9842-df21b4c048bb.mp4 -->
 
-4.You can also check the product details by clicking on the more details or for single product page you can go for the single product page.
+---
 
-5. By clicking on the add to product you can add the product.
+## Quick Start
 
-6. By clicking on the add to wishlist .
+To view different pages of Piston Parts you can visit the following links:
 
+#### P0 Features
 
-7.You can also delete item from wishlist from the same item.
+- Home Page
+- Product Listing Page
+- Sort, Filters - Price, Category, Ratings
+- Cart Management
+- Wishlist Management
+- Authentication
 
-8.Different routings are done thorgh different components.
+#### P1 Features
 
-9.You can also checkout after going to cart and and go for checkout page.
+- Search
+- Address Management
+- Checkout
+- Single Product Page 
+-  Alerts 
+- User Profile Page
 
-10.You can also add the address delete it and edit it .
+#### P2 Features
 
+-Order Summary
+- Payment Integration
+- Pagination on Product Listing Page
 
-# Visit the website here
+### Features Added
 
-## [Piston-parTs]()
+- Private Routes: (can only be accessed while logged in)
+  - Profile
+  - Address Management
+  - Orders
+  - order-summary
+  - Wishlist
+  - Cart
+- Payment Integration (Razorpay)
+- Filters on Product Listing Page (can filter on the following):
+  - Rating
+  - Price
+  - Category
+  - Responsive Site (Both desktop and mobile responsive)
 
-
-
-
-## Connect with me
-
- [Akshat Gupta](https://github.com/Dev-AkshatGupta)
-
-
-
-
-
-
+---
 
