@@ -1,6 +1,6 @@
 
 
-/* ----------------------------------------------------     main page Styling styles ------------------------------------------------------- */
+/*------------------------------------------     main page Styling styles ------------------------------------------------------- */
 .checkout-page{
     padding: 1rem;
     display: grid;
@@ -12,12 +12,10 @@
     grid-area: item-display;
 }
 
-
 /* ----------------------------------------------------     payments card styles --------------------------------------------------------- */
 .checkout-card__payment {
     grid-area: payment-card;
     width: 35rem;
-    /* height: 45rem; */
     background-color: var(--PURE-WHITE);
 }
 

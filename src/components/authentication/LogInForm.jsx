@@ -80,7 +80,7 @@ function LogInForm() {
         className="btn btn-outline-pri form-btn smooth-square-radius "
         onClick={(e) => {
           e.preventDefault();
-        dispatch(  login({ email: "adarshbalika@gmail.com", password: "adarshbalika" }));
+        dispatch(login({ email: "akshat@gmail.com", password: "akshat" }));
         }}
       >
         Guest Log-In
