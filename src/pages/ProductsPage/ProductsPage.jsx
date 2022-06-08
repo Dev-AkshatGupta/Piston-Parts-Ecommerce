@@ -4,7 +4,7 @@ import { NavBar, Footer, BothCard, ResponsiveAside } from "components";
 import { AsideFilter } from "./ProductsPageAside/AsideFilter";
 import { useFilterManger } from "ContextsAndReducer/FilterDataProvider";
 import ReactPaginate from "react-paginate";
-const PER_PAGE = 6;
+const PER_PAGE = 4;
 const ProductsPage = () => {
   const { filtered } = useFilterManger();
   const [currentPage, setCurrentPage] = useState(0);

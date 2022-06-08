@@ -6,16 +6,17 @@ import { useFilterManger } from "../../ContextsAndReducer/FilterDataProvider";
 import { useSelector } from "react-redux";
 
 function NavBar({ menuBtn = false }) {
-
   const navigate = useNavigate();
   const state = useSelector((state) => state.operations);
   const currentUser = useSelector((state) => state.auth.currentUser);
-  const { aside, setAside } = useFilterManger();
+  const { aside, setAside, filterManager } = useFilterManger();
+  const { pathname } = useLocation();
+
   const clickHandler = (navigateTo) => {
     currentUser._id
       ? navigate(navigateTo)
       : navigate("/logIn-Page", {
-          state: { from:{pathname:navigateTo}},
+          state: { from: { pathname: navigateTo } },
           replace: true,
         });
   };
@@ -47,43 +48,63 @@ function NavBar({ menuBtn = false }) {
         </div>
         <div className="nav-bottom ">
           <ul className="nav-bottom__list">
-            <li className="nav-bottom__list-item change-nav-display">
-              <Link to="/products-page" className="btn nav-bottom-btn text">
-                Turbo-chargers
-              </Link>
-            </li>
-            <li className="nav-bottom__list-item change-nav-display">
-              <Link
-                to="/products-page"
-                className="btn btn-sec nav-bottom-btn text"
-              >
-                Oils Lubricants
-              </Link>
-            </li>
-            <li className="nav-bottom__list-item change-nav-display">
-              <Link
-                to="/products-page"
-                className="btn btn-sec nav-bottom-btn text"
-              >
-                Three-wheelers
-              </Link>
-            </li>
-            <li className="nav-bottom__list-item change-nav-display">
-              <Link
-                to="/products-page"
-                className="btn btn-sec nav-bottom-btn text"
-              >
-                Spare-Parts
-              </Link>
-            </li>
-            <li className="nav-bottom__list-item change-nav-display">
-              <Link
-                to="/products-page"
-                className="btn btn-sec nav-bottom-btn text"
-              >
-                Power Stations
-              </Link>
-            </li>
+            {pathname === "/products-page" ? (
+              <li className="nav-bottom__list-item">
+                <div className="nav-bottom-search-box">
+                  <input
+                    type="search"
+                    className="nav-bottom-search"
+                    placeholder=" search"
+                    onChange={(e) => {
+                      filterManager({
+                        type: "SEARCH",
+                        payload: e.target.value,
+                      });
+                    }}
+                  />
+                </div>
+              </li>
+            ) : (
+              <>
+                <li className="nav-bottom__list-item change-nav-display">
+                  <Link to="/products-page" className="btn nav-bottom-btn text">
+                    Turbo-chargers
+                  </Link>
+                </li>
+                <li className="nav-bottom__list-item change-nav-display">
+                  <Link
+                    to="/products-page"
+                    className="btn btn-sec nav-bottom-btn text"
+                  >
+                    Oils Lubricants
+                  </Link>
+                </li>
+                <li className="nav-bottom__list-item change-nav-display">
+                  <Link
+                    to="/products-page"
+                    className="btn btn-sec nav-bottom-btn text"
+                  >
+                    Three-wheelers
+                  </Link>
+                </li>
+                <li className="nav-bottom__list-item change-nav-display">
+                  <Link
+                    to="/products-page"
+                    className="btn btn-sec nav-bottom-btn text"
+                  >
+                    Spare-Parts
+                  </Link>
+                </li>
+                <li className="nav-bottom__list-item change-nav-display">
+                  <Link
+                    to="/products-page"
+                    className="btn btn-sec nav-bottom-btn text"
+                  >
+                    Power Stations
+                  </Link>
+                </li>
+              </>
+            )}
             <li className="nav-bottom__list-item relative ">
               <a
                 onClick={() => clickHandler("/cart-page")}

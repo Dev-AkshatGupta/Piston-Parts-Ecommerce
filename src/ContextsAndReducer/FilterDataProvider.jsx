@@ -27,7 +27,7 @@ function FilterDataProvider({ children }) {
     fetchData();
   }, []);
   const [aside, setAside] = useState(true);
-  // reducer function for the useReducer
+
   function reducer(state, action) {
     switch (action.type) {
       case "DATA":
@@ -118,6 +118,14 @@ function FilterDataProvider({ children }) {
           sliderAmount: 1500,
           ratings: 5,
         };
+        case "SEARCH":
+          const search = {
+            ...state,
+            sorted: state.defaultData.filter(({ name }) => {
+              return name.toLowerCase().includes(action.payload);
+            }),
+          };
+          return search;
 
       default:
         break;
