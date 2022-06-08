@@ -6,21 +6,26 @@ import {
   getCartData,
   getWishlist,
 } from "Redux/Reducers-Redux/operationsSlice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import AllRoutes from "./AllRoutes";
-import { useState } from "react";
 import {EditAddressModal,AddressModal} from "components";
+import {useLocation} from "react-router-dom";
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(checkToken());
-  dispatch(getCartData());
-  dispatch(getWishlist());
-
+    dispatch(getCartData());
+    dispatch(getWishlist());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  const { pathname } = useLocation();
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]);
   const [address, setAddress] = useState({
  name: "",
     house: "",

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams, Link, useLocation, useNavigate } from "react-router-dom";
+import { useParams,  useLocation, useNavigate } from "react-router-dom";
 import {
   getAProduct,
   addToCart,
@@ -16,6 +16,7 @@ const SingleProductPage = () => {
   const navigate = useNavigate();
   useEffect(() => {
     dispatch(getAProduct(id));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const product = useSelector((state) => state.operations?.currentProduct);
   const cart = useSelector((state) => state.operations.cart);
@@ -56,7 +57,7 @@ const SingleProductPage = () => {
       <div className="single-product__main">
         <div className="single-product__left">
           <div className="single-product__left-image">
-            <img src={product?.image?.src} alt={product?.image?.alt} />
+            <img src={product?.image?.src} alt="product image" />
           </div>
         </div>
         <div className="single-product__right">

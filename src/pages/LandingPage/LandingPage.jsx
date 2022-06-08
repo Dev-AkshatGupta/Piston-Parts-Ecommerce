@@ -22,7 +22,10 @@ function LandingPage() {
       console.log(error + "in the getting categories");
     }
   };
-  useEffect(() => fetchCategories(), []);
+  useEffect(() => {
+    fetchCategories();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div>
