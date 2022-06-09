@@ -9,7 +9,7 @@ const AddressCard = ({ address ,state,setState}) => {
         onChange={()=>{setState(()=>address)}}
         /> {address.name}
       </p>
-      <p className="">
+      <p >
         <span>{address.house},</span>
         <span>{address.city},</span>
         <span>{address.state},</span>
