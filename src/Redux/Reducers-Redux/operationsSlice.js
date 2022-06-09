@@ -34,7 +34,7 @@ export const getAProduct = createAsyncThunk(
 
 export const getCartData = createAsyncThunk(
   "operations/getCartData",
-  async function (_, { rejectWithValue }) {
+  async  (_, { rejectWithValue }) => {
     const encodedToken = localStorage.getItem("token");
     try {
       const { data } = await axios.get(`/api/user/cart`, {

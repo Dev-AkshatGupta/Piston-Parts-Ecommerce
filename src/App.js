@@ -44,8 +44,7 @@ function App() {
   );
   const validateAddress = (data) => {
     const regExMobile = /^[6-9]\d{9}$/;
-    // const regExPostalCode=/^d{6}$ /;
-    const regExPostalCode = /^[1-9]{1}[0-9]{2}\\s{0, 1}[0-9]{3}$/;
+    const regExPostalCode = /^[1-9][0-9]{5}$/;
     if (
       data.name.trim() !== "" &&
       data.house.trim() !== "" &&
