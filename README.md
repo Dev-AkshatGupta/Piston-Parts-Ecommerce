@@ -30,15 +30,11 @@ Piston Parts is an e-Commerce website built with ReactJS. It offers accessories 
 
 ---
 
-## Live Website: [PistonParts]()
+## Live Website: [PistonParts](https://piston-parts-ecommerce.vercel.app/)
 
 ---
 
-## Video Demo:
 
-<!-- https://user-images.githubusercontent.com/10892977/162265595-a965d309-41e1-48f5-9842-df21b4c048bb.mp4 -->
-
----
 
 ## Quick Start
 
