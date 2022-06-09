@@ -22,6 +22,7 @@ function AsideFilter() {
           <li>
             <input
               type="radio"
+              id="PRICE_HIGH_TO_LOW"
               onChange={() => {
                 filterManager({
                   type: "PRICE_HIGH_TO_LOW",
@@ -30,13 +31,14 @@ function AsideFilter() {
               }}
               checked={filtered.priceSort === "PRICE_HIGH_TO_LOW"}
             />
-           
-            <label htmlFor="input" className="sub-text">
+
+            <label htmlFor="PRICE_HIGH_TO_LOW" className="sub-text">
               Price High to low
             </label>
           </li>
           <li>
             <input
+              id="PRICE_LOW_TO_HIGH"
               type="radio"
               onChange={() => {
                 filterManager({
@@ -46,7 +48,7 @@ function AsideFilter() {
               }}
               checked={filtered.priceSort === "PRICE_LOW_TO_HIGH"}
             />
-            <label htmlFor="input" className="sub-text">
+            <label htmlFor="PRICE_LOW_TO_HIGH" className="sub-text">
               Price Low to High
             </label>
           </li>
@@ -59,6 +61,7 @@ function AsideFilter() {
             <input
               type="checkbox"
               name="Air conditioning"
+              id="AIR_CONDITIONING"
               checked={filtered.categories.includes("AIR_CONDITIONING")}
               onChange={() => {
                 filterManager({
@@ -67,7 +70,7 @@ function AsideFilter() {
                 });
               }}
             />
-            <label htmlFor="input" className="sub-text">
+            <label htmlFor="AIR_CONDITIONING" className="sub-text">
               Air conditioning
             </label>
           </li>
@@ -91,6 +94,7 @@ function AsideFilter() {
             <input
               type="checkbox"
               name="Light"
+              id="Light"
               checked={filtered.categories.includes("Light")}
               onChange={() => {
                 filterManager({
@@ -99,7 +103,7 @@ function AsideFilter() {
                 });
               }}
             />
-            <label htmlFor="input" className="sub-text">
+            <label htmlFor="Light" className="sub-text">
               Light
             </label>
           </li>
@@ -108,6 +112,7 @@ function AsideFilter() {
             <input
               type="checkbox"
               name="Mechanical"
+              id="Mechanical"
               checked={filtered.categories.includes("Mechanical")}
               onChange={() => {
                 filterManager({
@@ -116,14 +121,15 @@ function AsideFilter() {
                 });
               }}
             />
-            <label htmlFor="input" className="sub-text">
+            <label htmlFor="Mechanical" className="sub-text">
               Mechanical
             </label>
           </li>
           <li>
             <input
               type="checkbox"
-              name="Mechanical"
+              name="Body"
+              id="Body"
               checked={filtered.categories.includes("Body")}
               onChange={() => {
                 filterManager({
@@ -132,7 +138,7 @@ function AsideFilter() {
                 });
               }}
             />
-            <label htmlFor="input" className="sub-text">
+            <label htmlFor="Body" className="sub-text">
               Body
             </label>
           </li>
@@ -140,6 +146,7 @@ function AsideFilter() {
             <input
               type="checkbox"
               name="Mechanical"
+              id="Engine"
               checked={filtered.categories.includes("Engine")}
               onChange={() => {
                 filterManager({
@@ -148,14 +155,15 @@ function AsideFilter() {
                 });
               }}
             />
-            <label htmlFor="input" className="sub-text">
+            <label htmlFor="Engine" className="sub-text">
               Engine
             </label>
           </li>
           <li>
             <input
               type="checkbox"
-              name="Mechanical"
+              name="Brakes"
+              id="Brakes"
               checked={filtered.categories.includes("Brakes")}
               onChange={() => {
                 filterManager({
@@ -164,7 +172,7 @@ function AsideFilter() {
                 });
               }}
             />
-            <label htmlFor="input" className="sub-text">
+            <label htmlFor="Brakes" className="sub-text">
               Brakes
             </label>
           </li>
@@ -217,6 +225,7 @@ function AsideFilter() {
             <input
               type="checkbox"
               name="category"
+              id="ratings-4"
               checked={filtered.ratings === 4}
               onChange={() => {
                 filterManager({
@@ -225,7 +234,7 @@ function AsideFilter() {
                 });
               }}
             />
-            <label htmlFor="input" className="sub-text">
+            <label htmlFor="ratings-4" className="sub-text">
               4 and below
             </label>
           </li>
@@ -233,6 +242,7 @@ function AsideFilter() {
             <input
               type="checkbox"
               name="category"
+              id="ratings-3"
               checked={filtered.ratings === 3}
               onChange={() => {
                 filterManager({
@@ -241,7 +251,7 @@ function AsideFilter() {
                 });
               }}
             />
-            <label htmlFor="input" className="sub-text">
+            <label htmlFor="ratings-3" className="sub-text">
               3 and below
             </label>
           </li>
@@ -249,6 +259,7 @@ function AsideFilter() {
             <input
               type="checkbox"
               name="category"
+              id="ratings-2"
               checked={filtered.ratings === 2}
               onChange={() => {
                 filterManager({
@@ -257,7 +268,7 @@ function AsideFilter() {
                 });
               }}
             />
-            <label htmlFor="input" className="sub-text">
+            <label htmlFor="ratings-2" className="sub-text">
               2 and below
             </label>
           </li>
@@ -265,6 +276,7 @@ function AsideFilter() {
             <input
               type="checkbox"
               name="category"
+              id="ratings-1"
               checked={filtered.ratings === 1}
               onChange={() => {
                 filterManager({
@@ -273,7 +285,7 @@ function AsideFilter() {
                 });
               }}
             />
-            <label htmlFor="input" className="sub-text">
+            <label htmlFor="ratings-1" className="sub-text">
               1 and below
             </label>
           </li>
