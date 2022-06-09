@@ -47,7 +47,7 @@ a {
 /* styles for the scrolls */
 
 html::-webkit-scrollbar {
-  width: .75vw;
+  width: 1vw;
 }
 
 html::-webkit-scrollbar-thumb {

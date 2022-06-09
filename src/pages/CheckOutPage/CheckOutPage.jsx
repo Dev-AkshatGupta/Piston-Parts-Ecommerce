@@ -1,11 +1,53 @@
-import React from 'react';
 import "./CheckOutPage.css";
-import { useSelector } from "react-redux";
-import { useNavigate,Link } from "react-router-dom";
-import { NavBar, Footer, HorizontalCard } from "./../../pages/cart-page.jsx/importsAndExports";
+import { useSelector,useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { NavBar, Footer, AddressCard } from "components";
+import { useState } from "react";
+import { notifyWarn } from "Utilities/Notifications";
+import { openAddressModal } from "Redux/Reducers-Redux/operationsSlice";
+
 const CheckOutPage = () => {
   const cart = useSelector((state) => state.operations.cart);
-  const navigate = useNavigate();
+  const [addressState, setAddressState] = useState({});
+  const currentUser = useSelector((state) => state.auth.currentUser);
+  const addresses = useSelector((state) => state.operations.address);
+  const amount = cart.reduce((acc, pri) => {
+    return acc + pri.qty * pri.price.actualPrice;
+  }, 0);
+const dispatch = useDispatch();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (amount === "") {
+      alert("please enter amount");
+    } else if (!addressState.name ) {
+      notifyWarn("please select the address");
+    } else {
+      var options = {
+        key: process.env.REACT_APP_RAZORPAY_KEY,
+        key_secret: process.env.REACT_APP_RAZORPAY_SECRET,
+        amount: amount * 100,
+        currency: "INR",
+        name: "Piston_Parts",
+        description: "Happy shopping",
+        handler: function (response) {
+          alert(response.razorpay_payment_id);
+        },
+        prefill: {
+          name: currentUser.name,
+          email: currentUser.email,
+          // contact: "7904425033",
+        },
+        notes: {
+          address: "Piston",
+        },
+        theme: {
+          color: "#3399cc",
+        },
+      };
+      var pay = new window.Razorpay(options);
+      pay.open();
+    }
+  };
   return (
     <div>
       <NavBar />
@@ -26,42 +68,40 @@ const CheckOutPage = () => {
       )}
 
       {cart.length > 0 && (
-        <div className="carts-page">
+        <div className="checkout-page">
           <div className="selected-items-display">
-            {cart.map((item) => (
-              <HorizontalCard
-                key={item._id}
-                wholeItem={item}
-                alt={item.image.alt}
-                productName={item.name}
-                price={item.price.actualPrice}
-                quantity={item.qty}
-              />
-            ))}
+            {addresses.length > 0 ? (
+              addresses.map((address) => (
+                <AddressCard
+                  address={address}
+                  state={addressState}
+                  setState={setAddressState}
+                />
+              ))
+            ) : (
+              <p>Please sir add some address</p>
+            )}
           </div>
           {/* price Calculating template with all their designs */}
-          <div className="card-payment smooth-square-radius margin-top-1">
+          <div className="checkout-card__payment smooth-square-radius margin-top-1">
             <div className="flex-center-space-betw padding-5-10">
               <h2 className="text-center">Order Details </h2>
             </div>
             <div className="divider-2"></div>
-
             <div className="flex-center-space-betw padding-l-r">
               <h5 className="text">Item</h5>
               <h5 className="text">Quantity</h5>
             </div>
-
             {cart.map((product) => (
               <div
                 className="flex-center-space-betw padding-l-r"
                 key={product._id}
               >
                 <p className="text">{product.name}</p>
-                <p className="text ">{product.quantity}</p>
+                <p className="text ">{product.qty}</p>
               </div>
             ))}
             <div className="divider-2"></div>
-
             <div className="flex-center-space-betw padding-l-r">
               <p className="text">
                 Price(
@@ -77,7 +117,6 @@ const CheckOutPage = () => {
                 }, 0)}
               </p>
             </div>
-
             <div className="flex-center-space-betw padding-l-r">
               <p className="text">Discount:</p>
               <p className="text ztext-line-through">
@@ -91,7 +130,6 @@ const CheckOutPage = () => {
                 }, 50)}
               </p>
             </div>
-
             <div className="flex-center-space-betw padding-l-r">
               <p className="text">Delivery Charges:</p>
               <p className="text">₹50</p>
@@ -99,12 +137,7 @@ const CheckOutPage = () => {
             <div className="divider-2"></div>
             <div className="flex-center-space-betw padding-l-r">
               <h3>Total</h3>
-              <h3>
-                ₹
-                {cart.reduce((acc, pri) => {
-                  return acc + pri.qty * pri.price.actualPrice;
-                }, 0)}
-              </h3>
+              <h3>₹{amount}</h3>
             </div>
             <div className="divider-2"></div>
             <p className="text padding-l-r">
@@ -119,17 +152,37 @@ const CheckOutPage = () => {
               on this order
             </p>
             <div className="flex-center">
-              <button
-                className="btn btn-pri width-70 "
-              >Pay 
+              <button className="btn btn-pri width-70 " onClick={handleSubmit}>
+                Pay
               </button>
             </div>
+            <div className="flex-center-center">
+              <button
+                className="btn btn-green margin-1"
+                onClick={() => {
+                  dispatch(openAddressModal());
+                }}
+              >
+                Add address
+              </button>
+            </div>
+            {addressState.name && (
+              <>
+                <p> {addressState.name}</p>
+                <p>
+                  <span>{addressState.house},</span>
+                  <span>{addressState.city},</span>
+                  <span>{addressState.state},</span>
+                  <span>{addressState.postalCode}.</span>
+                </p>
+              </>
+            )}
           </div>
         </div>
       )}
       <Footer />
     </div>
   );
-}
+};
 
-export {CheckOutPage}
+export { CheckOutPage };

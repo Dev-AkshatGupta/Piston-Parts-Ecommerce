@@ -1,13 +1,11 @@
-import React from "react";
 import "./cart-page.css";
-import { Link } from "react-router-dom";
 import {
   NavBar,
   Footer,
   HorizontalCard,
-} from "./importsAndExports";
+} from "components";
 import {useSelector} from "react-redux";
-import {useNavigate} from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 function CartPage() {
  const cart=useSelector(state=>state.operations.cart);
  const navigate = useNavigate();

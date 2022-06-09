@@ -1,19 +1,23 @@
-import { ProductsPage } from "./pages/products-page/ProductsPage";
 import { Routes, Route } from "react-router-dom";
-import { Page404 } from "./pages/Page-404/Page404";
-import { LandingPage } from "./pages/Landing-Page/LandingPage";
-import { WishlistPage } from "./pages/Wishlist-page/WishlistPage";
-import { LogInPage } from "./pages/authenticationPages/LogInPage";
-import { SignUpPage } from "./pages/authenticationPages/SignUpPage";
-import { CartPage } from "./pages/cart-page.jsx/CartPage";
-import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
-import { SingleProductPage } from "pages/SingleProductPage/SingleProductPage";
-import { CheckOutPage } from "pages/CheckOutPage/CheckOutPage";
 import { useSelector } from "react-redux";
-import { ProfileAddress } from "components/ProfileAddress/ProfileAddress";
-import { ProfileCard } from "components/DifferentCards/ProfileCard/ProfileCard";
-import { PrivateRoute } from "components/CustomRoutes/PrivateRoute";
-import { RestrictedRoute } from "components/CustomRoutes/RestrictedRoute";
+import {
+  RestrictedRoute,
+  PrivateRoute,
+  ProfileCard,
+  ProfileAddress,
+} from "components";
+import {
+  ProductsPage,
+  Page404,
+  LandingPage,
+  WishlistPage,
+  LogInPage,
+  SignUpPage,
+  CartPage,
+  ProfilePage,
+  SingleProductPage,
+  CheckOutPage,
+} from "pages";
 const AllRoutes = () => {
   const currentUser = useSelector((state) => state?.auth?.currentUser);
 

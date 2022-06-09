@@ -1,7 +1,7 @@
 import React from "react";
 import "./ResponsiveAside.css";
 
-import { useFilterManger } from "../../pages/contextsAndReducer/FilterDataProvider";
+import { useFilterManger } from "ContextsAndReducer/FilterDataProvider";
 function ResponsiveAside() {
   const { filtered, filterManager, aside } = useFilterManger();
   return (
@@ -22,18 +22,14 @@ function ResponsiveAside() {
           <li>
             <input
               type="radio"
-              name="Price"
               onChange={() =>
                 filterManager({
                   type: "PRICE_HIGH_TO_LOW",
                   payload: "PRICE_HIGH_TO_LOW",
                 })
               }
-              // checked={filtered.priceSort == "PRICE_HIGH_TO_LOW"}
-              checked={true}
+              checked={filtered.priceSort == "PRICE_HIGH_TO_LOW"}
             />
-            {console.log(filtered.priceSort === "PRICE_HIGH_TO_LOW")}
-
             <label htmlFor="input" className="sub-text">
               Price High to low
             </label>
@@ -41,11 +37,10 @@ function ResponsiveAside() {
           <li>
             <input
               type="radio"
-              name="Price"
+            
               onChange={() => filterManager({ type: "PRICE_LOW_TO_HIGH" })}
               checked={filtered.priceSort === "PRICE_LOW_TO_HIGH"}
             />
-            {console.log(filtered.priceSort === "PRICE_LOW_TO_HIGH")}
             <label htmlFor="input" className="sub-text">
               Price Low to High
             </label>

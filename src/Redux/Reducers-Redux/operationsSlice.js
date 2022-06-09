@@ -14,7 +14,6 @@ const initialState = {
   currentProduct: {},
   // for the address
   address: [],
-  // isAddressModalOpen: false,
   isAddressModalOpen: false,
   isAddressEditModalOpen: false,
   addressToEdit:{}
@@ -26,6 +25,7 @@ export const getAProduct = createAsyncThunk(
     try {
       const { data } = await axios.get(`/api/products/${id}`);
       return data;
+
     } catch (error) {
       console.log(error);
     }
@@ -34,7 +34,7 @@ export const getAProduct = createAsyncThunk(
 
 export const getCartData = createAsyncThunk(
   "operations/getCartData",
-  async function (_, { rejectWithValue }) {
+  async  (_, { rejectWithValue }) => {
     const encodedToken = localStorage.getItem("token");
     try {
       const { data } = await axios.get(`/api/user/cart`, {
@@ -49,14 +49,7 @@ export const getCartData = createAsyncThunk(
   }
 );
 
-export const getAllAddress = createAsyncThunk(
-  "operations/getAllAddress",
-  async (_, { rejectWithValue }) => {
-    try {
-      // console.log(details);
-    } catch (error) {}
-  }
-);
+
 
 export const addAddress = createAsyncThunk(
   "operations/addAddress",
@@ -75,7 +68,7 @@ export const addAddress = createAsyncThunk(
           },
         }
       );
-      console.log(data);
+     
       return data;
     } catch (error) {
       console.log(error);
@@ -90,13 +83,11 @@ export const deleteAddress = createAsyncThunk(
     const encodedToken = localStorage.getItem("token");
     try {
       const { id } = details;
-     console.log(id);
       const { data } = await axios.delete(`/api/user/address/${id}`, {
         headers: {
           authorization: encodedToken,
         },
       });
-      console.log(data);
       notifyWarn("Address Removed");
       return data;
     } catch (error) {
@@ -120,7 +111,7 @@ export const editAddress = createAsyncThunk(
          },
        });
        notifyWarn("Address Removed");
-       console.log(data);
+   
        return data;
     } catch (error) {
       console.log(error);
@@ -156,6 +147,7 @@ export const deleteItemFromCart = createAsyncThunk(
   async function (productId, { rejectWithValue }) {
     const encodedToken = localStorage.getItem("token");
     try {
+
       const { data } = await axios.delete(`/api/user/cart/${productId}`, {
         headers: {
           authorization: encodedToken,
@@ -342,11 +334,6 @@ const operationsSlice = createSlice({
         state.wishlist = action.payload.wishlist;
       })
       .addCase(deleteItemFromWishlist.rejected, (state, action) => {})
-      .addCase(getAllAddress.pending, (state, action) => {})
-      .addCase(getAllAddress.fulfilled, (state, action) => {
-        state.address = action.payload.address;
-      })
-      .addCase(getAllAddress.rejected, (state, action) => {})
       .addCase(addAddress.pending, (state, action) => {})
       .addCase(addAddress.fulfilled, (state, action) => {
         state.address = action.payload.address;

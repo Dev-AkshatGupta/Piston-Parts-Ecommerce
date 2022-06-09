@@ -1,13 +1,13 @@
 import React from "react";
 import "./Categories-card.css";
-import { useFilterManger } from "../../../pages/contextsAndReducer/FilterDataProvider";
-function CategoriesCard({ imageUrl, alt,text, category }) {
+import { useFilterManger } from "ContextsAndReducer/FilterDataProvider";
+function CategoriesCard({ imageUrl, alt, text, category }) {
   const { filterManager } = useFilterManger();
   return (
     <div
       className="categories-card-wrapper background-white"
       onClick={() => {
-filterManager({ type: "CLEAR_ALL" });
+        filterManager({ type: "CLEAR_ALL" });
         filterManager({ type: "CATEGORIES", payload: category });
       }}
     >

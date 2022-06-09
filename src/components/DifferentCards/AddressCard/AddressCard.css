@@ -1,0 +1,11 @@
+.address-card__wrapper {
+    width: 100%;
+    background: var(--WHITE-SMOKE);
+    border-radius: 12px;
+    transition:all 0.3s;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}

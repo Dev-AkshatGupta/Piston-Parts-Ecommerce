@@ -25,9 +25,10 @@ function FilterDataProvider({ children }) {
 
   useEffect(() => {
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const [aside, setAside] = useState(true);
-  // reducer function for the useReducer
+
   function reducer(state, action) {
     switch (action.type) {
       case "DATA":
@@ -50,7 +51,7 @@ function FilterDataProvider({ children }) {
               first.actualPrice - second.actualPrice
           ),
         };
-        console.log(returnData);
+        
         return returnData;
       }
       case "PRICE_HIGH_TO_LOW": {
@@ -62,7 +63,7 @@ function FilterDataProvider({ children }) {
               second.actualPrice - first.actualPrice
           ),
         };
-        console.log(returnData);
+      
         return returnData;
       }
       case "SLIDER":
@@ -118,6 +119,14 @@ function FilterDataProvider({ children }) {
           sliderAmount: 1500,
           ratings: 5,
         };
+        case "SEARCH":
+          const search = {
+            ...state,
+            sorted: state.defaultData.filter(({ name }) => {
+              return name.toLowerCase().includes(action.payload);
+            }),
+          };
+          return search;
 
       default:
         break;

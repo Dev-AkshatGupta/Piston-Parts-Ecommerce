@@ -1,15 +1,14 @@
 import "./Cart-Product-Big.css";
 import { BsSuitHeartFill } from "react-icons/bs";
 import { TiTickOutline } from "react-icons/ti";
-
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addToCart,
   deleteItemFromWishlist,
   postItemToWishlist,
-} from "./../../../Redux/Reducers-Redux/operationsSlice";
-// Small product Card
+} from "Redux/Reducers-Redux/operationsSlice";
+
 const Card = ({
   image,
   manufacturerName,
@@ -56,11 +55,13 @@ const Card = ({
           replace: true,
         });
   };
+  
   return (
     <div className=" card-vertical border-r-3  padding-2 margin-top-1 height-53R">
       <div className="card-product-image position-relative">
-        <img src={image} className="border-r-3 " />
-
+        <Link className="text-black " to={`/singleProduct-page/${id}`}>
+          <img src={image} className="border-r-3 " />
+        </Link>
         {isItemInWishlist ? (
           <div className="go-like active-liked ">
             <BsSuitHeartFill
@@ -122,4 +123,5 @@ const Card = ({
     </div>
   );
 };
+
 export { Card };

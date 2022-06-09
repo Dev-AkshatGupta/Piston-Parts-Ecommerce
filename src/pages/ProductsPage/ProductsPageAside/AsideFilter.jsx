@@ -1,6 +1,6 @@
 import React from "react";
 import "./aside.css";
-import { useFilterManger } from "../../contextsAndReducer/FilterDataProvider";
+import { useFilterManger } from "ContextsAndReducer/FilterDataProvider";
 function AsideFilter() {
   const { filtered, filterManager } = useFilterManger();
 

@@ -1,26 +1,55 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
-import { getAProduct } from "./../../Redux/Reducers-Redux/operationsSlice";
-import { NavBar } from "components/navigation/NavBar";
-import { Link } from "react-router-dom";
+import { useParams,  useLocation, useNavigate } from "react-router-dom";
+import {
+  getAProduct,
+  addToCart,
+  postItemToWishlist,
+} from "Redux/Reducers-Redux/operationsSlice";
+import { NavBar } from "components";
 import "./SingleProductPage.css";
-import { addToCart,postItemToWishlist } from "Redux/Reducers-Redux/operationsSlice";
+
 const SingleProductPage = () => {
   const { id } = useParams();
-
+  const currentPath = useLocation();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   useEffect(() => {
     dispatch(getAProduct(id));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const product = useSelector((state) => state?.operations?.currentProduct);
+  const product = useSelector((state) => state.operations?.currentProduct);
   const cart = useSelector((state) => state.operations.cart);
   const wishlist = useSelector((state) => state.operations.wishlist);
-  const addToWishlist = wishlist.findIndex(
-    (item) => item.name === product.name
-  );
+  const isItemInWishlist =
+    wishlist.findIndex((item) => item.name === product.name) === -1
+      ? false
+      : true;
+  const isItemInCart =
+    cart.findIndex((item) => item.name === product.name) === -1 ? false : true;
 
-  const cartItemsInState = cart.findIndex((item) => item.name === product.name);
+  const userId = useSelector((state) => state.auth.currentUser?._id);
+  const handleAddToCart = () => {
+    userId
+      ? isItemInCart
+        ? navigate("/cart-page")
+        : dispatch(addToCart(product))
+      : navigate("/logIn-Page", {
+          state: { from: currentPath },
+          replace: true,
+        });
+  };
+  const handleWishlist = () => {
+    userId
+      ? isItemInWishlist
+        ? navigate("/wishlist-page")
+        : dispatch(postItemToWishlist(product))
+      : navigate("/logIn-Page", {
+          state: { from: currentPath },
+          replace: true,
+        });
+  };
+  
   return (
     <>
       <NavBar />
@@ -28,7 +57,7 @@ const SingleProductPage = () => {
       <div className="single-product__main">
         <div className="single-product__left">
           <div className="single-product__left-image">
-            <img src={product?.image?.src} alt={product?.image?.alt} />
+            <img src={product?.image?.src} alt="product image" />
           </div>
         </div>
         <div className="single-product__right">
@@ -68,44 +97,23 @@ const SingleProductPage = () => {
                 <p>{product?.details}</p>
               </details>
             </div>
-            <div
-              className="flex-wrap flex-center-space-betw width-100 margin-top-2"
-            >
-              {cartItemsInState === -1 ? (
-                <button
-                  className="btn btn-outline-pri margin-1"
-                  onClick={() => {
-                    dispatch(addToCart(product));
-                  }}
-                >
-                  Add to Cart
-                </button>
-              ) : (
-                <Link
-                  to="/cart-page"
-                  className="btn btn-outline-pri margin-1 text"
-                >
-                  Go to Cart
-                </Link>
-              )}
-
-              {addToWishlist === -1 ? (
-                <button
-                  className="add-to-cart btn btn-outline text margin-1"
-                  onClick={(e) => {
-                    dispatch(postItemToWishlist(product));
-                  }}
-                >
-                  Add to Wishlist
-                </button>
-              ) : (
-                <Link
-                  to=""
-                  className="add-to-cart btn btn-outline text margin-1"
-                >
-                  Go to wishlist
-                </Link>
-              )}
+            <div className="flex-wrap flex-center-space-betw width-100 margin-top-2">
+              <button
+                className="btn btn-outline-pri margin-1"
+                onClick={() => {
+                  handleAddToCart();
+                }}
+              >
+                {isItemInCart ? "Go to cart" : " Add to Cart"}
+              </button>
+              <button
+                className="add-to-cart btn btn-outline text margin-1"
+                onClick={() => {
+                  handleWishlist();
+                }}
+              >
+                {isItemInWishlist ? "Go to wishlist" : "Add to Wishlist"}
+              </button>
             </div>
           </div>
         </div>

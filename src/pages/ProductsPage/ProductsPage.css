@@ -4,6 +4,20 @@
     display: grid;
     grid-template-columns: .8fr 3fr;
 }
+.pagination{
+   display: flex;
+    gap: 2rem;
+    font-size: 2rem;
+}
+
+.pagination-active{
+    background-color: var(--ACCENT-COLOR);
+    color:black;
+}
+.page-item{
+    padding: .5rem 1rem;
+    cursor: pointer;
+}
 @media screen and (max-width: 700px) {
     .hero-sec-grid{
         display: flex;

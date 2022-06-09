@@ -6,11 +6,11 @@ import {
   NavBar,
   Search,
   Footer,
-  brandNameData,
   BrandCard,
   CategoriesCard,
-  useFilterManger,
-} from "./importsAndExports";
+} from "components";
+import {useFilterManger,} from "ContextsAndReducer/FilterDataProvider";
+import { brandNameData,} from "DATA/BrandsData";
 function LandingPage() {
   const { filtered, filterManager } = useFilterManger();
   const fetchCategories = async () => {
@@ -22,7 +22,10 @@ function LandingPage() {
       console.log(error + "in the getting categories");
     }
   };
-  useEffect(() => fetchCategories(), []);
+  useEffect(() => {
+    fetchCategories();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div>

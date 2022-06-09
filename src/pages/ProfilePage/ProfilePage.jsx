@@ -1,8 +1,6 @@
 import React from "react";
-import { NavBar } from "../../components/navigation/NavBar";
-import { Footer } from "../../components/footer/Footer";
+import { NavBar, Footer, ProfileNav } from "components";
 import "./ProfilePage.css";
-import {ProfileNav} from "components/ProfileNav/ProfileNav";
 import { Outlet } from "react-router-dom";
 function ProfilePage() {
 

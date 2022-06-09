@@ -7,7 +7,7 @@ import { v4 as uuid } from "uuid";
 
 export const products = [
   {
-    _id: uuid(),
+    _id: "1",
     name: "V-Ribbed Belt",
     category: "AIR_CONDITIONING",
     image: {
@@ -32,7 +32,7 @@ export const products = [
       "We at Piston parTs gurantee the best in qualit lowest price and genuine virgin products ",
   },
   {
-    _id: uuid(),
+    _id: "2",
     name: "Air Filter",
     category: "AIR_CONDITIONING",
     image: {
@@ -57,7 +57,7 @@ export const products = [
       "We at Piston parTs gurantee the best in qualit lowest price and genuine virgin products ",
   },
   {
-    _id: uuid(),
+    _id: "3",
     name: "Rubber Hose Heater",
     category: "AIR_CONDITIONING",
     image: {
@@ -82,7 +82,7 @@ export const products = [
       "We at Piston parTs gurantee the best in qualit lowest price and genuine virgin products ",
   },
   {
-    _id: uuid(),
+    _id: "4",
     name: "Side Marker Light Set",
     category: "Light",
     image: {
@@ -107,7 +107,7 @@ export const products = [
       "We at Piston parTs gurantee the best in qualit lowest price and genuine virgin products ",
   },
   {
-    _id: uuid(),
+    _id: 5,
     name: "Side Rear View Mirror Right",
     category: "Light",
     image: {
@@ -132,7 +132,7 @@ export const products = [
       "We at Piston parTs gurantee the best in qualit lowest price and genuine virgin products ",
   },
   {
-    _id: uuid(),
+    _id: "6",
     name: "BUSH, STEERING CENTER",
     category: "Mechanical",
     image: {
@@ -157,7 +157,7 @@ export const products = [
       "We at Piston parTs gurantee the best in qualit lowest price and genuine virgin products ",
   },
   {
-    _id: uuid(),
+    _id: "7",
     name: "PISTON",
     category: "Mechanical",
     image: {
@@ -182,7 +182,7 @@ export const products = [
       "We at Piston parTs gurantee the best in qualit lowest price and genuine virgin products ",
   },
   {
-    _id: uuid(),
+    _id: "8",
     name: "Headlamp Assembly Right",
     category: "Electric",
     image: {
@@ -207,7 +207,7 @@ export const products = [
       "We at Piston parTs gurantee the best in qualit lowest price and genuine virgin products ",
   },
   {
-    _id: uuid(),
+    _id: "9",
     name: "Glow Plug",
     category: "Electric",
     image: {
@@ -232,7 +232,7 @@ export const products = [
       "We at Piston parTs gurantee the best in qualit lowest price and genuine virgin products ",
   },
   {
-    _id: uuid(),
+    _id: "10",
     name: "Oil Filter",
     category: "Oil",
     image: {
