@@ -1,7 +1,7 @@
 import "./WishlistCard.css";
 import { BsSuitHeartFill } from "react-icons/bs";
 import { TiTickOutline } from "react-icons/ti";
-import {deleteItemFromWishlist,addToCart} from "./../../../Redux/Reducers-Redux/operationsSlice";
+import {deleteItemFromWishlist,addToCart} from "Redux/Reducers-Redux/operationsSlice";
 import { useDispatch } from "react-redux";
 const WishlistCard = ({
   image,

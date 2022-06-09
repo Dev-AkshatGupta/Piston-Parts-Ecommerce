@@ -7,7 +7,7 @@ import {
   addToCart,
   deleteItemFromWishlist,
   postItemToWishlist,
-} from "../../../Redux/Reducers-Redux/operationsSlice";
+} from "Redux/Reducers-Redux/operationsSlice";
 function CardProductBig({
   image,
   manufacturerName,

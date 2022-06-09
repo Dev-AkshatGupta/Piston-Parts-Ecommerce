@@ -1,8 +1,8 @@
 import React from "react";
 import "./footer.css";
-import { Github } from "../../IconsAndAssets/Icons/Github";
-import { Twitter } from "../../IconsAndAssets/Icons/Twitter";
-import { LinkedIn } from "../../IconsAndAssets/Icons/LinkedIn";
+import { Github } from "IconsAndAssets/Icons/Github";
+import { Twitter } from "IconsAndAssets/Icons/Twitter";
+import { LinkedIn } from "IconsAndAssets/Icons/LinkedIn";
 function Footer() {
   return (
     <footer className="footer">

@@ -2,7 +2,7 @@ import "./NavBar.css";
 import { CgProfile } from "react-icons/cg";
 import { ImMenu } from "react-icons/im";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { useFilterManger } from "../../ContextsAndReducer/FilterDataProvider";
+import { useFilterManger } from "ContextsAndReducer/FilterDataProvider";
 import { useSelector } from "react-redux";
 
 function NavBar({ menuBtn = false }) {

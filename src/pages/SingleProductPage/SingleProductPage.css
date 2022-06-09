@@ -38,3 +38,9 @@ width: 40rem;
 .single-product__right-description__ul > li{
 list-style: circle;
 }
+
+@keyframes identifier {
+ .single-product__main{
+     
+ }   
+}
