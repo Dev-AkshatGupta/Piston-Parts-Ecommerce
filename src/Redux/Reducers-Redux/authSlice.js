@@ -36,7 +36,7 @@ export const signUp = createAsyncThunk("auth/signUp", async (userDetails) => {
 });
 
 export const checkToken = createAsyncThunk("auth/checkToken", async () => {
-  const encodedToken = localStorage.getItem("token");
+  const encodedToken = localStorage.getItem("piston-parts-token");
   if (encodedToken) {
     try {
       const response = await axios.post("api/auth/verify", {
@@ -63,12 +63,12 @@ const authSlice = createSlice({
       .addCase(login.fulfilled, (state, action) => {
         state.currentUser = action.payload.foundUser;
         state.loading = false;
-        localStorage.setItem("token", action.payload.encodedToken);
+        localStorage.setItem("piston-parts-token", action.payload.encodedToken);
         notifySuccess("Hey you loge'd in man");
       })
       .addCase(signUp.fulfilled, (state, action) => {
         state.currentUser = action.payload.createdUser;
-        localStorage.setItem("token", action.payload.encodedToken);
+        localStorage.setItem("piston-parts-token", action.payload.encodedToken);
       })
       .addCase(checkToken.fulfilled, (state, action) => {
         if (action.payload) {

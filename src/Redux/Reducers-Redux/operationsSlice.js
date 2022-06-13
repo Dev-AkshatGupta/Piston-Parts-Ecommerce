@@ -16,7 +16,7 @@ const initialState = {
   address: [],
   isAddressModalOpen: false,
   isAddressEditModalOpen: false,
-  addressToEdit:{}
+  addressToEdit: {},
 };
 
 export const getAProduct = createAsyncThunk(
@@ -25,7 +25,6 @@ export const getAProduct = createAsyncThunk(
     try {
       const { data } = await axios.get(`/api/products/${id}`);
       return data;
-
     } catch (error) {
       console.log(error);
     }
@@ -34,12 +33,12 @@ export const getAProduct = createAsyncThunk(
 
 export const getCartData = createAsyncThunk(
   "operations/getCartData",
-  async  (_, { rejectWithValue }) => {
-    const encodedToken = localStorage.getItem("token");
+  async (_, { rejectWithValue }) => {
+    const encodedToken = localStorage.getItem("piston-parts-token");
     try {
       const { data } = await axios.get(`/api/user/cart`, {
         headers: {
-          authorization: encodedToken, // passing token as an authorization header
+          authorization: encodedToken, // passing piston-parts-token as an authorization header
         },
       });
       return data;
@@ -49,14 +48,12 @@ export const getCartData = createAsyncThunk(
   }
 );
 
-
-
 export const addAddress = createAsyncThunk(
   "operations/addAddress",
   async (details, { rejectWithValue }) => {
     const { address } = details;
     try {
-      const encodedToken = localStorage.getItem("token");
+      const encodedToken = localStorage.getItem("piston-parts-token");
       const { data } = await axios.post(
         "/api/user/address",
         {
@@ -68,7 +65,7 @@ export const addAddress = createAsyncThunk(
           },
         }
       );
-     
+
       return data;
     } catch (error) {
       console.log(error);
@@ -80,7 +77,7 @@ export const addAddress = createAsyncThunk(
 export const deleteAddress = createAsyncThunk(
   "operations/deleteAddress",
   async (details, { rejectWithValue }) => {
-    const encodedToken = localStorage.getItem("token");
+    const encodedToken = localStorage.getItem("piston-parts-token");
     try {
       const { id } = details;
       const { data } = await axios.delete(`/api/user/address/${id}`, {
@@ -100,19 +97,23 @@ export const editAddress = createAsyncThunk(
   "operations/editAddress",
   async (details, { rejectWithValue }) => {
     try {
-         const encodedToken = localStorage.getItem("token");
-         
-       const {_id: id } = details;
-       const { data } = await axios.post(`/api/user/address/${id}`,{
-         address:details
-       }, {
-         headers: {
-           authorization: encodedToken,
-         },
-       });
-       notifyWarn("Address Removed");
-   
-       return data;
+      const encodedToken = localStorage.getItem("piston-parts-token");
+
+      const { _id: id } = details;
+      const { data } = await axios.post(
+        `/api/user/address/${id}`,
+        {
+          address: details,
+        },
+        {
+          headers: {
+            authorization: encodedToken,
+          },
+        }
+      );
+      notifyWarn("Address Removed");
+
+      return data;
     } catch (error) {
       console.log(error);
     }
@@ -122,7 +123,7 @@ export const editAddress = createAsyncThunk(
 export const addToCart = createAsyncThunk(
   "operations/addToCart",
   async function (product, { rejectWithValue }) {
-    const encodedToken = localStorage.getItem("token");
+    const encodedToken = localStorage.getItem("piston-parts-token");
     try {
       const { data } = await axios.post(
         `/api/user/cart`,
@@ -145,9 +146,8 @@ export const addToCart = createAsyncThunk(
 export const deleteItemFromCart = createAsyncThunk(
   "operations/deleteItemFromCart",
   async function (productId, { rejectWithValue }) {
-    const encodedToken = localStorage.getItem("token");
+    const encodedToken = localStorage.getItem("piston-parts-token");
     try {
-
       const { data } = await axios.delete(`/api/user/cart/${productId}`, {
         headers: {
           authorization: encodedToken,
@@ -164,7 +164,7 @@ export const deleteItemFromCart = createAsyncThunk(
 export const increaseItemInCart = createAsyncThunk(
   "operations/increaseItemInCart",
   async function (productId, { rejectWithValue }) {
-    const encodedToken = localStorage.getItem("token");
+    const encodedToken = localStorage.getItem("piston-parts-token");
     try {
       const { data } = await axios.post(
         `/api/user/cart/${productId}`,
@@ -190,7 +190,7 @@ export const increaseItemInCart = createAsyncThunk(
 export const decreaseItemInCart = createAsyncThunk(
   "operations/decreaseItemInCart",
   async function (productId, { rejectWithValue }) {
-    const encodedToken = localStorage.getItem("token");
+    const encodedToken = localStorage.getItem("piston-parts-token");
     try {
       const { data } = await axios.post(
         `/api/user/cart/${productId}`,
@@ -215,7 +215,7 @@ export const decreaseItemInCart = createAsyncThunk(
 export const getWishlist = createAsyncThunk(
   "operations/getWishlist",
   async function (_, { rejectWithValue }) {
-    const encodedToken = localStorage.getItem("token");
+    const encodedToken = localStorage.getItem("piston-parts-token");
     try {
       const { data } = await axios.get(`/api/user/wishlist`, {
         headers: {
@@ -232,7 +232,7 @@ export const getWishlist = createAsyncThunk(
 export const postItemToWishlist = createAsyncThunk(
   "operations/postItemToWishlist",
   async function (item, { rejectWithValue }) {
-    const encodedToken = localStorage.getItem("token");
+    const encodedToken = localStorage.getItem("piston-parts-token");
     try {
       const { data } = await axios.post(
         `/api/user/wishlist`,
@@ -256,11 +256,11 @@ export const postItemToWishlist = createAsyncThunk(
 export const deleteItemFromWishlist = createAsyncThunk(
   "operations/deleteItemFromWishlist",
   async function (productId, { rejectWithValue }) {
-    const encodedToken = localStorage.getItem("token");
+    const encodedToken = localStorage.getItem("piston-parts-token");
     try {
       const { data } = await axios.delete(`/api/user/wishlist/${productId}`, {
         headers: {
-          authorization: encodedToken, // passing token as an authorization header
+          authorization: encodedToken, // passing piston-parts-token as an authorization header
         },
       });
 
@@ -282,10 +282,9 @@ const operationsSlice = createSlice({
     openAddressEditModal(state) {
       state.isAddressEditModalOpen = !state.isAddressEditModalOpen;
     },
-    getTheAddresToEdit(state,action){
-      state.addressToEdit=action.payload;
-
-    }
+    getTheAddresToEdit(state, action) {
+      state.addressToEdit = action.payload;
+    },
   },
   extraReducers(builder) {
     builder
