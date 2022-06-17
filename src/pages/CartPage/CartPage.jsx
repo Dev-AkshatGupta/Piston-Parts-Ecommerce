@@ -103,7 +103,7 @@ function CartPage() {
                   pri.qty * pri.price.previousPrice -
                   pri.qty * pri.price.actualPrice
                 );
-              }, 0)}
+              }, 0)}{" "}
               on this order
             </p>
             <div className="flex-center">

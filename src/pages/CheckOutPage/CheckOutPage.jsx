@@ -35,7 +35,7 @@ const dispatch = useDispatch();
         prefill: {
           name: currentUser.name,
           email: currentUser.email,
-          // contact: "7904425033",
+          contact: currentUser.mobileNumber,
         },
         notes: {
           address: "Piston",
@@ -53,7 +53,7 @@ const dispatch = useDispatch();
       <NavBar />
       <div className="banner-upper-empty"></div>
 
-      {cart.length === 0 && (
+      {cart.length === 0 ? (
         <div className="height-100vh flex-center">
           <div className="flex-center ">
             <span className="text-3">There is nothing in the Cart </span>
@@ -65,9 +65,7 @@ const dispatch = useDispatch();
             </Link>
           </div>
         </div>
-      )}
-
-      {cart.length > 0 && (
+      ) : (
         <div className="checkout-page">
           <div className="selected-items-display">
             {addresses.length > 0 ? (
@@ -79,7 +77,17 @@ const dispatch = useDispatch();
                 />
               ))
             ) : (
-              <p>Please sir add some address</p>
+              <p>
+                No Address Available{" "}
+                <button
+                  className="btn btn-green margin-1"
+                  onClick={() => {
+                    dispatch(openAddressModal());
+                  }}
+                >
+                  Add address
+                </button>
+              </p>
             )}
           </div>
           {/* price Calculating template with all their designs */}
@@ -148,7 +156,7 @@ const dispatch = useDispatch();
                   pri.qty * pri.price.previousPrice -
                   pri.qty * pri.price.actualPrice
                 );
-              }, 0)}
+              }, 0)}{" "}
               on this order
             </p>
             <div className="flex-center">
