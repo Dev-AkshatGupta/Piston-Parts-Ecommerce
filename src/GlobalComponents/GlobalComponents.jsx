@@ -41,6 +41,7 @@ const GlobalComponents = () => {
         regExMobile.test(mobileTrimmed) &&
         regExPostalCode.test(data.postalCode)
       ) {
+        
         dispatch(addAddress({ address }));
         setAddress({
           name: "",

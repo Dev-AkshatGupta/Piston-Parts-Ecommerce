@@ -335,6 +335,7 @@ const operationsSlice = createSlice({
       .addCase(deleteItemFromWishlist.rejected, (state, action) => {})
       .addCase(addAddress.pending, (state, action) => {})
       .addCase(addAddress.fulfilled, (state, action) => {
+      
         state.address = action.payload.address;
       })
       .addCase(addAddress.rejected, (state, action) => {})

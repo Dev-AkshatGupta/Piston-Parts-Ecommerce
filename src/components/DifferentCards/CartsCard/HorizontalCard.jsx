@@ -7,8 +7,9 @@ import {
   increaseItemInCart,
   decreaseItemInCart,
 } from "../../../Redux/Reducers-Redux/operationsSlice";
-import { useDispatch,useSelector } from "react-redux";
-import {Link} from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { throttle } from "Utilities/debounce";
 const HorizontalCard = ({
   image,
   alt,
@@ -17,14 +18,14 @@ const HorizontalCard = ({
   quantity,
   wholeItem,
 }) => {
-  const dispatch=useDispatch();
- 
-
-  const wishlist=useSelector(state=>state.operations.wishlist);
+  const dispatch = useDispatch();
+  const wishlist = useSelector((state) => state.operations.wishlist);
   const addToWishlist = wishlist.findIndex(
     (item) => item.name === wholeItem.name
   );
- 
+  const throttleAddQuantity = throttle((itemId) =>dispatch(increaseItemInCart(itemId)), 500);
+   const throttleDecreaseQuantity=throttle((itemId)=>dispatch(decreaseItemInCart(itemId)),1000);
+   console.log(quantity);
   return (
     <>
       <div className="horizontal-card text margin-1 ">
@@ -51,15 +52,15 @@ const HorizontalCard = ({
               <RiDeleteBin6Line />
             </button>
             <button
-              className="btn "
-              onClick={() => dispatch(increaseItemInCart(wholeItem._id))}
+              className="btn"
+              onClick={() => throttleAddQuantity(wholeItem._id)}
             >
               +
             </button>
             <button
-              disabled={quantity === 1 ? true : false}
+              disabled={quantity ===1 ? true : false}
               className="btn "
-              onClick={() => dispatch(decreaseItemInCart(wholeItem._id))}
+              onClick={() =>throttleDecreaseQuantity(wholeItem._id)}
             >
               -
             </button>
