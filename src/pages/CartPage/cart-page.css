@@ -18,7 +18,7 @@
     grid-area: payment-card;
     width: 35rem;
     height: 45rem;
-    background-color: var(--PURE-WHITE);
+    background-color: var(--PURE-WHITE); 
 }
 @media screen and (max-width: 800px) {
 .carts-page{
@@ -26,7 +26,11 @@
     display: grid;
     grid-template-columns:45rem 8fr ;
     grid-template-areas:
+     "  payment-card "
+     " item-display ";
+    grid-template-areas:
      "  payment-card ..."
      " item-display ...";
+     grid-template-rows:1fr;
 }
 }

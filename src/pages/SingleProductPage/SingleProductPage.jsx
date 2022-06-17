@@ -8,7 +8,7 @@ import {
 } from "Redux/Reducers-Redux/operationsSlice";
 import { NavBar } from "components";
 import "./SingleProductPage.css";
-
+import {v4 as uuid} from "uuid";
 const SingleProductPage = () => {
   const { id } = useParams();
   const currentPath = useLocation();
@@ -89,7 +89,7 @@ const SingleProductPage = () => {
               <h4>Description</h4>
               <ul className="single-product__right-description__ul">
                 {product?.description?.map((quality) => (
-                  <li className="text">{quality}</li>
+                  <li className="text" key={uuid()}>{quality}</li>
                 ))}
               </ul>
               <details>
@@ -97,7 +97,7 @@ const SingleProductPage = () => {
                 <p>{product?.details}</p>
               </details>
             </div>
-            <div className="flex-wrap flex-center-space-betw width-100 margin-top-2">
+            <div className="flex-wrap display-flex flex-column">
               <button
                 className="btn btn-outline-pri margin-1"
                 onClick={() => {
@@ -107,7 +107,7 @@ const SingleProductPage = () => {
                 {isItemInCart ? "Go to cart" : " Add to Cart"}
               </button>
               <button
-                className="add-to-cart btn btn-outline text margin-1"
+                className=" btn btn-outline  margin-1"
                 onClick={() => {
                   handleWishlist();
                 }}

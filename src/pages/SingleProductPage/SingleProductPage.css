@@ -8,7 +8,7 @@
   width: 100%;
   display: grid;
   grid-template-columns: 10rem 1fr 1fr 10rem;
-  grid-template-rows: 1fr;
+  /* grid-template-rows: 1fr; */
   grid-template-areas: "... visual text ...";
   grid-gap: 1rem;
 }
@@ -37,14 +37,52 @@
 .single-product__right-description__ul > li {
   list-style: circle;
 }
+ @media screen and (max-width: 900px) {
+   .single-product__left {
+    grid-area: visual;
+    height: 10rem;
+    width: 100%;
+  }
+  .single-product__left-image {
+    height: 30rem;
+    width: 30rem;
+    display:flex;
+    align-items: center;
+  }
 
-@media screen and (max-width: 1000px) {
+  .single-product__right {
+    grid-area: text;
+    width: 100%;
+     margin-top:1rem;
+    display: flex;
+    flex-direction: column;
+
+
+  }
   .single-product__main {
-    grid-template-rows: 10px 1fr 10px 1fr 10px;
+   
+    /* grid-template-columns:1fr 4fr 1fr; */
     grid-template-areas:
-      "... visual ... "
-      "... text ...";
+      "...  visual visual visual visual ... "
+      " ... text text text text ...   ";
     gap: 10px;
+    height: 100vh;
+  }
+ 
+}
+
+
+
+
+/* @media screen and (max-width: 1000px) {
+  .single-product__main {
+
+    grid-template-columns:10px 1fr 10px;
+    grid-template-areas:
+      "...  visual ... "
+      " ... text  ...   ";
+    gap: 10px;
+    height: 100vh;
   }
   .single-product__left {
     grid-area: visual;
@@ -52,17 +90,48 @@
     width: 100%;
   }
   .single-product__left-image {
-    height: 20rem;
-    width: 20rem;
+    height: 30rem;
+    width: 30rem;
   }
 
   .single-product__right {
     grid-area: text;
-    /* height: 10rem; */
+
     width: 100%;
      margin-top:1rem;
     display: flex;
     flex-direction: column;
-    /* gap: 10px; */
+   
+  }
+} */
+
+@media screen and (max-width: 450px) {
+  .single-product__main {
+   
+    grid-template-columns:10px 1fr 10px;
+    grid-template-areas:
+      "...  visual ... "
+      " ... text  ...   ";
+    gap: 10px;
+    height: 100vh;
+  }
+  .single-product__left {
+    grid-area: visual;
+    height: 10rem;
+    width: 100%;
+  }
+  .single-product__left-image {
+    height: 30rem;
+    width: 30rem;
+  }
+
+  .single-product__right {
+    grid-area: text;
+
+    width: 100%;
+     margin-top:1rem;
+    display: flex;
+    flex-direction: column;
+
   }
 }
