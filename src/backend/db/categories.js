@@ -29,7 +29,7 @@ export const categories = [
     image:
       "https://drive.google.com/uc?export=view&id=1GhlNpr0xQxoM8kQueSSrEJ384StQ_EtD",
     text: "Engine",
-     category: "Oil",
+     category: "Engine",
   },
   {_id:uuid(),
     image:
