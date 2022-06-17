@@ -8,3 +8,17 @@ export function debounce(callbackfn, delay) {
     }, delay);
   };
 }
+
+export function throttle(callbackfn, delay) {
+  let flag = true;
+  return function (...args) {
+    let context = this;
+    if (flag) {
+      callbackfn.apply(context, args);
+      flag = false;
+    }
+    setTimeout(() => {
+      flag = true;
+    }, delay);
+  };
+}
