@@ -24,7 +24,6 @@
 .carts-page{
     padding: 1rem;
     display: grid;
-    grid-template-columns:45rem 8fr ;
     grid-template-areas:
      "  payment-card "
      " item-display ";
