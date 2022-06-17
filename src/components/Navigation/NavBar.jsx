@@ -4,14 +4,21 @@ import { ImMenu } from "react-icons/im";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useFilterManger } from "ContextsAndReducer/FilterDataProvider";
 import { useSelector } from "react-redux";
-
+import { debounce } from "Utilities/debounce";
 function NavBar({ menuBtn = false }) {
   const navigate = useNavigate();
   const state = useSelector((state) => state.operations);
   const currentUser = useSelector((state) => state.auth.currentUser);
   const { aside, setAside, filterManager } = useFilterManger();
   const { pathname } = useLocation();
-
+  const search = debounce(
+    (e) =>
+      filterManager({
+        type: "SEARCH",
+        payload: e.target.value,
+      }),
+    1500
+  );
   const clickHandler = (navigateTo) => {
     currentUser._id
       ? navigate(navigateTo)
@@ -55,12 +62,7 @@ function NavBar({ menuBtn = false }) {
                     type="search"
                     className="nav-bottom-search"
                     placeholder=" search"
-                    onChange={(e) => {
-                      filterManager({
-                        type: "SEARCH",
-                        payload: e.target.value,
-                      });
-                    }}
+                    onChange={search}
                   />
                 </div>
               </li>

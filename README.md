@@ -18,7 +18,7 @@
 
 
 
-## Piston parts - a autmobole parts store
+## Piston parts - a autmobile parts store
 
 <div align="center">
 
@@ -51,7 +51,7 @@ To view different pages of Piston Parts you can visit the following links:
 
 #### P1 Features
 
-- Search
+- Debounce Search
 - Address Management
 - Checkout
 - Single Product Page 
@@ -79,6 +79,6 @@ To view different pages of Piston Parts you can visit the following links:
   - Price
   - Category
   - Responsive Site (Both desktop and mobile responsive)
-
+-Debounce search for products
 ---
 
