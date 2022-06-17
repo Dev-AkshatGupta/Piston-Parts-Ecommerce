@@ -14,8 +14,10 @@ function App() {
 const dispatch = useDispatch();
   useEffect(() => {
     dispatch(checkToken());
-    dispatch(getCartData());
-    dispatch(getWishlist());
+   if (localStorage.getItem("piston-parts-token")) {
+     dispatch(getCartData());
+     dispatch(getWishlist());
+   }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const { pathname } = useLocation();

@@ -1,7 +1,8 @@
 import "./ProfileCard.css";
-
-
+import { logOut } from "Redux/Reducers-Redux/authSlice";
+import { useDispatch } from "react-redux";
 function ProfileCard({ userDetails }) {
+  const dispatch = useDispatch();
   return (
     <div className="profile-card__main">
       <h3 className="profile-card__heading">Profile Details</h3>
@@ -18,9 +19,16 @@ function ProfileCard({ userDetails }) {
         <span className="margin-l-1 ">{userDetails.email}</span>
       </p>
       <div className="divider-2"></div>
-      <button className="btn btn-error margin-1">Log Out</button>
+      <button
+        className="btn btn-error margin-1"
+        onClick={() => {
+          dispatch(logOut());
+          window.location.reload(false);
+        }}
+      >
+        Log Out
+      </button>
     </div>
   );
 }
 export { ProfileCard };
-
