@@ -37,7 +37,6 @@ function ResponsiveAside() {
           <li>
             <input
               type="radio"
-            
               onChange={() => filterManager({ type: "PRICE_LOW_TO_HIGH" })}
               checked={filtered.priceSort === "PRICE_LOW_TO_HIGH"}
             />
@@ -205,7 +204,7 @@ function ResponsiveAside() {
               }}
             />
             <label htmlFor="input" className="sub-text">
-              5 and below
+              5 and above
             </label>
           </li>
           <li>
@@ -221,7 +220,7 @@ function ResponsiveAside() {
               }}
             />
             <label htmlFor="input" className="sub-text">
-              4 and below
+              4 and above
             </label>
           </li>
           <li>
@@ -237,7 +236,7 @@ function ResponsiveAside() {
               }}
             />
             <label htmlFor="input" className="sub-text">
-              3 and below
+              3 and above
             </label>
           </li>
           <li>
@@ -253,7 +252,7 @@ function ResponsiveAside() {
               }}
             />
             <label htmlFor="input" className="sub-text">
-              2 and below
+              2 and above
             </label>
           </li>
           <li>
@@ -269,7 +268,7 @@ function ResponsiveAside() {
               }}
             />
             <label htmlFor="input" className="sub-text">
-              1 and below
+              1 and above
             </label>
           </li>
         </ul>

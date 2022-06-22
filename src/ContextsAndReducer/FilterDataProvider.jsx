@@ -107,7 +107,7 @@ function FilterDataProvider({ children }) {
           ...state,
           ratings: action.payload,
           sorted: state.defaultData.filter((item) => {
-            return item.rating <= action.payload;
+            return item.rating >= action.payload;
           }),
         };
       case "CLEAR_ALL":
@@ -117,7 +117,7 @@ function FilterDataProvider({ children }) {
           categories: [],
           priceSort: "-",
           sliderAmount: 1500,
-          ratings: 5,
+          ratings: 1,
         };
         case "SEARCH":
           const search = {
@@ -139,7 +139,7 @@ function FilterDataProvider({ children }) {
     categoriesData: [],
     priceSort: "",
     sliderAmount: "",
-    ratings: 5,
+    ratings: 1,
   });
   return (
     <FilterDataContext.Provider

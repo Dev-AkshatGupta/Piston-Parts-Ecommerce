@@ -18,7 +18,11 @@ const initialState = {
   isAddressEditModalOpen: false,
   addressToEdit: {},
 };
-
+const errorStatement = (error) => {
+  return error.response.data.error[0]
+    ? error.response.data.error[0]
+    : "Something went wrong";
+};
 export const getAProduct = createAsyncThunk(
   "operations/getAProduct",
   async (id, { rejectWithValue }) => {
@@ -69,7 +73,7 @@ export const addAddress = createAsyncThunk(
       return data;
     } catch (error) {
       console.log(error);
-      notifyError(error);
+      notifyError(errorStatement(error));
     }
   }
 );
@@ -88,6 +92,7 @@ export const deleteAddress = createAsyncThunk(
       notifyWarn("Address Removed");
       return data;
     } catch (error) {
+      notifyError(errorStatement(error));
       console.log(error);
     }
   }
@@ -115,6 +120,7 @@ export const editAddress = createAsyncThunk(
 
       return data;
     } catch (error) {
+      notifyError(errorStatement(error));
       console.log(error);
     }
   }
@@ -138,6 +144,8 @@ export const addToCart = createAsyncThunk(
       );
       return data;
     } catch (error) {
+      notifyError(errorStatement(error));
+
       console.log(error);
     }
   }
@@ -156,6 +164,7 @@ export const deleteItemFromCart = createAsyncThunk(
       notifyWarn("Item Removed from the cart");
       return data;
     } catch (error) {
+      notifyError(errorStatement(error));
       console.log(error);
     }
   }
@@ -179,10 +188,9 @@ export const increaseItemInCart = createAsyncThunk(
       );
       notifySuccess("Item added to cart");
       return data;
-
-      return data;
     } catch (error) {
       console.log(error);
+      notifyError(errorStatement(error));
     }
   }
 );
@@ -204,10 +212,9 @@ export const decreaseItemInCart = createAsyncThunk(
         }
       );
       return data;
-
-      return data;
     } catch (error) {
       console.log(error);
+      notifyError(errorStatement(error));
     }
   }
 );
@@ -249,6 +256,7 @@ export const postItemToWishlist = createAsyncThunk(
       return data;
     } catch (error) {
       console.log(error);
+      notifyError(errorStatement(error));
     }
   }
 );
@@ -268,6 +276,7 @@ export const deleteItemFromWishlist = createAsyncThunk(
       return data;
     } catch (error) {
       console.log(error);
+      notifyError(errorStatement(error));
     }
   }
 );
@@ -335,7 +344,6 @@ const operationsSlice = createSlice({
       .addCase(deleteItemFromWishlist.rejected, (state, action) => {})
       .addCase(addAddress.pending, (state, action) => {})
       .addCase(addAddress.fulfilled, (state, action) => {
-      
         state.address = action.payload.address;
       })
       .addCase(addAddress.rejected, (state, action) => {})

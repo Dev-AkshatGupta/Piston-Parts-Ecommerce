@@ -218,7 +218,7 @@ function AsideFilter() {
               }}
             />
             <label htmlFor="input" className="sub-text">
-              5 and below
+              5 and above
             </label>
           </li>
           <li>
@@ -235,7 +235,7 @@ function AsideFilter() {
               }}
             />
             <label htmlFor="ratings-4" className="sub-text">
-              4 and below
+              4 and above
             </label>
           </li>
           <li>
@@ -252,7 +252,7 @@ function AsideFilter() {
               }}
             />
             <label htmlFor="ratings-3" className="sub-text">
-              3 and below
+              3 and above
             </label>
           </li>
           <li>
@@ -269,7 +269,7 @@ function AsideFilter() {
               }}
             />
             <label htmlFor="ratings-2" className="sub-text">
-              2 and below
+              2 and above
             </label>
           </li>
           <li>
@@ -286,7 +286,7 @@ function AsideFilter() {
               }}
             />
             <label htmlFor="ratings-1" className="sub-text">
-              1 and below
+              1 and above
             </label>
           </li>
         </ul>

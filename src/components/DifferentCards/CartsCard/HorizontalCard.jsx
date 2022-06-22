@@ -24,8 +24,7 @@ const HorizontalCard = ({
     (item) => item.name === wholeItem.name
   );
   const throttleAddQuantity = throttle((itemId) =>dispatch(increaseItemInCart(itemId)), 500);
-   const throttleDecreaseQuantity=throttle((itemId)=>dispatch(decreaseItemInCart(itemId)),1000);
-   console.log(quantity);
+ const throttleDecreaseQuantity=throttle((itemId)=>dispatch(decreaseItemInCart(itemId)),1000);
   return (
     <>
       <div className="horizontal-card text margin-1 ">

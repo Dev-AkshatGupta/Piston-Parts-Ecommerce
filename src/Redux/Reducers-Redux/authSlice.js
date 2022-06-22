@@ -6,17 +6,21 @@ const initialState = {
   currentUser: {},
   loading: false,
 };
-
+const errorStatement = (error) => {
+  return error.response.data.error[0]
+    ? error.response.data.error[0]
+    : "Something went wrong";
+};
 export const login = createAsyncThunk("auth/login", async (userDetails) => {
   try {
     const response = await axios.post(`/api/auth/login`, {
       email: userDetails.email,
       password: userDetails.password,
     });
-    
+
     return response.data;
   } catch (error) {
-    notifyError(error.response.data.error[0]);
+    notifyError(errorStatement(error));
     console.log(error.response);
   }
 });
@@ -30,7 +34,7 @@ export const signUp = createAsyncThunk("auth/signUp", async (userDetails) => {
     });
     return response.data;
   } catch (error) {
-    notifyError(error.response.data.error[0]);
+    notifyError(errorStatement(error));
     console.log(error.response);
   }
 });
@@ -53,8 +57,8 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    logOut: (state,action) =>{
-       localStorage.clear()
+    logOut: (state, action) => {
+      localStorage.clear();
     },
   },
   extraReducers(builder) {
