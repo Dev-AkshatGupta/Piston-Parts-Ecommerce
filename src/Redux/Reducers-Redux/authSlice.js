@@ -56,7 +56,6 @@ const authSlice = createSlice({
     logOut: (state,action) =>{
        localStorage.clear()
     },
-    
   },
   extraReducers(builder) {
     builder
