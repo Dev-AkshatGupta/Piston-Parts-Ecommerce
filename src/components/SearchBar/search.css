@@ -40,9 +40,8 @@
     position: absolute;
     background-color: var(--PURE-WHITE);
     width: 100%;
-    /* bottom: -6rem; */
-    top:-6rem;
-    z-index: -1;
+    top:6rem;
+    z-index: 11;
     text-align: center;
-
+    border-radius: 10px;
 }

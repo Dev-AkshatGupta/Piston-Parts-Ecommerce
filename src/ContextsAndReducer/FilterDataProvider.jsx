@@ -138,7 +138,7 @@ function FilterDataProvider({ children }) {
     categories: [],
     categoriesData: [],
     priceSort: "",
-    sliderAmount: "",
+    sliderAmount: 1500,
     ratings: 1,
   });
   return (

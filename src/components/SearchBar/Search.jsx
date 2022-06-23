@@ -1,7 +1,18 @@
 import "./search.css";
-import {useNavigate} from "react-router-dom"
+import {useNavigate} from "react-router-dom";
+import { debounce } from "Utilities/debounce";
+import { useFilterManger } from "ContextsAndReducer/FilterDataProvider";
 function Search() {
   const navigate=useNavigate();
+    const {  filterManager } = useFilterManger();
+  const search = debounce(
+    (e) =>
+      filterManager({
+        type: "SEARCH",
+        payload: e.target.value,
+      }),
+    1500
+  );
   return (
     <div className="search-bar__wrapper">
       <div className="search-box flex-center">
@@ -9,7 +20,7 @@ function Search() {
           type="text"
           className="search-input"
           placeholder="Search.."
-          //  onClick={()=>{navigate("/products-page")}}
+          onChange={search}
         />
 
         <button className="search-button">
