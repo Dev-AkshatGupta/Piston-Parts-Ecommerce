@@ -96,7 +96,7 @@ const Card = ({
           <span className="text-line-through ">{oldPrice}</span>
         </p>
       </div>
-      <div className="card-element__bottom no-border">
+      <div className="card-element__bottom no-border card-bottom__custom">
         <button
           className="btn btn-outline-pri margin-1"
           onClick={() => {

@@ -1,6 +1,7 @@
 .search-box {
     width: 100%;
     display: flex;
+  
 }
 
 .search-input {
@@ -31,4 +32,17 @@
     font-size: 20px;
     color: white;
     border-left: solid var(--DARK-GREY) 5px;
+}
+.search-bar__wrapper{
+  position:relative;
+}
+.search-result__box{
+    position: absolute;
+    background-color: var(--PURE-WHITE);
+    width: 100%;
+    /* bottom: -6rem; */
+    top:-6rem;
+    z-index: -1;
+    text-align: center;
+
 }

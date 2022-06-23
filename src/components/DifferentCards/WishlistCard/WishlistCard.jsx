@@ -1,8 +1,12 @@
 import "./WishlistCard.css";
 import { BsSuitHeartFill } from "react-icons/bs";
 import { TiTickOutline } from "react-icons/ti";
-import {deleteItemFromWishlist,addToCart} from "Redux/Reducers-Redux/operationsSlice";
-import { useDispatch } from "react-redux";
+import {
+  deleteItemFromWishlist,
+  addToCart,
+} from "Redux/Reducers-Redux/operationsSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 const WishlistCard = ({
   image,
   manufacturerName,
@@ -12,14 +16,29 @@ const WishlistCard = ({
   id,
   obj,
 }) => {
-  
-  const dispatch=useDispatch();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.operations.cart);
+  const isItemAlreadyInCart = cart.some(
+    ({ id: productId }) => productId === id
+  );
+  console.log(isItemAlreadyInCart);
+  const buttonHandler = () => {
+    if (isItemAlreadyInCart) {
+      navigate("/cart-page");
+    } else {
+      dispatch(addToCart(obj));
+      dispatch(deleteItemFromWishlist(id));
+    }
+  };
   return (
     <div className=" card-vertical border-r-3  padding-2 margin-top-1 ">
       <div className="card-product-image position-relative">
         <img src={image} className="border-r-3 " />
         <div className="go-like active-liked">
-          <BsSuitHeartFill onClick={() => dispatch(deleteItemFromWishlist(id))} />
+          <BsSuitHeartFill
+            onClick={() => dispatch(deleteItemFromWishlist(id))}
+          />
         </div>
       </div>
       <div className="card-vertical-text">
@@ -43,11 +62,10 @@ const WishlistCard = ({
         <button
           className="btn btn-outline-pri margin-1"
           onClick={() => {
-            dispatch(addToCart(obj));
-            dispatch(deleteItemFromWishlist(id));
+            buttonHandler();
           }}
         >
-          Add to Cart
+         {isItemAlreadyInCart?"Go to Cart":" Move to Cart"}
         </button>
       </div>
       <div className="flex-center-space-betw ">

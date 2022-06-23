@@ -50,19 +50,6 @@ const HorizontalCard = ({
             >
               <RiDeleteBin6Line />
             </button>
-            <button
-              className="btn"
-              onClick={() => throttleAddQuantity(wholeItem._id)}
-            >
-              +
-            </button>
-            <button
-              disabled={quantity ===1 ? true : false}
-              className="btn "
-              onClick={() =>throttleDecreaseQuantity(wholeItem._id)}
-            >
-              -
-            </button>
             {addToWishlist > -1 && (
               <button
                 className="btn "
@@ -79,6 +66,20 @@ const HorizontalCard = ({
                 <i className="fa fa-heart " aria-hidden="true"></i>
               </button>
             )}
+
+            <button
+              disabled={quantity === 1 ? true : false}
+              className="btn "
+              onClick={() => throttleDecreaseQuantity(wholeItem._id)}
+            >
+              -
+            </button>
+            <button
+              className="btn"
+              onClick={() => throttleAddQuantity(wholeItem._id)}
+            >
+              +
+            </button>
           </div>
         </div>
         <span className="card__price">₹ {price}</span>

@@ -185,7 +185,7 @@ function ResponsiveAside() {
         </ul>
         <li className="flex-center-space-betw padding-l-r text ">
           <span>0</span>
-          <span>{filtered.sliderAmount}</span>
+          <span>₹{" "}{filtered.sliderAmount}</span>
         </li>
         <div className="divider-2"></div>
 
