@@ -51,7 +51,7 @@ function FilterDataProvider({ children }) {
               first.actualPrice - second.actualPrice
           ),
         };
-        
+
         return returnData;
       }
       case "PRICE_HIGH_TO_LOW": {
@@ -63,7 +63,7 @@ function FilterDataProvider({ children }) {
               second.actualPrice - first.actualPrice
           ),
         };
-      
+
         return returnData;
       }
       case "SLIDER":
@@ -119,14 +119,16 @@ function FilterDataProvider({ children }) {
           sliderAmount: 1500,
           ratings: 1,
         };
-        case "SEARCH":
-          const search = {
-            ...state,
-            sorted: state.defaultData.filter(({ name }) => {
-              return name.toLowerCase().includes(action.payload);
-            }),
-          };
-          return search;
+      case "SEARCH":
+        const search = {
+          ...state,
+         searchText:action.payload,
+          sorted: state.defaultData.filter(({ name }) => {
+            return name.toLowerCase().includes(action.payload);
+          }),
+        };
+       
+        return search;
 
       default:
         break;
@@ -140,6 +142,7 @@ function FilterDataProvider({ children }) {
     priceSort: "",
     sliderAmount: 1500,
     ratings: 1,
+    searchText:"",
   });
   return (
     <FilterDataContext.Provider

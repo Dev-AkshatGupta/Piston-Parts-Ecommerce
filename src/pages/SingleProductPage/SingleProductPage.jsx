@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams,  useLocation, useNavigate } from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 import {
   getAProduct,
   addToCart,
@@ -8,7 +8,9 @@ import {
 } from "Redux/Reducers-Redux/operationsSlice";
 import { NavBar } from "components";
 import "./SingleProductPage.css";
-import {v4 as uuid} from "uuid";
+import { v4 as uuid } from "uuid";
+import ReactImageMagnify from "react-image-magnify";
+
 const SingleProductPage = () => {
   const { id } = useParams();
   const currentPath = useLocation();
@@ -49,16 +51,37 @@ const SingleProductPage = () => {
           replace: true,
         });
   };
-  
+
   return (
     <>
       <NavBar />
       <div className="banner-upper-empty"></div>
       <div className="single-product__main">
         <div className="single-product__left">
-          <div className="single-product__left-image">
-            <img src={product?.image?.src} alt="product image" />
-          </div>
+          {/* <div className="single-product__left-image"> */}
+            {/* <img src={product?.image?.src} alt="product image" /> */}
+            <ReactImageMagnify
+              {...{
+                smallImage: {
+                  alt: "product image",
+                  src: product?.image?.src,
+                  width: 450,
+                  height: 450,
+                },
+
+                largeImage: {
+                  src: product?.image?.src,
+                  width: 1500,
+                  height: 1800,
+                },
+                enlargedImageContainerDimensions: {
+                  width: "180%",
+                  height: "180%",
+                },
+              }}
+              isActivatedOnTouch
+            />
+          {/* </div> */}
         </div>
         <div className="single-product__right">
           <div className="single-product__right-top">
@@ -89,7 +112,9 @@ const SingleProductPage = () => {
               <h4>Description</h4>
               <ul className="single-product__right-description__ul">
                 {product?.description?.map((quality) => (
-                  <li className="text" key={uuid()}>{quality}</li>
+                  <li className="text" key={uuid()}>
+                    {quality}
+                  </li>
                 ))}
               </ul>
               <details>

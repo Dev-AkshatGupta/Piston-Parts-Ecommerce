@@ -7,7 +7,7 @@ import { v4 as uuid } from "uuid";
 
 export const products = [
   {
-    _id: "1",
+    _id: "bb654de9e471092e85c66920aa5efb91",
     name: "V-Ribbed Belt",
     category: "AIR_CONDITIONING",
     image: {
@@ -32,7 +32,7 @@ export const products = [
       "We at Piston parTs gurantee the best in qualit lowest price and genuine virgin products ",
   },
   {
-    _id: "2",
+    _id: "77757b8",
     name: "Air Filter",
     category: "AIR_CONDITIONING",
     image: {
@@ -57,7 +57,7 @@ export const products = [
       "We at Piston parTs gurantee the best in qualit lowest price and genuine virgin products ",
   },
   {
-    _id: "3",
+    _id: "9ba5f80eedb3a95fe0cb06db89df2c63",
     name: "Rubber Hose Heater",
     category: "AIR_CONDITIONING",
     image: {
@@ -82,7 +82,7 @@ export const products = [
       "We at Piston parTs gurantee the best in qualit lowest price and genuine virgin products ",
   },
   {
-    _id: "4",
+    _id: "8020f103cfa315e91abb33334381ce3c",
     name: "Side Marker Light Set",
     category: "Light",
     image: {
@@ -107,7 +107,7 @@ export const products = [
       "We at Piston parTs gurantee the best in qualit lowest price and genuine virgin products ",
   },
   {
-    _id: 5,
+    _id: "f96eebfb5dc27b027901d32b703f0a4c",
     name: "Side Rear View Mirror Right",
     category: "Light",
     image: {
@@ -132,7 +132,7 @@ export const products = [
       "We at Piston parTs gurantee the best in qualit lowest price and genuine virgin products ",
   },
   {
-    _id: "6",
+    _id: "88b6088b62d2256b3fbf5728781e20c7",
     name: "BUSH, STEERING CENTER",
     category: "Mechanical",
     image: {
@@ -157,7 +157,7 @@ export const products = [
       "We at Piston parTs gurantee the best in qualit lowest price and genuine virgin products ",
   },
   {
-    _id: "7",
+    _id: "88b6088b62d2256b3fbf5728781e20c7",
     name: "PISTON",
     category: "Mechanical",
     image: {
@@ -182,7 +182,7 @@ export const products = [
       "We at Piston parTs gurantee the best in qualit lowest price and genuine virgin products ",
   },
   {
-    _id: "8",
+    _id: "e4bffecb1dd8440a7916d363176442ac",
     name: "Headlamp Assembly Right",
     category: "Electric",
     image: {
@@ -207,7 +207,7 @@ export const products = [
       "We at Piston parTs gurantee the best in qualit lowest price and genuine virgin products ",
   },
   {
-    _id: "9",
+    _id: "f9e1af01e17e6f9c4fe7e713af9565a6",
     name: "Glow Plug",
     category: "Electric",
     image: {
