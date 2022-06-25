@@ -71,7 +71,7 @@ const SingleProductPage = () => {
 
                 largeImage: {
                   src: product?.image?.src,
-                  width: 1500,
+                  width: 1800,
                   height: 1800,
                 },
                 enlargedImageContainerDimensions: {
