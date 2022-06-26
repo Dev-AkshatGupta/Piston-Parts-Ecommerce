@@ -20,9 +20,9 @@ const WishlistCard = ({
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.operations.cart);
   const isItemAlreadyInCart = cart.some(
-    ({ id: productId }) => productId === id
+    ({ _id: productId }) => productId === id
   );
-  console.log(isItemAlreadyInCart);
+
   const buttonHandler = () => {
     if (isItemAlreadyInCart) {
       navigate("/cart-page");
@@ -65,7 +65,7 @@ const WishlistCard = ({
             buttonHandler();
           }}
         >
-         {isItemAlreadyInCart?"Go to Cart":" Move to Cart"}
+          {isItemAlreadyInCart ? "Go to Cart" : " Move to Cart"}
         </button>
       </div>
       <div className="flex-center-space-betw ">

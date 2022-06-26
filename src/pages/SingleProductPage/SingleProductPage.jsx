@@ -10,7 +10,7 @@ import { NavBar } from "components";
 import "./SingleProductPage.css";
 import { v4 as uuid } from "uuid";
 import ReactImageMagnify from "react-image-magnify";
-
+import { Footer } from "components";
 const SingleProductPage = () => {
   const { id } = useParams();
   const currentPath = useLocation();
@@ -59,28 +59,28 @@ const SingleProductPage = () => {
       <div className="single-product__main">
         <div className="single-product__left">
           {/* <div className="single-product__left-image"> */}
-            {/* <img src={product?.image?.src} alt="product image" /> */}
-            <ReactImageMagnify
-              {...{
-                smallImage: {
-                  alt: "product image",
-                  src: product?.image?.src,
-                  width: 450,
-                  height: 450,
-                },
+          {/* <img src={product?.image?.src} alt="product image" /> */}
+          <ReactImageMagnify
+            {...{
+              smallImage: {
+                alt: "product image",
+                src: product?.image?.src,
+                width: 450,
+                height: 450,
+              },
 
-                largeImage: {
-                  src: product?.image?.src,
-                  width: 1800,
-                  height: 1800,
-                },
-                enlargedImageContainerDimensions: {
-                  width: "180%",
-                  height: "180%",
-                },
-              }}
-              isActivatedOnTouch
-            />
+              largeImage: {
+                src: product?.image?.src,
+                width: 1800,
+                height: 1800,
+              },
+              enlargedImageContainerDimensions: {
+                width: "180%",
+                height: "180%",
+              },
+            }}
+            isActivatedOnTouch
+          />
           {/* </div> */}
         </div>
         <div className="single-product__right">

@@ -142,6 +142,7 @@ export const addToCart = createAsyncThunk(
           },
         }
       );
+       notifyInfo("Item added to Cart");
       return data;
     } catch (error) {
       notifyError(errorStatement(error));
@@ -309,12 +310,15 @@ const operationsSlice = createSlice({
       .addCase(getCartData.rejected, (state, action) => {})
       .addCase(addToCart.pending, (state, action) => {})
       .addCase(addToCart.fulfilled, (state, action) => {
+        
         state.cart = action.payload.cart;
+         
       })
       .addCase(addToCart.rejected, (state, action) => {})
       .addCase(deleteItemFromCart.pending, (state, action) => {})
       .addCase(deleteItemFromCart.fulfilled, (state, action) => {
         state.cart = action.payload.cart;
+      
       })
       .addCase(deleteItemFromCart.rejected, (state, action) => {})
       .addCase(increaseItemInCart.pending, (state, action) => {})

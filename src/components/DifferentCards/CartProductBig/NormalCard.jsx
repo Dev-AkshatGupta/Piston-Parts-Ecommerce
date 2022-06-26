@@ -60,7 +60,8 @@ const Card = ({
     <div className=" card-vertical border-r-3  padding-2 margin-top-1 height-53R">
       <div className="card-product-image position-relative">
         <Link className="text-black " to={`/singleProduct-page/${id}`}>
-          <img src={image} className="border-r-3 " />
+          {/* <img src={image} className="border-r-3 "  /> */}
+          <img src={image} className="border-r-3 " loading="lazy" />
         </Link>
         {isItemInWishlist ? (
           <div className="go-like active-liked ">

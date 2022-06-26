@@ -101,7 +101,7 @@ function CardProductBig({
                     </div>
                   </div>
                   <div className="product-image">
-                    <img src={image} />
+                    <img src={image} alt="product image" loading="lazy" />
                   </div>
                 </div>
                 <div className="product-right">
