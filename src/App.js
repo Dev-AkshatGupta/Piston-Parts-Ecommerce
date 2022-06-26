@@ -10,6 +10,7 @@ import AllRoutes from "./AllRoutes";
 import { useLocation } from "react-router-dom";
 import GlobalComponents from "GlobalComponents/GlobalComponents";
 
+
 function App() {
 const dispatch = useDispatch();
   useEffect(() => {
@@ -32,6 +33,7 @@ const dispatch = useDispatch();
       <ToastContainer />
       <AllRoutes />
       <GlobalComponents/>
+    
     </div>
   );
 }

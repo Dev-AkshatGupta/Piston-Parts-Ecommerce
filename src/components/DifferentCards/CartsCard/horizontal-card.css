@@ -1,6 +1,6 @@
 .horizontal-card {
     width: 100%;
-    height: 12rem;
+    /* height: 12rem; */
     background: var(--WHITE-SMOKE);
     border-radius: 12px;
     transition:all 0.3s;
@@ -56,7 +56,7 @@
     height: 6rem;
 }
 @media screen and (max-width: 450px) {
-    .horizontal-card{width: 390px;}
+    /* .horizontal-card{width: 390px;} */
     
 .horizontal-card .description{margin-left: 1rem;}
 }

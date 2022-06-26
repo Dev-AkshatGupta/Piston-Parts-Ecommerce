@@ -29,7 +29,7 @@ function Search() {
             setInput(e.target.value);
           }}
           onKeyUp={(e) => {
-            console.log(e.key==="Enter");
+          
             if(e.key==="Enter"&&input.trim()!=="")
             navigate("/products-page", { state: input });
           }}

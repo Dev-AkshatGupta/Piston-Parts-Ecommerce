@@ -36,6 +36,7 @@ function FilterDataProvider({ children }) {
           ...state,
           sorted: action.payload,
           defaultData: action.payload,
+          isLoading:false,
         };
       case "CATEGORIES_DATA":
         return {
@@ -143,6 +144,7 @@ function FilterDataProvider({ children }) {
     sliderAmount: 1500,
     ratings: 1,
     searchText:"",
+    isLoading:true,
   });
   return (
     <FilterDataContext.Provider

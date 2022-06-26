@@ -17,6 +17,7 @@ const initialState = {
   isAddressModalOpen: false,
   isAddressEditModalOpen: false,
   addressToEdit: {},
+  loading:{singlePageLoader:false}
 };
 const errorStatement = (error) => {
   return error.response.data.error[0]
@@ -142,7 +143,7 @@ export const addToCart = createAsyncThunk(
           },
         }
       );
-       notifyInfo("Item added to Cart");
+      
       return data;
     } catch (error) {
       notifyError(errorStatement(error));
@@ -298,9 +299,13 @@ const operationsSlice = createSlice({
   },
   extraReducers(builder) {
     builder
-      .addCase(getAProduct.pending, (state, action) => {})
+      .addCase(getAProduct.pending, (state, action) => {
+                state.loading.singlePageLoader = true;
+
+      })
       .addCase(getAProduct.fulfilled, (state, action) => {
         state.currentProduct = action.payload.product;
+        state.loading.singlePageLoader=false;
       })
       .addCase(getAProduct.rejected, (state, action) => {})
       .addCase(getCartData.pending, (state, action) => {})

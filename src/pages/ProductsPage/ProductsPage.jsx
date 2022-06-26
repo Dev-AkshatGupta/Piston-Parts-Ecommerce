@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import "./ProductsPage.css";
-import { NavBar, Footer, BothCard, ResponsiveAside } from "components";
+import { NavBar, Footer, BothCard, ResponsiveAside, Loader } from "components";
 import { AsideFilter } from "./ProductsPageAside/AsideFilter";
 import { useFilterManger } from "ContextsAndReducer/FilterDataProvider";
 import ReactPaginate from "react-paginate";
 const PER_PAGE = 6;
 const ProductsPage = () => {
-  const { filtered } = useFilterManger();
+  const { filtered, filterManager } = useFilterManger();
+
   const [currentPage, setCurrentPage] = useState(0);
   const handlePageClick = ({ selected: selectedPage }) => {
     setCurrentPage(selectedPage);
@@ -33,37 +34,49 @@ const ProductsPage = () => {
     <div>
       <NavBar menuBtn={true} />
       <div className="empty"></div>
-      <section className="hero-sec-grid">
-        <AsideFilter />
-        <ResponsiveAside />
-        {currentPageData.length === 0 ? (
-          <div className="text height-100vh flex-center-center"> There are no such items</div>
-        ) : (
-          <main className="products-main">{currentPageData}</main>
-        )}
-      </section>
-      <div className="flex-center-center">
-        <ReactPaginate
-          nextLabel="next >"
-          onPageChange={handlePageClick}
-          pageRangeDisplayed={3}
-          marginPagesDisplayed={2}
-          pageCount={pageCount}
-          previousLabel="< previous"
-          pageClassName="page-item"
-          pageLinkClassName="page-link"
-          previousClassName="page-item"
-          previousLinkClassName="page-link"
-          nextClassName="page-item"
-          nextLinkClassName="page-link"
-          breakLabel="..."
-          breakClassName="page-item"
-          breakLinkClassName="page-link"
-          containerClassName="pagination"
-          activeClassName="pagination-active"
-          renderOnZeroPageCount={null}
-        />
-      </div>
+      {filtered.isLoading ? (
+        <div className="width-100 flex-center height-100vh">
+          <Loader />
+        </div>
+      ) : (
+        <>
+          {" "}
+          <section className="hero-sec-grid">
+            <AsideFilter />
+            <ResponsiveAside />
+            {currentPageData.length === 0 ? (
+              <div className="text height-100vh flex-center-center">
+                {" "}
+                There are no such items
+              </div>
+            ) : (
+              <main className="products-main">{currentPageData}</main>
+            )}
+          </section>
+          <div className="flex-center-center">
+            <ReactPaginate
+              nextLabel="next >"
+              onPageChange={handlePageClick}
+              pageRangeDisplayed={3}
+              marginPagesDisplayed={2}
+              pageCount={pageCount}
+              previousLabel="< previous"
+              pageClassName="page-item"
+              pageLinkClassName="page-link"
+              previousClassName="page-item"
+              previousLinkClassName="page-link"
+              nextClassName="page-item"
+              nextLinkClassName="page-link"
+              breakLabel="..."
+              breakClassName="page-item"
+              breakLinkClassName="page-link"
+              containerClassName="pagination"
+              activeClassName="pagination-active"
+              renderOnZeroPageCount={null}
+            />
+          </div>
+        </>
+      )}
       <Footer />
     </div>
   );

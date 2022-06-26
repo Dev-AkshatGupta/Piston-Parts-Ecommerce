@@ -157,31 +157,6 @@ export const products = [
       "We at Piston parTs gurantee the best in qualit lowest price and genuine virgin products ",
   },
   {
-    _id: "88b6088b62d2256b3fbf5728781e20c7",
-    name: "PISTON",
-    category: "Mechanical",
-    image: {
-      src: "https://boodmo.com/media/cache/part_zoom_horizontal/images/parts/88b6088b62d2256b3fbf5728781e20c7.webp",
-      alt: "PISTON",
-    },
-    manufacturerName: "Febest",
-    quantity: 7,
-    outOfStock: false,
-    rating: 4,
-    wishList: false,
-    price: {
-      actualPrice: 1239,
-      previousPrice: 1304.0,
-    },
-    description: [
-      "Great authentic products",
-      "We are selling genuine products",
-      "100% Lowest price gurantee",
-    ],
-    details:
-      "We at Piston parTs gurantee the best in qualit lowest price and genuine virgin products ",
-  },
-  {
     _id: "e4bffecb1dd8440a7916d363176442ac",
     name: "Headlamp Assembly Right",
     category: "Electric",
