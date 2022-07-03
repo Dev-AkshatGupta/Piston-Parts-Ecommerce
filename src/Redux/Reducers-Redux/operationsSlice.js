@@ -163,7 +163,7 @@ export const deleteItemFromCart = createAsyncThunk(
           authorization: encodedToken,
         },
       });
-      notifyWarn("Item Removed from the cart");
+     
       return data;
     } catch (error) {
       notifyError(errorStatement(error));

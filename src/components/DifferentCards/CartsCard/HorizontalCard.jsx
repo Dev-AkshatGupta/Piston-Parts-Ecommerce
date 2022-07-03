@@ -10,6 +10,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { throttle } from "Utilities/debounce";
+import { notifyWarn } from "Utilities";
 const HorizontalCard = ({
   image,
   alt,
@@ -53,7 +54,9 @@ const HorizontalCard = ({
             {addToWishlist > -1 && (
               <button
                 className="btn "
-                onClick={() => dispatch(deleteItemFromWishlist(wholeItem._id))}
+                onClick={() => {dispatch(deleteItemFromWishlist(wholeItem._id))
+                 notifyWarn("Item Removed from the cart");
+                }}
               >
                 <i className="fa fa-heart text-red" aria-hidden="true"></i>
               </button>
