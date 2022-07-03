@@ -17,9 +17,9 @@ import {
   ProfilePage,
   SingleProductPage,
   CheckOutPage,
+  ConfirmationPage
 } from "pages";
 const AllRoutes = () => {
-  const currentUser = useSelector((state) => state?.auth?.currentUser);
 
   return (
     <Routes>
@@ -33,13 +33,13 @@ const AllRoutes = () => {
       <Route element={<PrivateRoute />}>
         <Route path="/cart-page" element={<CartPage />} />
         <Route path="/profile-page" element={<ProfilePage />}>
-          <Route index element={<ProfileCard userDetails={currentUser} />} />
+          <Route index element={<ProfileCard  />} />
           <Route path="address" element={<ProfileAddress />} />
         </Route>
         <Route path="/checkout-page" element={<CheckOutPage />} />
         <Route path="/wishlist-page" element={<WishlistPage />} />
       </Route>
-
+     <Route path="/confirmation" element={<ConfirmationPage/>} />
       <Route path="*" element={<Page404 />} />
     </Routes>
   );

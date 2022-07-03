@@ -11,10 +11,9 @@ function WishlistPage() {
   const wishlist=useSelector(state=>state.operations.wishlist);
   return (
     <div>
-      
       <NavBar />
-      <div className="banner-upper-empty"></div>
-      <div className="products-main">
+      <div className="banner-upper-empty "></div>
+      <div className="products-main min-height__100vh">
         {wishlist?.length < 1 && (
           <div className="height-100vh flex-center">
             <div className="flex-center ">
@@ -29,7 +28,7 @@ function WishlistPage() {
           </div>
         )}
         {wishlist?.length > 0 &&
-        wishlist.map((item) => (
+          wishlist.map((item) => (
             <WishlistCard
               image={item.image.src}
               key={item._id}

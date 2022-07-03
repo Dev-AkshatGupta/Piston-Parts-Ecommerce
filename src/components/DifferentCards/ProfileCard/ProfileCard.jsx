@@ -1,8 +1,10 @@
 import "./ProfileCard.css";
 import { logOut } from "Redux/Reducers-Redux/authSlice";
-import { useDispatch } from "react-redux";
-function ProfileCard({ userDetails }) {
+import { useDispatch ,useSelector} from "react-redux";
+function ProfileCard({  }) {
   const dispatch = useDispatch();
+    const userDetails = useSelector((state) => state?.auth?.currentUser);
+
   return (
     <div className="profile-card__main">
       <h3 className="profile-card__heading">Profile Details</h3>
