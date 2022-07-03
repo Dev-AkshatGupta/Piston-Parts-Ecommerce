@@ -1,10 +1,14 @@
 import "./CheckOutPage.css";
-import { useSelector,useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import { NavBar, Footer, AddressCard } from "components";
 import { useState } from "react";
 import { notifyWarn } from "Utilities/Notifications";
-import { openAddressModal } from "Redux/Reducers-Redux/operationsSlice";
+import {
+  deleteItemFromCart,
+  openAddressModal,
+} from "Redux/Reducers-Redux/operationsSlice";
+import { notifyInfo } from "Utilities";
 
 const CheckOutPage = () => {
   const cart = useSelector((state) => state.operations.cart);
@@ -14,12 +18,13 @@ const CheckOutPage = () => {
   const amount = cart.reduce((acc, pri) => {
     return acc + pri.qty * pri.price.actualPrice;
   }, 0);
-const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
     if (amount === "") {
       alert("please enter amount");
-    } else if (!addressState.name ) {
+    } else if (!addressState.name) {
       notifyWarn("please select the address");
     } else {
       var options = {
@@ -30,7 +35,11 @@ const dispatch = useDispatch();
         name: "Piston_Parts",
         description: "Happy shopping",
         handler: function (response) {
-          alert(response.razorpay_payment_id);
+          navigate("/confirmation");
+          notifyInfo(
+            `Order Placed with order Id-${response.razorpay_payment_id}`
+          );
+          cart.map(({ _id }) => dispatch(deleteItemFromCart(_id)));
         },
         prefill: {
           name: currentUser.name,
@@ -74,7 +83,6 @@ const dispatch = useDispatch();
                   address={address}
                   state={addressState}
                   setState={setAddressState}
-                
                 />
               ))
             ) : (
