@@ -36,7 +36,7 @@ function FilterDataProvider({ children }) {
           ...state,
           sorted: action.payload,
           defaultData: action.payload,
-          isLoading:false,
+          isLoading: false,
         };
       case "CATEGORIES_DATA":
         return {
@@ -47,7 +47,7 @@ function FilterDataProvider({ children }) {
         const returnData = {
           ...state,
           priceSort: action.payload,
-          sorted: state.defaultData.sort(
+          sorted: state.sorted.sort(
             ({ price: first }, { price: second }) =>
               first.actualPrice - second.actualPrice
           ),
@@ -59,7 +59,7 @@ function FilterDataProvider({ children }) {
         const returnData = {
           ...state,
           priceSort: action.payload,
-          sorted: state.defaultData.sort(
+          sorted: state.sorted.sort(
             ({ price: first }, { price: second }) =>
               second.actualPrice - first.actualPrice
           ),
@@ -69,7 +69,24 @@ function FilterDataProvider({ children }) {
       }
       case "SLIDER":
         const priceSorted = state.defaultData.filter(
-          ({ price }) => price.actualPrice <= action.payload
+          ({ price, category, rating }) => {
+            if (state.categories.length > 0 && state.rating)
+              return (
+                price.actualPrice <= action.payload &&
+                state.categories.includes(category) &&
+                rating >= state.rating
+              );
+            else if (state.categories.length > 0) {
+              return (
+                price.actualPrice <= action.payload &&
+                state.categories.includes(category)
+              );
+            } else if (state.rating) {
+              return (
+                price.actualPrice <= action.payload && rating >= state.rating
+              );
+            } else return price.actualPrice <= action.payload;
+          }
         );
         return {
           ...state,
@@ -104,13 +121,25 @@ function FilterDataProvider({ children }) {
           };
         }
       case "RATINGS":
+        const sorted = state.defaultData.filter((item) => {
+          if (state.categories.length > 0)
+            return (
+              item.rating >= action.payload &&
+              state.categories.includes(item.category) &&
+              item.price.actualPrice <= state.sliderAmount
+            );
+          else
+            return (
+              item.rating >= action.payload &&
+              item.price.actualPrice <= state.sliderAmount
+            );
+        });
         return {
           ...state,
           ratings: action.payload,
-          sorted: state.defaultData.filter((item) => {
-            return item.rating >= action.payload;
-          }),
+          sorted,
         };
+
       case "CLEAR_ALL":
         return {
           ...state,
@@ -123,12 +152,11 @@ function FilterDataProvider({ children }) {
       case "SEARCH":
         const search = {
           ...state,
-         searchText:action.payload,
+          searchText: action.payload,
           sorted: state.defaultData.filter(({ name }) => {
             return name.toLowerCase().includes(action.payload);
           }),
         };
-       
         return search;
 
       default:
@@ -143,8 +171,8 @@ function FilterDataProvider({ children }) {
     priceSort: "",
     sliderAmount: 1500,
     ratings: 1,
-    searchText:"",
-    isLoading:true,
+    searchText: "",
+    isLoading: true,
   });
   return (
     <FilterDataContext.Provider

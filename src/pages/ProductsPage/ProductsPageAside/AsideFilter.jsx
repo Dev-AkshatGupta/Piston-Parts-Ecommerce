@@ -68,6 +68,12 @@ function AsideFilter() {
                   type: "CATEGORIES",
                   payload: "AIR_CONDITIONING",
                 });
+                if (filtered.priceSort) {
+                  filterManager({
+                    type: filtered.priceSort,
+                    payload: filtered.priceSort,
+                  });
+                }
               }}
             />
             <label htmlFor="AIR_CONDITIONING" className="sub-text">
@@ -85,6 +91,12 @@ function AsideFilter() {
                   type: "CATEGORIES",
                   payload: "Oil",
                 });
+                if (filtered.priceSort) {
+                  filterManager({
+                    type: filtered.priceSort,
+                    payload: filtered.priceSort,
+                  });
+                }
               }}
             />
             <label htmlFor="Oils" className="sub-text">
@@ -102,6 +114,12 @@ function AsideFilter() {
                   type: "CATEGORIES",
                   payload: "Light",
                 });
+                if (filtered.priceSort) {
+                  filterManager({
+                    type: filtered.priceSort,
+                    payload: filtered.priceSort,
+                  });
+                }
               }}
             />
             <label htmlFor="Light" className="sub-text">
@@ -120,6 +138,12 @@ function AsideFilter() {
                   type: "CATEGORIES",
                   payload: "Mechanical",
                 });
+                if (filtered.priceSort) {
+                  filterManager({
+                    type: filtered.priceSort,
+                    payload: filtered.priceSort,
+                  });
+                }
               }}
             />
             <label htmlFor="Mechanical" className="sub-text">
@@ -137,6 +161,12 @@ function AsideFilter() {
                   type: "CATEGORIES",
                   payload: "Body",
                 });
+                if (filtered.priceSort) {
+                  filterManager({
+                    type: filtered.priceSort,
+                    payload: filtered.priceSort,
+                  });
+                }
               }}
             />
             <label htmlFor="Body" className="sub-text">
@@ -154,6 +184,12 @@ function AsideFilter() {
                   type: "CATEGORIES",
                   payload: "Engine",
                 });
+                if (filtered.priceSort) {
+                  filterManager({
+                    type: filtered.priceSort,
+                    payload: filtered.priceSort,
+                  });
+                }
               }}
             />
             <label htmlFor="Engine" className="sub-text">
@@ -171,6 +207,12 @@ function AsideFilter() {
                   type: "CATEGORIES",
                   payload: "Brakes",
                 });
+                if (filtered.priceSort) {
+                  filterManager({
+                    type: filtered.priceSort,
+                    payload: filtered.priceSort,
+                  });
+                }
               }}
             />
             <label htmlFor="Brakes" className="sub-text">

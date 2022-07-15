@@ -59,6 +59,12 @@ function ResponsiveAside() {
                   type: "CATEGORIES",
                   payload: "AIR_CONDITIONING",
                 });
+                if (filtered.priceSort) {
+                  filterManager({
+                    type: filtered.priceSort,
+                    payload: filtered.priceSort,
+                  });
+                }
               }}
             />
             <label htmlFor="input" className="sub-text">
@@ -75,6 +81,12 @@ function ResponsiveAside() {
                   type: "CATEGORIES",
                   payload: "Oil",
                 });
+                if (filtered.priceSort) {
+                  filterManager({
+                    type: filtered.priceSort,
+                    payload: filtered.priceSort,
+                  });
+                }
               }}
             />
             <label htmlFor="input" className="sub-text">
@@ -91,6 +103,12 @@ function ResponsiveAside() {
                   type: "CATEGORIES",
                   payload: "Light",
                 });
+                if (filtered.priceSort) {
+                  filterManager({
+                    type: filtered.priceSort,
+                    payload: filtered.priceSort,
+                  });
+                }
               }}
             />
             <label htmlFor="input" className="sub-text">
@@ -108,6 +126,12 @@ function ResponsiveAside() {
                   type: "CATEGORIES",
                   payload: "Mechanical",
                 });
+                if (filtered.priceSort) {
+                  filterManager({
+                    type: filtered.priceSort,
+                    payload: filtered.priceSort,
+                  });
+                }
               }}
             />
             <label htmlFor="input" className="sub-text">
@@ -124,6 +148,12 @@ function ResponsiveAside() {
                   type: "CATEGORIES",
                   payload: "Body",
                 });
+                if (filtered.priceSort) {
+                  filterManager({
+                    type: filtered.priceSort,
+                    payload: filtered.priceSort,
+                  });
+                }
               }}
             />
             <label htmlFor="input" className="sub-text">
@@ -140,6 +170,12 @@ function ResponsiveAside() {
                   type: "CATEGORIES",
                   payload: "Engine",
                 });
+                if (filtered.priceSort) {
+                  filterManager({
+                    type: filtered.priceSort,
+                    payload: filtered.priceSort,
+                  });
+                }
               }}
             />
             <label htmlFor="input" className="sub-text">
@@ -156,6 +192,12 @@ function ResponsiveAside() {
                   type: "CATEGORIES",
                   payload: "Brakes",
                 });
+                if (filtered.priceSort) {
+                  filterManager({
+                    type: filtered.priceSort,
+                    payload: filtered.priceSort,
+                  });
+                }
               }}
             />
             <label htmlFor="input" className="sub-text">
@@ -185,7 +227,7 @@ function ResponsiveAside() {
         </ul>
         <li className="flex-center-space-betw padding-l-r text ">
           <span>0</span>
-          <span>₹{" "}{filtered.sliderAmount}</span>
+          <span>₹ {filtered.sliderAmount}</span>
         </li>
         <div className="divider-2"></div>
 
