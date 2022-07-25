@@ -13,7 +13,7 @@ const ProductsPage = () => {
     setCurrentPage(selectedPage);
   };
   const offset = currentPage * PER_PAGE;
-  const currentPageData = filtered.sorted
+  const currentPageData = filtered?.sorted
     .slice(offset, offset + PER_PAGE)
     .map((item, i) => (
       <BothCard
@@ -28,13 +28,13 @@ const ProductsPage = () => {
         wholeItem={item}
       />
     ));
-  const pageCount = Math.ceil(filtered.sorted.length / PER_PAGE);
+  const pageCount = Math.ceil(filtered?.sorted.length / PER_PAGE);
 
   return (
     <div>
       <NavBar menuBtn={true} />
       <div className="empty"></div>
-      {filtered.isLoading ? (
+      {filtered?.isLoading ? (
         <div className="width-100 flex-center height-100vh">
           <Loader />
         </div>
@@ -44,7 +44,7 @@ const ProductsPage = () => {
           <section className="hero-sec-grid">
             <AsideFilter />
             <ResponsiveAside />
-            {currentPageData.length === 0 ? (
+            {currentPageData?.length === 0 ? (
               <div className="text height-100vh flex-center-center ">
                 {" "}
                 There are no such items

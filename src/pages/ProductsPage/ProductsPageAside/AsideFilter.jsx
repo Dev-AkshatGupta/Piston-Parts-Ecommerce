@@ -29,7 +29,7 @@ function AsideFilter() {
                   payload: "PRICE_HIGH_TO_LOW",
                 });
               }}
-              checked={filtered.priceSort === "PRICE_HIGH_TO_LOW"}
+              checked={filtered?.priceSort === "PRICE_HIGH_TO_LOW"}
             />
 
             <label htmlFor="PRICE_HIGH_TO_LOW" className="sub-text">
@@ -46,7 +46,7 @@ function AsideFilter() {
                   payload: "PRICE_LOW_TO_HIGH",
                 });
               }}
-              checked={filtered.priceSort === "PRICE_LOW_TO_HIGH"}
+              checked={filtered?.priceSort === "PRICE_LOW_TO_HIGH"}
             />
             <label htmlFor="PRICE_LOW_TO_HIGH" className="sub-text">
               Price Low to High
@@ -62,16 +62,16 @@ function AsideFilter() {
               type="checkbox"
               name="Air conditioning"
               id="AIR_CONDITIONING"
-              checked={filtered.categories.includes("AIR_CONDITIONING")}
+              checked={filtered?.categories.includes("AIR_CONDITIONING")}
               onChange={() => {
                 filterManager({
                   type: "CATEGORIES",
                   payload: "AIR_CONDITIONING",
                 });
-                if (filtered.priceSort) {
+                if (filtered?.priceSort) {
                   filterManager({
-                    type: filtered.priceSort,
-                    payload: filtered.priceSort,
+                    type: filtered?.priceSort,
+                    payload: filtered?.priceSort,
                   });
                 }
               }}
@@ -85,16 +85,16 @@ function AsideFilter() {
               type="checkbox"
               name="Oils"
               id="Oils"
-              checked={filtered.categories.includes("Oil")}
+              checked={filtered?.categories.includes("Oil")}
               onChange={() => {
                 filterManager({
                   type: "CATEGORIES",
                   payload: "Oil",
                 });
-                if (filtered.priceSort) {
+                if (filtered?.priceSort) {
                   filterManager({
-                    type: filtered.priceSort,
-                    payload: filtered.priceSort,
+                    type: filtered?.priceSort,
+                    payload: filtered?.priceSort,
                   });
                 }
               }}
@@ -108,16 +108,16 @@ function AsideFilter() {
               type="checkbox"
               name="Light"
               id="Light"
-              checked={filtered.categories.includes("Light")}
+              checked={filtered?.categories.includes("Light")}
               onChange={() => {
                 filterManager({
                   type: "CATEGORIES",
                   payload: "Light",
                 });
-                if (filtered.priceSort) {
+                if (filtered?.priceSort) {
                   filterManager({
-                    type: filtered.priceSort,
-                    payload: filtered.priceSort,
+                    type: filtered?.priceSort,
+                    payload: filtered?.priceSort,
                   });
                 }
               }}
@@ -132,16 +132,16 @@ function AsideFilter() {
               type="checkbox"
               name="Mechanical"
               id="Mechanical"
-              checked={filtered.categories.includes("Mechanical")}
+              checked={filtered?.categories.includes("Mechanical")}
               onChange={() => {
                 filterManager({
                   type: "CATEGORIES",
                   payload: "Mechanical",
                 });
-                if (filtered.priceSort) {
+                if (filtered?.priceSort) {
                   filterManager({
-                    type: filtered.priceSort,
-                    payload: filtered.priceSort,
+                    type: filtered?.priceSort,
+                    payload: filtered?.priceSort,
                   });
                 }
               }}
@@ -155,16 +155,16 @@ function AsideFilter() {
               type="checkbox"
               name="Body"
               id="Body"
-              checked={filtered.categories.includes("Body")}
+              checked={filtered?.categories.includes("Body")}
               onChange={() => {
                 filterManager({
                   type: "CATEGORIES",
                   payload: "Body",
                 });
-                if (filtered.priceSort) {
+                if (filtered?.priceSort) {
                   filterManager({
-                    type: filtered.priceSort,
-                    payload: filtered.priceSort,
+                    type: filtered?.priceSort,
+                    payload: filtered?.priceSort,
                   });
                 }
               }}
@@ -178,16 +178,16 @@ function AsideFilter() {
               type="checkbox"
               name="Mechanical"
               id="Engine"
-              checked={filtered.categories.includes("Engine")}
+              checked={filtered?.categories.includes("Engine")}
               onChange={() => {
                 filterManager({
                   type: "CATEGORIES",
                   payload: "Engine",
                 });
-                if (filtered.priceSort) {
+                if (filtered?.priceSort) {
                   filterManager({
-                    type: filtered.priceSort,
-                    payload: filtered.priceSort,
+                    type: filtered?.priceSort,
+                    payload: filtered?.priceSort,
                   });
                 }
               }}
@@ -201,16 +201,16 @@ function AsideFilter() {
               type="checkbox"
               name="Brakes"
               id="Brakes"
-              checked={filtered.categories.includes("Brakes")}
+              checked={filtered?.categories.includes("Brakes")}
               onChange={() => {
                 filterManager({
                   type: "CATEGORIES",
                   payload: "Brakes",
                 });
-                if (filtered.priceSort) {
+                if (filtered?.priceSort) {
                   filterManager({
-                    type: filtered.priceSort,
-                    payload: filtered.priceSort,
+                    type: filtered?.priceSort,
+                    payload: filtered?.priceSort,
                   });
                 }
               }}
@@ -229,7 +229,7 @@ function AsideFilter() {
               name="Price"
               min="0"
               max="1500"
-              value={filtered.sliderAmount}
+              value={filtered?.sliderAmount}
               onChange={(e) => {
                 filterManager({
                   type: "SLIDER",
@@ -242,7 +242,7 @@ function AsideFilter() {
         </ul>
         <li className="flex-center-space-betw padding-l-r text ">
           <span>₹ 0</span>
-          <span>₹ {filtered.sliderAmount}</span>
+          <span>₹ {filtered?.sliderAmount}</span>
         </li>
         <div className="divider-2"></div>
 
@@ -253,7 +253,7 @@ function AsideFilter() {
               type="checkbox"
               name="category"
               id="ratings-5"
-              checked={filtered.ratings === 5}
+              checked={filtered?.ratings === 5}
               onChange={() => {
                 filterManager({
                   type: "RATINGS",
@@ -270,7 +270,7 @@ function AsideFilter() {
               type="checkbox"
               name="category"
               id="ratings-4"
-              checked={filtered.ratings === 4}
+              checked={filtered?.ratings === 4}
               onChange={() => {
                 filterManager({
                   type: "RATINGS",
@@ -287,7 +287,7 @@ function AsideFilter() {
               type="checkbox"
               name="category"
               id="ratings-3"
-              checked={filtered.ratings === 3}
+              checked={filtered?.ratings === 3}
               onChange={() => {
                 filterManager({
                   type: "RATINGS",
@@ -304,7 +304,7 @@ function AsideFilter() {
               type="checkbox"
               name="category"
               id="ratings-2"
-              checked={filtered.ratings === 2}
+              checked={filtered?.ratings === 2}
               onChange={() => {
                 filterManager({
                   type: "RATINGS",
@@ -321,7 +321,7 @@ function AsideFilter() {
               type="checkbox"
               name="category"
               id="ratings-1"
-              checked={filtered.ratings === 1}
+              checked={filtered?.ratings === 1}
               onChange={() => {
                 filterManager({
                   type: "RATINGS",

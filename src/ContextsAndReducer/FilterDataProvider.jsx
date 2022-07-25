@@ -106,7 +106,7 @@ function FilterDataProvider({ children }) {
             sorted: state.defaultData.filter((item) => {
               if (categoriesArr.length > 0)
                 return categoriesArr.includes(item.category);
-              else return item;
+              else return true;
             }),
           };
         } else {
